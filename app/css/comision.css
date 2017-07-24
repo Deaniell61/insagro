@@ -1,0 +1,142 @@
+.enlinea{
+	
+	display: inline-block;
+	
+	margin: 5px;
+}
+
+.espacio
+{
+	float: left;
+	 width: 50%;
+	
+}
+.anchoFila
+{
+	
+	float: left;
+	
+	height: 300px;
+	 width: 300px;
+	 overflow-x: scroll;
+	overflow-y: auto;
+	
+	
+}
+
+.borde
+{
+	
+border-bottom: solid;
+	
+
+}
+
+
+
+
+
+
+
+.listaMarca
+{
+	
+	height: 64px;
+    overflow-y: auto;
+	position:relative;
+	
+	
+}
+
+
+.botonG
+{
+	
+	width: 180px;
+	border-radius: 6px;
+}
+
+.izqC
+{
+	border: 1px black solid;
+}
+
+.derC
+{
+	border: 1px black solid;
+	padding: 15px;
+}
+
+#resumenV
+{
+	width: 60%;
+	
+	
+}
+
+
+.lupaA
+{
+	
+	
+	height: 30px;
+	width: 30px;
+	
+}
+
+
+.btnMC
+{
+	width: 40px;
+	height: 35px;
+	border-radius: 6px;
+	
+}
+
+
+.modal
+{
+width: 100%;
+height: 80%;	
+	
+}
+
+.listaO
+{
+	
+	float: left;
+	overflow-y: auto;
+	
+	margin-left: 4%;
+	height: 50px;
+	color: #5790D1;
+	background-color: blanchedalmond;
+	width: 50%;
+	
+	border-radius: 6px;
+	
+	
+}
+
+
+
+
+
+.numerico  input[type=number]:focus + label {
+    color: #1565c0;
+}
+
+.numerico input[type=number]:focus {
+    border-bottom: 1px solid #1565c0;
+    box-shadow: 0 1px 0 0 #1565c0;
+}
+
+.numerico input[type=number].valid {
+    border-bottom: 1px solid #1565c0;
+    box-shadow: 0 1px 0 0 #1565c0;
+}
+
+.numerico input[type=number].invalid {
+    border-bottom: 1px solid #1565c0;
+    box-shadow: 0 1px 0 0 #1565c0;
+}

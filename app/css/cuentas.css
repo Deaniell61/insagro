@@ -1,0 +1,11 @@
+/*******************************Imagen marca de Agua logo*******************************************************/
+.marcaagua {
+   width:100%;
+   height: 100%;
+    max-width:1000px;
+    max-height:400px;
+    margin-top: 3%; 
+   display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
