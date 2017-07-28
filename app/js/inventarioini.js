@@ -695,6 +695,29 @@ function buscaPresentacion(obj)
 
 }
 
+function eliminaPresentacion(id)
+{
+	var  trasDato;
+	trasDato = 22;
+
+        $.ajax
+        ({
+            type:"POST",
+            url:"../core/controlador/comprasControlador.php",
+            data:' id=' +  id + '&trasDato=' + trasDato,
+            success: function(resp)
+            {
+
+					 $('#mensaje').html(resp);
+
+            }
+        });
+
+
+}
+
+
+
 function seleccionaPresentacion(mc,id)
 {
 	document.getElementById('presentacion').value=mc;

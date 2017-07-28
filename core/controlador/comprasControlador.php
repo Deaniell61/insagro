@@ -245,6 +245,14 @@ if($_POST)
         correlativo($datos);
 
     }
+    else if($transaccion == 22)
+    {
+
+		$datos[0] = $_POST['id'];
+		        
+        eliminarPresentacion($datos);
+
+    }
     
 //----------- fin gestion ----------/    
     

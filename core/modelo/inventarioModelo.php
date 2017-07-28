@@ -6,9 +6,9 @@ function buscarInventario($datos)
     
     
     $mysql = conexionMysql();
-    $form="";
+    
     $sql = "SELECT i.precioCosto,i.precioVenta,i.precioClienteEs,i.precioDistribuidor,i.cantidad,(select p.descripcion from productos p where i.idproducto=p.idproductos),(select p.marca2 from productos p where i.idproducto=p.idproductos),(select p.nombre from productos p where i.idproducto=p.idproductos),i.minimo,i.idproducto,(select p.codigoproducto from productos p where i.idproducto=p.idproductos),(select p.tiporepuesto from productos p where i.idproducto=p.idproductos),(select p.idpresentacion from productos p where i.idproducto=p.idproductos) from inventario i where idinventario='".$datos[0]."'";
- 
+	$form="";
     if($resultado = $mysql->query($sql))
     {
       if($resultado->num_rows>0)
@@ -52,7 +52,7 @@ function buscarInventario($datos)
 	  }
 	  else
 	  {
-		
+		$form= "error data no encontrada";
 		$resultado->free();   
 	  }
     
@@ -67,7 +67,7 @@ function buscarInventario($datos)
     
     $mysql->close();
     
-    return printf($form);
+    echo $form;
     
     
 }
