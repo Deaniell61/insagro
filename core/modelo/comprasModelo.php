@@ -603,7 +603,7 @@ function  buscarPresentacion($dato)
     $mysql = conexionMysql();
     $form="";
     $sql = "SELECT idpresentacion,descripcion from presentacion WHERE descripcion like '%".$dato[0]."%' and estado=1";
- 
+	$contador=0;
     if($resultado = $mysql->query($sql))
     {
 		
@@ -612,12 +612,14 @@ function  buscarPresentacion($dato)
 		  	
 		while($fila = $resultado->fetch_row())
 		{   
-			
-			
-			{
-				$codigo="";
-			}
-			$form .="<li><span style=\"cursor:pointer\" onClick=\"seleccionaPresentacion('".$fila[1]."','".$fila[0]."');\">".$fila[1]."</span><a class='waves-effect waves-light btn red lighten-1 modal-trigger botonesm modaleliminar' onClick=\"eliminaPresentacion('".$fila["0"]."');\"><i class='material-icons left'><img class='iconoaddcrud' src='../app/img/boton-borrar.png' /></i></a> </li>";
+			$contador++;
+		
+			$form .="<div><input type=\"text\" value=\"".$fila[1]."\" disabled id=\"pres".$contador."\">
+			<a class='waves-effect waves-light btn modal-close  green lighten-1 modal-trigger botonesm editar' onclick=\"seleccionaPresentacion(document.getElementById('pres".$contador."').value,'".$fila[0]."');\"><i class='material-icons left'><img class='iconoeditcrud' src='../app/img/seleccion.png' /></i></a>
+			<a class='waves-effect waves-light btn green lighten-1 modal-trigger botonesm guardar ' style=\"display:none\" id=\"save".$contador."\" onclick=\"guardarPresentacion('".$fila["0"]."','".$contador."');\"><i class='material-icons left'><img class='iconoeditcrud' src='../app/img/guardar.png' /></i></a>
+			<a class='waves-effect waves-light btn orange lighten-1 modal-trigger botonesm editar'  id=\"editar".$contador."\" onclick=\"editarPresentacion('".$contador."');\"><i class='material-icons left'><img class='iconoeditcrud' src='../app/img/editar.png' /></i></a>
+			<a class='waves-effect waves-light btn red lighten-1 modal-trigger botonesm modaleliminar' onClick=\"eliminaPresentacion('".$fila["0"]."');\"><i class='material-icons left'><img class='iconoaddcrud' src='../app/img/boton-borrar.png' /></i></a> 
+			</div>";
 		}
 		$resultado->free();    
 	  }
@@ -790,6 +792,35 @@ function eliminarPresentacion($datos)
 			$mysql->query("COMMIT");
 		
 		$form = "<script>seleccionaPresentacion('','');</script>";
+    
+    }
+    else
+    {   
+    	$mysql->query("ROLLBACK");
+    }
+    
+    
+    $mysql->close();
+    
+    return printf($form);
+}
+
+function savePresentacion($datos)
+{
+	$mysql = conexionMysql();
+    $form="";
+	session_start();
+		$mysql->query("BEGIN");
+    $sql = "update presentacion set descripcion='".$datos[1]."' where idpresentacion='".$datos[0]."'";
+//echo $sql;
+    if($mysql->query($sql))
+    {
+		
+		
+		
+			$mysql->query("COMMIT");
+		
+		$form = "<script>buscaPresentacion(document.getElementById('presentacion'));document.getElementById('idpresentacion').value='';</script>";
     
     }
     else

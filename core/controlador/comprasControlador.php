@@ -253,6 +253,15 @@ if($_POST)
         eliminarPresentacion($datos);
 
     }
+    else if($transaccion == 23)
+    {
+
+		$datos[0] = $_POST['id'];
+        $datos[1] = $_POST['pres'];
+		        
+        savePresentacion($datos);
+
+    }
     
 //----------- fin gestion ----------/    
     

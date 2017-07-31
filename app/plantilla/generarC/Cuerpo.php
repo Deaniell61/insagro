@@ -348,7 +348,7 @@
 
 												  </div>
 
-												  <div class="input-field col s8 "  style="display:none;">
+												  <div class="input-field col s8 ">
 													  <i  class="material-icons prefix"><img class="iconologin" src="../app/img/precioMayoreo.png"/></i>
 													  <input id="precioM" type="text" value="0" class="validate" onKeyUp="siguiente(event,'compra1');">
 													  <label for="icon_telephone" ><span class="etiquelogin">Precio Mayoreo</span></label>

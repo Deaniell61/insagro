@@ -672,11 +672,40 @@ $('#btnInsertar').click(function(){
 
 
 });
+function editarPresentacion(id){
+    document.getElementById('save' + id).style.display = '';
+    document.getElementById('editar' + id).style.display = 'none';
+    document.getElementById('pres' + id).disabled = false;
+}
+
+function guardarPresentacion(id, cont){
+    document.getElementById('save' + cont).style.display = 'none';
+    document.getElementById('editar' + cont).style.display = '';
+    document.getElementById('pres' + cont).disabled = true;
+    pres = document.getElementById('pres' + cont).value;
+
+    trasDato = 23;
+
+
+        $.ajax
+        ({
+            type:"POST",
+            url:"../core/controlador/comprasControlador.php",
+            data:' id=' +  id + '&pres=' + pres + '&trasDato=' + trasDato,
+            success: function(resp)
+            {
+
+					 $('#respuesta').html(resp);
+
+            }
+        });
+}
 
 function buscaPresentacion(obj)
 {
 	var prod=obj.value;
-	var  trasDato;
+    var  trasDato;
+    document.getElementById('listaPresentacion').style.display='';
 	trasDato = 20;
 
         $.ajax
@@ -722,7 +751,7 @@ function seleccionaPresentacion(mc,id)
 {
 	document.getElementById('presentacion').value=mc;
     document.getElementById('idpresentacion').value=id;
-	document.getElementById('listaPresentacion').style.display='';
+	document.getElementById('listaPresentacion').style.display='none';
 
 }
 
