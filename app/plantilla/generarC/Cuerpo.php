@@ -331,7 +331,7 @@
 
 
 													  <i  class="material-icons prefix"><img class="iconologin" src="../app/img/precioCosto.png"/></i>
-													  <input id="precioC" type="text" value="0" class="validate" onKeyUp="siguiente(event,'precioG');">
+													  <input id="precioC" type="text" value="0" class="validate" onKeyUp="siguiente(event,'precioG');calcularPrecios('precioG','precioM',document.getElementById('precioC').value);">
 													  <label for="icon_telephone" ><span class="etiquelogin">Precio Costo</span></label>
 												  </div>
 

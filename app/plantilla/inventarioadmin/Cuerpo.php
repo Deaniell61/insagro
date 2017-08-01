@@ -188,7 +188,7 @@
                     </div>-->
                     <div class="input-field col s10">
                         <i class="material-icons prefix"><img class="iconologin" src="../app/img/precioCosto.png" /></i>
-                        <input id="costo" disabled type="text" class="validate">
+                        <input id="costo" disabled type="text" class="validate" onChange="calcula();" onKeyUp="calcula();">
                         <label for="icon_prefix" ><span class="etiquelogin">Costo</span></label>
                     </div>
                     <div class="input-field col s10">
@@ -198,7 +198,7 @@
                     </div>
 
                     <div class="input-field col s1">
-                        <input id="precioGP"  type="text" class="validate" value="10"  onChange="calcula();" onKeyUp="calcula();">
+                        <input id="precioGP"  type="text" class="validate" value="15"  onChange="calcula();" onKeyUp="calcula();">
                         <label for="icon_prefix" ><span class="etiquelogin"></span>% General</label>
                     </div>
 
@@ -220,7 +220,7 @@
                         <label for="icon_prefix" ><span class="etiquelogin">Precio Especial</span></label>
                     </div>
                     <div class="input-field col s1">
-                        <input id="precioMP"    type="number" class="validate"  value="15"  onChange="calcula();" onKeyUp="calcula();">
+                        <input id="precioMP"    type="number" class="validate"  value="10"  onChange="calcula();" onKeyUp="calcula();">
                         <label for="icon_prefix" ><span class="etiquelogin"></span>% Mayoreo</label>
                     </div>
 
@@ -229,7 +229,7 @@
 
                     <div class="input-field col s10">
                         <i class="material-icons prefix"><img class="iconologin" src="../app/img/precioMayoreo.png" /></i>
-                        <input id="precioM"  disabled type="number" class="validate">
+                        <input id="precioM"  disabled type="number" class="validate" onChange="calcula();" onKeyUp="calcula();">
                         <label for="icon_prefix" ><span class="etiquelogin">Precio Mayoreo</span></label>
                     </div>
                     
