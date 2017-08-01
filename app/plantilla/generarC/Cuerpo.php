@@ -337,11 +337,11 @@
 
 												   <div class="input-field col s8 " >
 													  <i  class="material-icons prefix"><img class="iconologin" src="../app/img/precioGeneral.png"/></i>
-													  <input id="precioG" type="text" value="0" class="validate" onKeyUp="siguiente(event,'precioE');calcularPrecios('precioE','precioM',this.value);">
+													  <input id="precioG" type="text" value="0" class="validate" onKeyUp="siguiente(event,'precioE');calcularPrecios('precioE','precioM',document.getElementById('precioC').value);">
 													  <label for="icon_telephone" ><span class="etiquelogin">Precio Venta general</span></label>
 												  </div>
 
-												   <div class="input-field col s8 ">
+												   <div class="input-field col s8 " style="display:none;">
 													  <i  class="material-icons prefix"><img class="iconologin" src="../app/img/precioEspecial.png"/></i>
 													  <input id="precioE" type="text" value="0" class="validate" onKeyUp="siguiente(event,'precioM');">
 													  <label for="icon_telephone" ><span class="etiquelogin">Precio Venta Especial</span></label>

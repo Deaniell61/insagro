@@ -369,8 +369,8 @@ function limpiarProducto()
 }
 function calcularPrecios(id1,id2,tot)
 {
-	es=(tot-(tot*0.1));
-	m=(tot-(tot*0.15));
+	es=(tot+(tot*0.1));
+	m=(tot+(tot*0.15));
 	document.getElementById(id1).value=es;
 	document.getElementById(id2).value=m;
 }

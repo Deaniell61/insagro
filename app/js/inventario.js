@@ -294,12 +294,14 @@ function guardarInventario()
 }
 function calcula()
 {
-	precio=document.getElementById('precioG').value;
+	precio=document.getElementById('precioC').value;
+    
+    pg=precio+(precio*(document.getElementById('precioEG').value/100));
+	pe=precio+(precio*(document.getElementById('precioEP').value/100));
+	pm=precio+(precio*(document.getElementById('precioMP').value/100));
 	
-	pe=precio-(precio*(document.getElementById('precioEP').value/100));
-	pm=precio-(precio*(document.getElementById('precioMP').value/100));
 	
-	
+	document.getElementById('precioG').value=pg;
 	document.getElementById('precioE').value=pe;
 	document.getElementById('precioM').value=pm;
 	

@@ -197,21 +197,24 @@
                         <label for="icon_prefix" ><span class="etiquelogin">Cantidad</span></label>
                     </div>
 
-
+                    <div class="input-field col s1">
+                        <input id="precioGP"  type="text" class="validate" value="10"  onChange="calcula();" onKeyUp="calcula();">
+                        <label for="icon_prefix" ><span class="etiquelogin"></span>% General</label>
+                    </div>
 
                     <div class="input-field col s10">
                         <i class="material-icons prefix"><img class="iconologin" src="../app/img/precioGeneral.png" /></i>
                         <input id="precioG"  type="number" class="validate" onChange="calcula();" onKeyUp="calcula();">
                         <label for="icon_prefix" ><span class="etiquelogin">Precio General</span></label>
                     </div>
-                    <div class="input-field col s1">
+                    <div class="input-field col s1" style="display:none;">
                         <input id="precioEP"  type="text" class="validate" value="10"  onChange="calcula();" onKeyUp="calcula();">
                         <label for="icon_prefix" ><span class="etiquelogin"></span>% Especial</label>
                     </div>
 
 
 
-                    <div class="input-field col s10">
+                    <div class="input-field col s10" style="display:none;">
                         <i class="material-icons prefix"><img class="iconologin" src="../app/img/precioEspecial.png" /></i>
                         <input id="precioE"  disabled type="number" class="validate">
                         <label for="icon_prefix" ><span class="etiquelogin">Precio Especial</span></label>

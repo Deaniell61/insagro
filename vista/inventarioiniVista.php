@@ -20,7 +20,6 @@ function mostrarInventario()
             <th>Costo</th>
             <th>Cantidad</th>
             <th>Precio General</th>
-            <th>Precio Especial</th>
             <th>Precio Mayorista</th>
             <th></th>
             
@@ -59,7 +58,7 @@ function mostrarInventario()
 				  $tabla .="<td>" .toMoney($fila["5"]).      "</td>";
 				  $tabla .="<td>" .$fila["9"].      "</td>";
 				  $tabla .="<td>" .toMoney($fila["6"]).      "</td>";
-				  $tabla .="<td>" .toMoney($fila["7"]).      "</td>";
+				  //$tabla .="<td>" .toMoney($fila["7"]).      "</td>";
 				  $tabla .="<td>" .toMoney($fila["8"]).      "</td>";
 			$tabla .="<td class='anchoC'>";
 	  if($_SESSION['SOFT_ACCESOModifica'.'inventario']=='5')

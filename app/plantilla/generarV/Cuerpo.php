@@ -352,7 +352,7 @@
 													  <a class='waves-effect waves-light btn orange lighten-1 modal-trigger botonesm' onClick="deshabilita('precioG');"><i class='material-icons left'><img class='iconoeditcrud' src='../app/img/editar.png' /></i></a>
 												  </div>
 
-												   <div class="input-field col s8 ">
+												   <div class="input-field col s8 " style="display:none;">
 													  <i  class="material-icons prefix"><img class="iconologin" src="../app/img/precioEspecial.png"/></i>
 													  <input id="precioE" disabled type="text" class="validate" onKeyUp="siguiente(event,'precioM');">
 													  <label for="icon_telephone" ><span class="etiquelogin">Precio Venta Especial</span></label>

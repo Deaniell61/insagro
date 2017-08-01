@@ -36,7 +36,6 @@ else
              <th>Costo</th>
             <th>Cantidad</th>
             <th>Precio General</th>
-            <th>Precio Especial</th>
             <th>Precio Mayorista</th>
             <th>Proveedor U. Compra</th>
             <th>Fecha U. Compra</th>
@@ -90,7 +89,7 @@ else
 				 $tabla .="<td>" .toMoney($fila["5"]).      "</td>";
 				$tabla .="<td>" .$fila["9"].      "</td>";
 				$tabla .="<td>" .toMoney($fila["6"]).      "</td>";
-				$tabla .="<td>" .toMoney($fila["7"]).      "</td>";
+				//$tabla .="<td>" .toMoney($fila["7"]).      "</td>";
 				$tabla .="<td>" .toMoney($fila["8"]).      "</td>";
 				$tabla .="<td>" .$fila["16"].      "</td>";//proveedorU($fila["13"],$mysql)
 				$tabla .="<td>" .$fila["17"].      "</td>";//fechaU($fila["13"],$mysql)
