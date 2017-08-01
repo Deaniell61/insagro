@@ -301,7 +301,7 @@ function calcula()
 	pm=parseFloat(precio)+(precio*(document.getElementById('precioMP').value/100));
 	
 	
-	document.getElementById('precioG').value=pg;
+	//document.getElementById('precioG').value=pg;
 	document.getElementById('precioE').value=pe;
 	document.getElementById('precioM').value=pm;
 	

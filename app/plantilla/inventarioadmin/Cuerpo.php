@@ -197,7 +197,7 @@
                         <label for="icon_prefix" ><span class="etiquelogin">Cantidad</span></label>
                     </div>
 
-                    <div class="input-field col s1">
+                    <div class="input-field col s1" style="display:none">
                         <input id="precioGP"  type="text" class="validate" value="15"  onChange="calcula();" onKeyUp="calcula();">
                         <label for="icon_prefix" ><span class="etiquelogin"></span>% General</label>
                     </div>

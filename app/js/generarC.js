@@ -371,7 +371,7 @@ function calcularPrecios(id1,id2,tot)
 {
 	m=(parseFloat(tot)+(tot*0.1));
 	es=(parseFloat(tot)+(tot*0.15));
-	document.getElementById(id1).value=es;
+	//document.getElementById(id1).value=es;
 	document.getElementById(id2).value=m;
 }
 function buscarProveedor2(buscar)
