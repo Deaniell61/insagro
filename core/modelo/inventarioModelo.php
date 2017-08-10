@@ -642,7 +642,7 @@ $mysql = conexionMysql();
                                 '<td class="InventarioColumna"></td>'.
                                 '<td class="InventarioColumna"></td>'.
                                 '<td class="InventarioColumna">Total Cantidad=</td>'.
-                                '<td class="InventarioColumna">'.toMoney($precio).'</td>'.
+                                '<td class="InventarioColumna">'.($precio).'</td>'.
                                 
                                 '</tr>';
 
