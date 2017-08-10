@@ -397,16 +397,21 @@ $mysql = conexionMysql();
         {
 
 			$ini=0;
+			$cantidadG=0;
+			$costoG=0;
+			$precioG=0;
             while($filaSegmento = $resultadoSegmento->fetch_row())
 			{
 				$cont=0;
+				$precio =0;
+				$costo =0;
 				$return.='<div class="deposito">';
 				$return.='<center><h5>'.$tipo[$o+1].'</h5>';
 				$return.='<table  class="depositos">';
 				
 				
 				$i=0;
-				$sql = "SELECT p.nombre,i.preciocosto,p.idproductos,p.codigoproducto,p.descripcion,i.precioCosto,i.precioVenta,i.precioClienteEs,i.precioDistribuidor,i.cantidad,p.marca2,p.codigoproducto,i.idinventario,p.idproductos,p.tiporepuesto FROM inventario i inner join productos p on p.idproductos=i.idproducto where i.cantidad>=0 $mas and p.estado=1 order by p.codigoproducto";
+				$sql = "SELECT p.nombre,i.preciocosto,p.idproductos,p.codigoproducto,p.descripcion,i.precioCosto,i.precioVenta,i.precioClienteEs,i.precioDistribuidor,i.cantidad,p.marca2,p.codigoproducto,i.idinventario,p.idproductos,p.tiporepuesto,(select ps.descripcion from presentacion ps where ps.idpresentacion=i.idpresentacion) FROM inventario i inner join productos p on p.idproductos=i.idproducto where i.cantidad>=0 $mas and p.estado=1 order by p.codigoproducto";
     
 				if($resultado = $mysql->query($sql))
 				{
@@ -424,15 +429,12 @@ $mysql = conexionMysql();
 									'<th class="InventarioColumnaT">Codigo</th>'.
 									'<th class="InventarioColumnaT">Producto</th>'.
 									'<th class="InventarioColumnaT">Marca</th>'.
-									'<th class="InventarioColumnaT">Descripcion</th>'.
+									'<th class="InventarioColumnaT">Presentacion</th>'.
 									'<th class="InventarioColumnaT">Costo</th>'.
 									'<th class="InventarioColumnaT">Cantidad</th>'.
+									'<th class="InventarioColumnaT">SubTotal</th>'.
 									'<th class="InventarioColumnaT">Precio General</th>'.
-									'<th class="InventarioColumnaT">Precio Especial</th>'.
 									'<th class="InventarioColumnaT">Precio Mayoreo</th>'.
-									'<th class="InventarioColumnaT">Proveedor</th>'.
-									'<th class="InventarioColumnaT">Fecha</th>'.
-									'<th class="InventarioColumnaT">Comprobante</th>'.
 									'</tr>';
 							
 							while($fila = $resultado->fetch_row())
@@ -442,20 +444,22 @@ $mysql = conexionMysql();
 									{
 										
 							$cont++;
+							$precio+=$fila["6"];
+							$costo+=$fila["5"];
+							$precioG+=$fila["6"];
+							$costoG+=$fila["5"];
+							$cantidadG+=$fila["9"];
 									$return.='<tr class="FilaInventario">'.
                                 '<td class="InventarioColumna">'.$cont.'</td>'.
                                 '<td class="InventarioColumna">'.$fila["11"].'</td>'.
                                 '<td class="InventarioColumna">'.($fila["0"]).'</td>'.
                                 '<td class="InventarioColumna">'.($fila["10"]).'</td>'.
-                                '<td class="InventarioColumna">'.($fila["4"]).'</td>'.
+                                '<td class="InventarioColumna">'.($fila["15"]).'</td>'.
                                 '<td class="InventarioColumna">'.toMoney($fila["5"]).'</td>'.
                                 '<td class="InventarioColumna">'.($fila["9"]).'</td>'.
+                                '<td class="InventarioColumna">'.toMoney(($fila["5"]*1)*($fila["9"]*1)).'</td>'.
                                 '<td class="InventarioColumna">'.toMoney($fila["6"]).'</td>'.
-                                '<td class="InventarioColumna">'.toMoney($fila["7"]).'</td>'.
                                 '<td class="InventarioColumna">'.toMoney($fila["8"]).'</td>'.
-                                '<td class="InventarioColumna">'.proveedorU($fila["13"],$mysql).'</td>'.
-                                '<td class="InventarioColumna">'.fechaU($fila["13"],$mysql).'</td>'.
-                                '<td class="InventarioColumna">'.noDocU($fila["13"],$mysql).'</td>'.
                                 
                                 '</tr>';
 									
@@ -463,6 +467,21 @@ $mysql = conexionMysql();
 									}
 
 							}
+
+								$return.='<tr class="FilaInventario">'.
+                                '<td class="InventarioColumna"></td>'.
+                                '<td class="InventarioColumna"></td>'.
+                                '<td class="InventarioColumna"></td>'.
+                                '<td class="InventarioColumna"></td>'.
+                                '<td class="InventarioColumna"></td>'.
+                                '<td class="InventarioColumna">Total Costo</td>'.
+                                '<td class="InventarioColumna">'.toMoney($costo).'</td>'.
+                                '<td class="InventarioColumna"></td>'.
+                                '<td class="InventarioColumna">Total Precio=</td>'.
+                                '<td class="InventarioColumna">'.toMoney($precio).'</td>'.
+                                
+                                '</tr>';
+
 							$return.='</table></center></div>';
 
 							$resultado->free();//librerar variable
@@ -479,6 +498,20 @@ $mysql = conexionMysql();
 				$i++;
 				$o++;
 			}
+			$return.='<div class="deposito">';
+				$return.='<table  class="depositos">';
+				
+				$return.='<tr class="FilaInventario">'.
+                               
+                                '<td class="InventarioColumnaT">Total Cantidad</td>'.
+                                '<td class="InventarioColumnaT">'.($cantidadG).'</td>'.
+                                '<td class="InventarioColumnaT">Total Costo</td>'.
+                                '<td class="InventarioColumnaT">'.toMoney($costoG).'</td>'.
+                                '<td class="InventarioColumnaT">Total Precio=</td>'.
+                                '<td class="InventarioColumnaT">'.toMoney($precioG).'</td>'.
+                                
+                                '</tr>';
+				$return.='</table></center></div>';
 			$resultadoSegmento->free();//librerar variable
 		}
 	}else
@@ -540,16 +573,21 @@ $mysql = conexionMysql();
         {
 
 			$ini=0;
+			$cantidadG=0;
+			$costoG=0;
+			$precioG=0;
             while($filaSegmento = $resultadoSegmento->fetch_row())
 			{
 				$cont=0;
+				$precio =0;
+				$costo =0;
 				$return.='<div class="deposito">';
 				$return.='<center><h5>'.$tipo[$o+1].'</h5>';
 				$return.='<table  class="depositos">';
 				
 				
 				$i=0;
-				$sql = "SELECT p.nombre,i.preciocosto,p.idproductos,p.codigoproducto,p.descripcion,i.precioCosto,i.precioVenta,i.precioClienteEs,i.precioDistribuidor,i.cantidad,p.marca2,p.codigoproducto,i.idinventario,p.idproductos,p.tiporepuesto FROM inventario i inner join productos p on p.idproductos=i.idproducto where i.cantidad>=0 $mas and p.estado=1 order by p.codigoproducto";
+				$sql = "SELECT p.nombre,i.preciocosto,p.idproductos,p.codigoproducto,p.descripcion,i.precioCosto,i.precioVenta,i.precioClienteEs,i.precioDistribuidor,i.cantidad,p.marca2,p.codigoproducto,i.idinventario,p.idproductos,p.tiporepuesto,(select ps.descripcion from presentacion ps where ps.idpresentacion=i.idpresentacion) FROM inventario i inner join productos p on p.idproductos=i.idproducto where i.cantidad>=0 $mas and p.estado=1 order by p.codigoproducto";
     
 				if($resultado = $mysql->query($sql))
 				{
@@ -567,11 +605,8 @@ $mysql = conexionMysql();
 									'<th class="InventarioColumnaT">Codigo</th>'.
 									'<th class="InventarioColumnaT">Producto</th>'.
 									'<th class="InventarioColumnaT">Marca</th>'.
-									'<th class="InventarioColumnaT">Descripcion</th>'.
+									'<th class="InventarioColumnaT">Presentacion</th>'.
 									'<th class="InventarioColumnaT">Cantidad</th>'.
-									'<th class="InventarioColumnaT">Proveedor</th>'.
-									'<th class="InventarioColumnaT">Fecha</th>'.
-									'<th class="InventarioColumnaT">Comprobante</th>'.
 									'</tr>';
 							
 							while($fila = $resultado->fetch_row())
@@ -581,16 +616,18 @@ $mysql = conexionMysql();
 									{
 										
 							$cont++;
+							$precio+=$fila["9"];
+							$costo+=$fila["9"];
+							$precioG+=$fila["6"];
+							$costoG+=$fila["5"];
+							$cantidadG+=$fila["9"];
 									$return.='<tr class="FilaInventario">'.
                                 '<td class="InventarioColumna">'.$cont.'</td>'.
                                 '<td class="InventarioColumna">'.$fila["11"].'</td>'.
                                 '<td class="InventarioColumna">'.($fila["0"]).'</td>'.
                                 '<td class="InventarioColumna">'.($fila["10"]).'</td>'.
-                                '<td class="InventarioColumna">'.($fila["4"]).'</td>'.
+                                '<td class="InventarioColumna">'.($fila["15"]).'</td>'.
                                 '<td class="InventarioColumna">'.($fila["9"]).'</td>'.
-                                '<td class="InventarioColumna">'.proveedorU($fila["13"],$mysql).'</td>'.
-                                '<td class="InventarioColumna">'.fechaU($fila["13"],$mysql).'</td>'.
-                                '<td class="InventarioColumna">'.noDocU($fila["13"],$mysql).'</td>'.
                                 
                                 '</tr>';
 									
@@ -598,6 +635,17 @@ $mysql = conexionMysql();
 									}
 
 							}
+							$return.='<tr class="FilaInventario">'.
+                                
+                                '<td class="InventarioColumna"></td>'.
+                                '<td class="InventarioColumna"></td>'.
+                                '<td class="InventarioColumna"></td>'.
+                                '<td class="InventarioColumna"></td>'.
+                                '<td class="InventarioColumna">Total Cantidad=</td>'.
+                                '<td class="InventarioColumna">'.toMoney($precio).'</td>'.
+                                
+                                '</tr>';
+
 							$return.='</table></center></div>';
 
 							$resultado->free();//librerar variable
@@ -608,12 +656,22 @@ $mysql = conexionMysql();
 				}
 				else
 				{
-					$respuesta = "<div class='error'>Error: no se ejecuto la consulta a BD</div>";
+					$return.= $sql."<div class='error'>Error: no se ejecuto la consulta a BD</div>";
 
 				}
 				$i++;
 				$o++;
 			}
+			$return.='<div class="deposito">';
+				$return.='<table  class="depositos">';
+				
+				$return.='<tr class="FilaInventario">'.
+                               
+                                '<td class="InventarioColumnaT">Total Cantidad</td>'.
+                                '<td class="InventarioColumnaT">'.($cantidadG).'</td>'.
+                                
+                                '</tr>';
+				$return.='</table></center></div>';
 			$resultadoSegmento->free();//librerar variable
 		}
 	}else

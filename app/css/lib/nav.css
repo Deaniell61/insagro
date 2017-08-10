@@ -1232,7 +1232,7 @@ margin-left: -145px;
 .InventarioColumna{
     font-size: 8px;
     padding: 0px;
-    border-style: groove;
+    border-style: none;
     text-align: center;
 }
 
