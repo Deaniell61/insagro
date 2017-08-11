@@ -407,7 +407,7 @@ $mysql = conexionMysql();
 				$costo =0;
 				$return.='<div class="deposito">';
 				$return.='<center><h5>'.$tipo[$o+1].'</h5>';
-				$return.='<table  class="depositos">';
+				$return.='<table  class="depositosTabla">';
 				
 				
 				$i=0;
@@ -427,7 +427,7 @@ $mysql = conexionMysql();
 						   $return.='<tr class="FilaInventarioT">'.
 									'<th class="InventarioColumnaT">Correlativo</th>'.
 									'<th class="InventarioColumnaT">Codigo</th>'.
-									'<th class="InventarioColumnaT">Producto</th>'.
+									'<th class="InventarioColumnaTProd">Producto</th>'.
 									'<th class="InventarioColumnaT">Marca</th>'.
 									'<th class="InventarioColumnaT">Presentacion</th>'.
 									'<th class="InventarioColumnaT">Costo</th>'.
@@ -583,7 +583,7 @@ $mysql = conexionMysql();
 				$costo =0;
 				$return.='<div class="deposito">';
 				$return.='<center><h5>'.$tipo[$o+1].'</h5>';
-				$return.='<table  class="depositos">';
+				$return.='<table  class="depositosTabla">';
 				
 				
 				$i=0;
@@ -603,7 +603,7 @@ $mysql = conexionMysql();
 						   $return.='<tr class="FilaInventarioT">'.
 									'<th class="InventarioColumnaT">Correlativo</th>'.
 									'<th class="InventarioColumnaT">Codigo</th>'.
-									'<th class="InventarioColumnaT">Producto</th>'.
+									'<th class="InventarioColumnaTProd">Producto</th>'.
 									'<th class="InventarioColumnaT">Marca</th>'.
 									'<th class="InventarioColumnaT">Presentacion</th>'.
 									'<th class="InventarioColumnaT">Cantidad</th>'.

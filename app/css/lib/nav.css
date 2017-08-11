@@ -1226,6 +1226,17 @@ margin-left: -145px;
     text-align: center;
     border-width: thin;
 }
+
+.InventarioColumnaTProd{
+    font-size: 10px;
+padding: 0px;
+border-style: groove;
+text-align: center;
+border-width: thin;
+width: 30%;
+}
+
+
 .FilaInventario{
     padding: 0px;
 }
@@ -1251,6 +1262,11 @@ margin-left: -145px;
 #impresion .depositos{
     width: 50%;
 }
+
+#impresion .depositosTabla{
+    width: 100%;
+}
+
 .border{
     border-top: solid;
 }
