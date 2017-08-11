@@ -434,7 +434,6 @@ $mysql = conexionMysql();
 									'<th class="InventarioColumnaT">Cantidad</th>'.
 									'<th class="InventarioColumnaT">SubTotal</th>'.
 									'<th class="InventarioColumnaT">Precio General</th>'.
-									'<th class="InventarioColumnaT">Precio Mayoreo</th>'.
 									'</tr>';
 							
 							while($fila = $resultado->fetch_row())
@@ -459,7 +458,6 @@ $mysql = conexionMysql();
                                 '<td class="InventarioColumna">'.($fila["9"]).'</td>'.
                                 '<td class="InventarioColumna">'.toMoney(($fila["5"]*1)*($fila["9"]*1)).'</td>'.
                                 '<td class="InventarioColumna">'.toMoney($fila["6"]).'</td>'.
-                                '<td class="InventarioColumna">'.toMoney($fila["8"]).'</td>'.
                                 
                                 '</tr>';
 									
@@ -469,7 +467,6 @@ $mysql = conexionMysql();
 							}
 
 								$return.='<tr class="FilaInventario">'.
-                                '<td class="InventarioColumna"></td>'.
                                 '<td class="InventarioColumna"></td>'.
                                 '<td class="InventarioColumna"></td>'.
                                 '<td class="InventarioColumna"></td>'.
