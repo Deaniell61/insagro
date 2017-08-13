@@ -136,6 +136,13 @@ function Pagar()
     include('../app/plantilla/cuentasP/Pie.php');
 }
 
+function Consignacion()
+{
+    include('../app/plantilla/consignacion/Cabecera.php');
+    include('../app/plantilla/consignacion/Cuerpo.php');
+    include('../app/plantilla/consignacion/Pie.php');
+}
+
 function Proveedor()
 {
     //include('../app/plantilla/proveedor/Cabecera.php');

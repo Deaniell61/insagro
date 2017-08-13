@@ -82,6 +82,13 @@ $('#pagos').click(function(){
 
 });
 
+$('#consignacion').click(function(){
+    
+      window.location.href="?Consignacion";
+    
+    
+    });
+
 
 
 $('#compraL').click(function(){

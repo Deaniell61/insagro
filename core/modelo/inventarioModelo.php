@@ -405,6 +405,7 @@ $mysql = conexionMysql();
 				$cont=0;
 				$precio =0;
 				$costo =0;
+				$cantidad =0;
 				$return.='<div class="deposito">';
 				$return.='<center><h5>'.$tipo[$o+1].'</h5>';
 				$return.='<table  class="depositosTabla">';
@@ -434,7 +435,6 @@ $mysql = conexionMysql();
 									'<th class="InventarioColumnaT">Cantidad</th>'.
 									'<th class="InventarioColumnaT">SubTotal</th>'.
 									'<th class="InventarioColumnaT">Precio General</th>'.
-									'<th class="InventarioColumnaT">Precio Mayoreo</th>'.
 									'</tr>';
 							
 							while($fila = $resultado->fetch_row())
@@ -449,6 +449,7 @@ $mysql = conexionMysql();
 							$precioG+=$fila["6"];
 							$costoG+=$fila["5"];
 							$cantidadG+=$fila["9"];
+							$cantidad+=$fila["9"];
 									$return.='<tr class="FilaInventario">'.
                                 '<td class="InventarioColumna">'.$cont.'</td>'.
                                 '<td class="InventarioColumna">'.$fila["11"].'</td>'.
@@ -459,7 +460,6 @@ $mysql = conexionMysql();
                                 '<td class="InventarioColumna">'.($fila["9"]).'</td>'.
                                 '<td class="InventarioColumna">'.toMoney(($fila["5"]*1)*($fila["9"]*1)).'</td>'.
                                 '<td class="InventarioColumna">'.toMoney($fila["6"]).'</td>'.
-                                '<td class="InventarioColumna">'.toMoney($fila["8"]).'</td>'.
                                 
                                 '</tr>';
 									
@@ -473,11 +473,10 @@ $mysql = conexionMysql();
                                 '<td class="InventarioColumna"></td>'.
                                 '<td class="InventarioColumna"></td>'.
                                 '<td class="InventarioColumna"></td>'.
-                                '<td class="InventarioColumna"></td>'.
-                                '<td class="InventarioColumna">Total Costo</td>'.
+                                '<td class="InventarioColumna">Totales= </td>'.
                                 '<td class="InventarioColumna">'.toMoney($costo).'</td>'.
-                                '<td class="InventarioColumna"></td>'.
-                                '<td class="InventarioColumna">Total Precio=</td>'.
+                                '<td class="InventarioColumna">'.$cantidad.'</td>'.
+                                '<td class="InventarioColumna">'.toMoney(($costo*$cantidad).'').'</td>'.
                                 '<td class="InventarioColumna">'.toMoney($precio).'</td>'.
                                 
                                 '</tr>';
@@ -499,19 +498,19 @@ $mysql = conexionMysql();
 				$o++;
 			}
 			$return.='<div class="deposito">';
-				$return.='<table  class="depositos">';
+				$return.='<table  class="depositosTabla">';
 				
+			
 				$return.='<tr class="FilaInventario">'.
-                               
-                                '<td class="InventarioColumnaT">Total Cantidad</td>'.
-                                '<td class="InventarioColumnaT">'.($cantidadG).'</td>'.
-                                '<td class="InventarioColumnaT">Total Costo</td>'.
+ 
+                                '<td class="InventarioColumnaT">Totales= </td>'.
                                 '<td class="InventarioColumnaT">'.toMoney($costoG).'</td>'.
-                                '<td class="InventarioColumnaT">Total Precio=</td>'.
+                                '<td class="InventarioColumnaT">'.$cantidadG.'</td>'.
+                                '<td class="InventarioColumnaT">'.toMoney(($costoG*$cantidadG).'').'</td>'.
                                 '<td class="InventarioColumnaT">'.toMoney($precioG).'</td>'.
                                 
                                 '</tr>';
-				$return.='</table></center></div>';
+				$return.='</table></div>';
 			$resultadoSegmento->free();//librerar variable
 		}
 	}else
@@ -607,6 +606,8 @@ $mysql = conexionMysql();
 									'<th class="InventarioColumnaT">Marca</th>'.
 									'<th class="InventarioColumnaT">Presentacion</th>'.
 									'<th class="InventarioColumnaT">Cantidad</th>'.
+									'<th class="InventarioColumnaT">Costo</th>'.
+									'<th class="InventarioColumnaT">Subtotal</th>'.
 									'</tr>';
 							
 							while($fila = $resultado->fetch_row())
@@ -617,7 +618,7 @@ $mysql = conexionMysql();
 										
 							$cont++;
 							$precio+=$fila["9"];
-							$costo+=$fila["9"];
+							$costo+=$fila["5"];
 							$precioG+=$fila["6"];
 							$costoG+=$fila["5"];
 							$cantidadG+=$fila["9"];
@@ -628,6 +629,8 @@ $mysql = conexionMysql();
                                 '<td class="InventarioColumna">'.($fila["10"]).'</td>'.
                                 '<td class="InventarioColumna">'.($fila["15"]).'</td>'.
                                 '<td class="InventarioColumna">'.($fila["9"]).'</td>'.
+                                '<td class="InventarioColumna">'.toMoney($fila["5"]).'</td>'.
+                                '<td class="InventarioColumna">'.toMoney(($fila["5"]*1)*($fila["9"]*1)).'</td>'.
                                 
                                 '</tr>';
 									
@@ -641,8 +644,10 @@ $mysql = conexionMysql();
                                 '<td class="InventarioColumna"></td>'.
                                 '<td class="InventarioColumna"></td>'.
                                 '<td class="InventarioColumna"></td>'.
-                                '<td class="InventarioColumna">Total Cantidad=</td>'.
+                                '<td class="InventarioColumna">Totales=</td>'.
                                 '<td class="InventarioColumna">'.($precio).'</td>'.
+                                '<td class="InventarioColumna">'.toMoney($costo).'</td>'.
+                                '<td class="InventarioColumna">'.toMoney(($costo*$precio).'').'</td>'.
                                 
                                 '</tr>';
 
@@ -663,14 +668,16 @@ $mysql = conexionMysql();
 				$o++;
 			}
 			$return.='<div class="deposito">';
-				$return.='<table  class="depositos">';
+				$return.='<table  class="depositosTabla">';
 				
 				$return.='<tr class="FilaInventario">'.
-                               
-                                '<td class="InventarioColumnaT">Total Cantidad</td>'.
-                                '<td class="InventarioColumnaT">'.($cantidadG).'</td>'.
-                                
-                                '</tr>';
+				
+											   '<td class="InventarioColumnaT">Totales= </td>'.
+											   '<td class="InventarioColumnaT">'.toMoney($costoG).'</td>'.
+											   '<td class="InventarioColumnaT">'.$cantidadG.'</td>'.
+											   '<td class="InventarioColumnaT">'.toMoney(($costoG*$cantidadG).'').'</td>'.
+											   
+											   '</tr>';
 				$return.='</table></center></div>';
 			$resultadoSegmento->free();//librerar variable
 		}

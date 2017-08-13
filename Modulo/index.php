@@ -74,6 +74,8 @@
             include('VentasSinComprobante.php');
         }else if(isset($_GET['CobrarPagadas'])){
             include('CobrarPagadas.php');
+        }else if(isset($_GET['Consignacion'])){
+            include('Consignacion.php');
         }else{?>
               <script>
         window.location.href="../";

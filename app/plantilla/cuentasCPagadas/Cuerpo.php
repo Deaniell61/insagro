@@ -10,7 +10,7 @@
                             <div class="lipUsuario">
                                 <li class="centrarli"><a id="cobrar" href="#" class="yellow darken-4 btn white-text tamatabsa  "><i class="material-icons left"><img class="iconotab" src="../app/img/cuentac.png" /></i>Cobrar</a></li>
                                 <li class="centrarli"><a id="pagar" href="#" class="amber accent-4 btn white-text tamatabsa  "><i class="material-icons left"><img class="iconotab" src="../app/img/cuentap.png" /></i>Pagar</a></li>
-                        
+                                <li class="centrarli"><a id="consignacion" href="#" class="amber accent-4 btn white-text tamatabsa  "><i class="material-icons left"><img class="iconotab" src="../app/img/avatar.png" /></i>Consignacion</a></li>
                         <!-- <div class="indicator blue" style="z-index:1"></div>  -->
                             </div>
                         </ul>
