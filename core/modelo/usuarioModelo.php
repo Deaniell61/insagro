@@ -5,7 +5,7 @@
 function login($user, $pass)
 {
 
-	$sql = "SELECT user,Email,contra,idRol,idUsuarios FROM usuarios where estado=1 and (user='$user' or email='$user' or email like '$user@gmail.com' or email like '$user@hotmail.com') and contra='$pass';";
+	$sql = "SELECT user,Email,contra,idRol,idUsuarios,(select puesto from empleados e where e.idempleados=u.idempleados) FROM usuarios u where estado=1 and (user='$user' or email='$user' or email like '$user@gmail.com' or email like '$user@hotmail.com') and contra='$pass';";
     
     $mysql = conexionMysql(); 
     
@@ -15,6 +15,7 @@ function login($user, $pass)
 		{
 			if($fila=$resultado->fetch_row())
 			{
+				
 				session_start();
 				$_SESSION['SOFT_USER']=$fila['0'];
 				$_SESSION['SOFT_EMAIL']=$fila['1'];
@@ -22,6 +23,7 @@ function login($user, $pass)
 				$_SESSION['SOFT_ROL']=$fila['3'];
 				$_SESSION['SOFT_USER_ID']=$fila['4'];
 				$_SESSION['idCompra']="";
+				$_SESSION['idPuesto']=$fila['5'];
 				$_SESSION['idVenta']="";
 				$_SESSION['notified']="";
 				$_SESSION['notified2']="";

@@ -83,7 +83,23 @@
 								  <input id="factura" type="number" value="0" readonly class="validate numerico" onKeyUp="siguiente(event,'tipoVenta');" onBlur="agregarFacturaVenta(this.value,document.getElementById('codigoVenta').value);">
 								  <label for="icon_telephone" ><span class="etiquelogin">No. Comprobante</span></label>
 							  </div>
+							  <?php if($_SESSION['idPuesto']!='4'){
+								  $oculta='style="display:none"';}
+								  else {
+									  $oculta="";
+								  } ?>
+									<div class="input-field col s5" <?php echo $oculta ?> >
+									<i  class="material-icons prefix"><img class="iconologin" src="../app/img/TipoC.png"/></i>
+									 <select id="operador" onChange="ingresoCuentaCobrar();">
+									   <option value="" disabled selected>Dia/Mes/Año</option>
+									   <option value="1">Dia</option>
+									   <option value="2">Mes</option>
+									   <option value="3">Año</option>
+									 </select>
+									 <label>Operador</label>
+								   </div>
 
+								
 
           <div id="OtipoCompra" class="input-field col s8">
                                <i  class="material-icons prefix"><img class="iconologin" src="../app/img/TipoC.png"/></i>
@@ -114,8 +130,8 @@
 								  <label class="active" for="fecha" >Plazo</label>
 								</div>
 
-           						</div>
-
+								   </div>
+								  
 
 				<!-- reumen -->
 				<center>

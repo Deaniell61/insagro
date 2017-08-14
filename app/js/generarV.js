@@ -11,6 +11,7 @@ var facturaCorrelacion = '';
 */
 //* **********************************
 //* ************************* tabla ***********************
+$('#operador').material_select();
 $('#tabla2').DataTable({
 
     info: false,
