@@ -28,6 +28,7 @@ if($_POST)
         
         $idProv[0] = $_POST['prov'];
 		$idProv[1] = $_POST['tipo'];
+		$idProv[2] = $_POST['usuario'];
        
 
         

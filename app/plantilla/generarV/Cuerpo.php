@@ -23,7 +23,9 @@
  <div id="mensajeVV"></div>
 
           <div class="">
-          				<div class="input-field col s5" hidden>
+		  
+								 
+          				<div class="input-field col s5 " hidden>
 
 
 							<i class="material-icons prefix"><img class="iconologin" src="../app/img/carnet.png" /> </i>
@@ -37,6 +39,24 @@
 										<input id="codigoCliente" type="text" class="validate">
 
 							  </div>
+
+							  <?php if($_SESSION['idPuesto']!='5'){
+								  $oculta='style="display:none"';}
+								  else {
+									  $oculta="";
+								  } ?>
+									<div class="input-field col s8 offset-s2" <?php echo $oculta ?> >
+									<i  class="material-icons prefix"><img class="iconologin" src="../app/img/TipoC.png"/></i>
+									 <select id="operador" onChange="ingresoCuentaCobrar();">
+									   <option value="" selected>Yo</option>
+									   <?php 
+									   		include('../vista/usuarioVista.php');
+											   comboEmpleadosVendedores();
+											?>
+									 </select>
+									 <label>Vendedor</label>
+								   </div>
+								   <br>
                     	<div class="input-field col s5">
 
 
@@ -83,21 +103,7 @@
 								  <input id="factura" type="number" value="0" readonly class="validate numerico" onKeyUp="siguiente(event,'tipoVenta');" onBlur="agregarFacturaVenta(this.value,document.getElementById('codigoVenta').value);">
 								  <label for="icon_telephone" ><span class="etiquelogin">No. Comprobante</span></label>
 							  </div>
-							  <?php if($_SESSION['idPuesto']!='4'){
-								  $oculta='style="display:none"';}
-								  else {
-									  $oculta="";
-								  } ?>
-									<div class="input-field col s5" <?php echo $oculta ?> >
-									<i  class="material-icons prefix"><img class="iconologin" src="../app/img/TipoC.png"/></i>
-									 <select id="operador" onChange="ingresoCuentaCobrar();">
-									   <option value="" disabled selected>Dia/Mes/Año</option>
-									   <option value="1">Dia</option>
-									   <option value="2">Mes</option>
-									   <option value="3">Año</option>
-									 </select>
-									 <label>Operador</label>
-								   </div>
+							  
 
 								
 

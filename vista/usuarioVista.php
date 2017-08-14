@@ -139,6 +139,61 @@ function comboEmpleados()
     <?php
 }
 
+function comboEmpleadosVendedores()
+{
+	
+//creacion de la tabla
+	?>
+     
+
+	<?php
+	
+    $mysql = conexionMysql();
+    $sql = "SELECT e.nombre,e.apellido,e.idempleados,u.idusuarios FROM empleados e inner join usuarios u on u.idempleados=e.idempleados WHERE e.Estado=1 and e.puesto=2";
+	$tabla="";
+    if($resultado = $mysql->query($sql))
+    {
+
+        if(mysqli_num_rows($resultado)==0)
+        {
+            $respuesta = "<div class='error'>No hay usuarios BD vacia</div>";
+        }
+
+        else
+        {
+
+            while($fila = $resultado->fetch_row())
+            {
+
+               
+
+                $tabla .="<option value=\"".$fila["3"]."\">".$fila["0"]." ".$fila["1"]."</option>";
+                
+				
+            }
+
+            $resultado->free();//librerar variable
+            
+            
+            $respuesta = $tabla;
+        }
+    }
+    else
+    {
+        $respuesta = "<div class='error'>Error: no se ejecuto la consulta a BD</div>";
+
+    }
+
+    //cierro la conexion
+    $mysql->close();
+
+    //debuelvo la variable resultado
+    echo ($respuesta);
+	?>
+   
+    <?php
+}
+
 function comboRolesUsuarios()
 {
 	

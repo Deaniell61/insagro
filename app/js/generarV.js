@@ -359,11 +359,12 @@ function buscarPlazoCuentaCobrar() {
 function iniciarVenta(id) {
     var trasDato;
     trasDato = 2;
+    usuario = document.getElementById('operador').value;
     tipo = document.getElementById('tipoVenta').value;
     $.ajax({
         type: "POST",
         url: "../core/controlador/ventasControlador.php",
-        data: ' prov=' + id + '&tipo=' + tipo + '&trasDato=' + trasDato,
+        data: ' prov=' + id + '&tipo=' + tipo + '&usuario=' + usuario + '&trasDato=' + trasDato,
         success: function(resp) {
 
             if (resp == '1') {

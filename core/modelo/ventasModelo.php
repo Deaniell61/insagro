@@ -60,10 +60,17 @@ function inicioVenta($idProv)
 	$mysql = conexionMysql();
     $form="";
 	session_start();
+	$user="";
+
+		if($idProv[2]==''){
+			$user = $_SESSION['SOFT_USER_ID'];
+		}else{
+			$user = $idProv[2];
+		}
 		$mysql->query("BEGIN");
 		$mysql->query("delete from ventasdetalle where estado=2;");
 		$mysql->query("delete from ventas where estado=2;");
-   $sql = "INSERT INTO ventas(total,estado,tipoVenta,idCliente,nocomprobante,idusuario,fecha) values(0,2,'".$idProv[1]."','".$idProv[0]."',(select v.nocomprobante+1 from ventas v where v.estado=1 order by v.nocomprobante desc limit 1),'".$_SESSION['SOFT_USER_ID']."','".date('Y-m-d  H:i:s')."')";
+   $sql = "INSERT INTO ventas(total,estado,tipoVenta,idCliente,nocomprobante,idusuario,fecha) values(0,2,'".$idProv[1]."','".$idProv[0]."',(select v.nocomprobante+1 from ventas v where v.estado=1 order by v.nocomprobante desc limit 1),'".$user."','".date('Y-m-d  H:i:s')."')";
  
     if($mysql->query($sql))
     {
@@ -80,7 +87,7 @@ function inicioVenta($idProv)
 						$fila[1]=1;
 					}
 			 	$form .="<script>";
-					$form .="document.getElementById('codigoVenta').value='".$_SESSION['idVenta']."';setTimeout(function(){\$('#tipoVenta').material_select();},0);document.getElementById('factura').value='".$fila[1]."';document.getElementById('factura').focus();document.getElementById('correlativoCont').style.display='block';document.getElementById('Correlativo').checked=true;";
+					$form .="document.getElementById('codigoVenta').value='".$_SESSION['idVenta']."';setTimeout(function(){\$('#tipoVenta').material_select();},0);$('#operador').material_select('destroy');document.getElementById('operador').disabled=true;$('#operador').material_select();$('#operador').material_select('destroy');document.getElementById('factura').value='".$fila[1]."';document.getElementById('factura').focus();document.getElementById('correlativoCont').style.display='block';document.getElementById('Correlativo').checked=true;";
 				
 				
 				$form .="</script>";
