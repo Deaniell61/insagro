@@ -42,6 +42,7 @@ require_once('../modelo/pagosModelo.php');
 require_once('../modelo/estadisticaModelo.php');
 require_once('../modelo/inventarioModelo.php');
 require_once('../modelo/cajaModelo.php');
+require_once('../modelo/consignacionModelo.php');
 require_once('../../vista/usuarioVista.php');
 require_once('../../vista/compra2Vista.php');
 require_once('../../vista/compraAnuladaVista.php');

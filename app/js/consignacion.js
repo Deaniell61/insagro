@@ -117,7 +117,7 @@ function mostrarConsignacion()
             }     
         });
 }
-function cargarDetalleCuentasP(id)
+function cargarConsignaciones(id)
 {
 	var  trasDato;
 	trasDato = 4;
@@ -125,7 +125,7 @@ function cargarDetalleCuentasP(id)
         $.ajax
         ({
             type:"POST",
-            url:"../core/controlador/cuentasPagarControlador.php",
+            url:"../core/controlador/consignacionControlador.php",
             data:' id=' +  id + '&trasDato=' + trasDato,
             success: function(resp)
             {
@@ -152,7 +152,7 @@ function cargarDetalleCuentasP(id)
             }     
         });
 }
-function abonarCuenta()
+function abonarConsignacion()
 {
 	 
     var idedit, trasDato; 
@@ -168,7 +168,7 @@ function abonarCuenta()
     $.ajax
     ({
         type:"POST",
-        url:"../core/controlador/cuentasPagarControlador.php",
+        url:"../core/controlador/consignacionControlador.php",
         data:'id=' + id  + '&abono=' + abono  + '&fecha=' + fecha  + '&saldo=' + saldo  + '&descripcion=' + descripcion  + '&credito=' + credito  + '&trasDato=' + trasDato,
         success: function(resp)
         {
@@ -177,7 +177,7 @@ function abonarCuenta()
 			
             $('#mensajecv').html(resp); 
             // $('#precargar').css('display','none');  
-				alert(3);
+				//alert(3);
 
 
 
@@ -198,7 +198,7 @@ function editar(id)
     $.ajax
     ({
         type:"POST",
-        url:"../core/controlador/cuentasPagarControlador.php",
+        url:"../core/controlador/consignacionControlador.php",
         data:'id=' + id  + '&trasDato=' + trasDato,
         success: function(resp)
         {
@@ -228,7 +228,7 @@ function ver(id)
     $.ajax
     ({
         type:"POST",
-        url:"../core/controlador/cuentasPagarControlador.php",
+        url:"../core/controlador/consignacionControlador.php",
         data:'id=' + id  + '&trasDato=' + trasDato,
         success: function(resp)
         {

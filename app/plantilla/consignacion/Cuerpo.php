@@ -94,6 +94,7 @@
          
  <div id="mensajecv"></div>
          
+                
            			<div class="input-field col s5" hidden>
                                   <i  class="material-icons prefix"><img class="iconologin" src="../app/img/monto.png"/></i>
 								  <input  id="codigo" disabled type="text" class="validate">
@@ -149,26 +150,7 @@
 								  <label for="icon_telephone" ><span class="etiquelogin">Descripcion</span></label>
 							  </div>
 
-                               <div class="input-field col s10" id="nombreChequeED111" style="display:none;">   
-								  <i  class="material-icons prefix"><img class="iconologin" src="../app/img/descripcion.png"/></i>
-								  <input id="nombreChequeED" type="text" class="validate">
-								  <label for="icon_telephone" ><span class="etiquelogin">Nombre Cheque</span></label>
-							  </div>
                                
-                                <div style="display:none;" id="SelectCheque" class="col s10">
-                                <center>
-                                    <div class="radioFiltro">
-                                        <input class="radioColor" name="filtro" value="1" checked type="radio" id="BI" onChange="document.getElementById('imprimir1').style.display='';document.getElementById('imprimir').style.display='none';" />
-                                        <label for="BI">BI</label>
-                                    </div>
-
-                                    <div class="radioFiltro carroEspacio">
-                                        <input class="radioColor" name="filtro" value="2" type="radio" id="BAM"  onChange="document.getElementById('imprimir').style.display='';document.getElementById('imprimir1').style.display='none';" />
-                                        <label for="BAM">BAM</label>
-                                    </div>
-                                </center>
-                                <br>
-                              </div>
                                
                               
                                                  
@@ -187,12 +169,10 @@
 	  if($_SESSION['SOFT_ACCESOAgrega'.'cuentas']=='1')
 				{
 	  ?>
-                            <a id="guardar" class="waves-effect waves-light btn blue lighten-1 modal-trigger" onClick="abonarCuenta();" ><i class="material-icons left"><img class="iconoaddcrud" src="../app/img/guardar.png" /></i>Guardar</a>
+                            <a id="guardar" class="waves-effect waves-light btn blue lighten-1 modal-trigger" onClick="abonarConsignacion();" ><i class="material-icons left"><img class="iconoaddcrud" src="../app/img/guardar.png" /></i>Guardar</a>
                        
                        
-                            <a id="imprimir" style="display:none" class="waves-effect waves-light btn green lighten-0 modal-trigger" onClick="imprimirCheque('codigo','mensajecv');" ><i class="material-icons left"><img class="iconoaddcrud" src="../app/img/imprimir.png" /></i>Imprimir BAM</a>
-                            <a id="imprimir1" style="display:none" class="waves-effect waves-light btn green lighten-0 modal-trigger" onClick="imprimirChequeBI('codigo','mensajecv');" ><i class="material-icons left"><img class="iconoaddcrud" src="../app/img/imprimir.png" /></i>Imprimir BI</a>
-                    
+                            
                         
                         
                     <?php
@@ -221,7 +201,7 @@
                   
                         <div class="nav-wrapper grey darken-4">
                             <div>
-                                <p class="encabezadotextomodal">Cuentas Por Pagar</p>
+                                <p class="encabezadotextomodal">Consignacion</p>
 
                                 <a id="modalcerrar" class=" modal-action modal-close waves-effect waves-light right  " ><i class="material-icons prefix"><img class="iconocerrarmodal" src="../app/img/desenfrenado.png"></i></a> 
                             </div>	
@@ -255,15 +235,9 @@
                   
 								</div>
                              
-                              <div class="input-field col s5">
-
-										 <i class="material-icons prefix"><img class="iconologin" src="../app/img/telefono.png" /> </i>
-										<input  id="TelefonoV" disabled type="text" class="validate">
-                  <label class="active" for="Telefono" >Telefono</label>
-                          
-							  </div>
                               
-                              <div class="input-field col s5">
+                              
+                              <div class="input-field col s10">
 
 										 <i class="material-icons prefix"><img class="iconologin" src="../app/img/plazo.png" /> </i>
 										<input id="fechaCredito" disabled type="date" class="validate">
@@ -273,22 +247,7 @@
                                
                             
                             
-                              <div class="input-field col s5">
-                               <i  class="material-icons prefix"><img class="iconologin" src="../app/img/TipoC.png"/></i>
-								<select disabled id="tipoPlazoV">
-								  <option value=""  selected>Dia/Mes/Año</option>
-								  <option value="1">Dia</option>
-								  <option value="2">Mes</option>
-								  <option value="3">Año</option>
-								</select>
-								 <label>Tipo de Plazo</label>    
-							  </div>
-                             
-                              <div class="input-field col s5">
-                                  <i  class="material-icons prefix"><img class="iconologin" src="../app/img/fecha.png"/></i>
-								  <input  id="plazoV" disabled type="number" class="validate">
-								  <label class="active" for="fechaPlazo" >Plazo</label>    
-								</div>
+                              
                               
                                   
                                 
