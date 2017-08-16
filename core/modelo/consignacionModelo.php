@@ -138,7 +138,7 @@ function abonarConsignacion($datos)
 					 {
 						 if($total==0)
 						 {
-							 if(!$mysql->query("update compras set estado=5 where idCompras='".$datos[0]."'"))
+							 if(!$mysql->query("update compras set tipocompra=1 where idCompras='".$datos[0]."'"))
 							 {
 								  $mysql->query("ROLLBACK");
 							 }
