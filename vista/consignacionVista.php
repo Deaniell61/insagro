@@ -44,7 +44,7 @@ else
 
     $mysql = conexionMysql();
     
-    $sql = "SELECT c.fecha,c.nocomprobante,p.nit,p.nombreempresa,c.total,(select tv.Descripcion from tipocompra tv where tv.idtipo=c.tipocompra),c.idcompras FROM compras c inner join proveedor p on p.idproveedor=c.iddistribuidor inner join compradetalle cd on cd.idcompras=c.idcompras inner join productos pd on pd.idproductos=cd.idproductos where c.estado=1 and cd.estado=1 and c.tipocompra=5 $mas group by c.idcompras order by c.fecha desc";
+    $sql = "SELECT c.fecha,c.nocomprobante,p.nit,p.nombreempresa,c.total,(select tv.Descripcion from tipocompra tv where tv.idtipo=c.tipocompra),c.idcompras,(select cong.saldo from consignacion cong where cong.idcompras=c.idcompras order by cong.fecha desc limit 1) FROM compras c inner join proveedor p on p.idproveedor=c.iddistribuidor inner join compradetalle cd on cd.idcompras=c.idcompras inner join productos pd on pd.idproductos=cd.idproductos where c.estado=1 and cd.estado=1 and c.tipocompra=5 $mas group by c.idcompras order by c.fecha desc";
     $tabla="";
     if($resultado = $mysql->query($sql))
     {
@@ -68,7 +68,7 @@ else
 				$tabla .="<td>" .$fila["2"].      "</td>";
                 $tabla .="<td>" .$fila["3"].      "</td>";
                 $tabla .="<td>" .toMoney($fila["4"]).      "</td>";
-                $tabla .="<td>" .$fila["4"].      "</td>";
+                $tabla .="<td>" .toMoney($fila["7"]).      "</td>";
                 $tabla .="<td class='anchoC'>";
 				if($_SESSION['SOFT_ACCESOModifica'.'cuentas']=='1')
 				{
