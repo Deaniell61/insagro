@@ -6,7 +6,7 @@
 
    <ul class="collapsible popout" data-collapsible="accordion">
         <li>
-            <div class="collapsible-header"><i class="material-icons"><img class="imgSub" src="../app/img/flecha-hacia-abajo-signo-para-navegar.png" /></i>Inventario del Administrador</div>
+            <div class="collapsible-header"><i class="material-icons"><img class="imgSub" src="../app/img/flecha-hacia-abajo-signo-para-navegar.png" /></i>Inventario Consignacion</div>
             <div class="collapsible-body">
                 <div class="col s12">
                     <ul id="tabsn" class="tabsUsuarios centrartab blue darken-1 ">
@@ -183,7 +183,7 @@
                     </div>-->
                     <div class="input-field col s10">
                         <i class="material-icons prefix"><img class="iconologin" src="../app/img/precioCosto.png" /></i>
-                        <input id="costo" disabled type="text" class="validate" onChange="calcula();" onKeyUp="calcula();">
+                        <input id="costo" disabled type="text" class="validate" onChange="calcula();" onKeyUp="calcula();" disabled>
                         <label for="icon_prefix" ><span class="etiquelogin">Costo</span></label>
                     </div>
                     <div class="input-field col s10">
@@ -193,17 +193,17 @@
                     </div>
 
                     <div class="input-field col s1" style="display:none">
-                        <input id="precioGP"  type="text" class="validate" value="15"  onChange="calcula();" onKeyUp="calcula();">
+                        <input id="precioGP"  type="text" class="validate" value="15"  onChange="calcula();" onKeyUp="calcula();" disabled>
                         <label for="icon_prefix" ><span class="etiquelogin"></span>% General</label>
                     </div>
 
                     <div class="input-field col s10">
                         <i class="material-icons prefix"><img class="iconologin" src="../app/img/precioGeneral.png" /></i>
-                        <input id="precioG"  type="number" class="validate" onChange="calcula();" onKeyUp="calcula();">
+                        <input id="precioG"  type="number" class="validate" onChange="calcula();" onKeyUp="calcula();" disabled>
                         <label for="icon_prefix" ><span class="etiquelogin">Precio General</span></label>
                     </div>
                     <div class="input-field col s1" style="display:none;">
-                        <input id="precioEP"  type="text" class="validate" value="10"  onChange="calcula();" onKeyUp="calcula();">
+                        <input id="precioEP"  type="text" class="validate" value="10"  onChange="calcula();" onKeyUp="calcula();" disabled>
                         <label for="icon_prefix" ><span class="etiquelogin"></span>% Especial</label>
                     </div>
 
@@ -211,26 +211,26 @@
 
                     <div class="input-field col s10" style="display:none;">
                         <i class="material-icons prefix"><img class="iconologin" src="../app/img/precioEspecial.png" /></i>
-                        <input id="precioE"  disabled type="number" class="validate">
+                        <input id="precioE"  disabled type="number" class="validate" disabled>
                         <label for="icon_prefix" ><span class="etiquelogin">Precio Especial</span></label>
                     </div>
-                    <div class="input-field col s1">
-                        <input id="precioMP"    type="number" class="validate"  value="10"  onChange="calcula();" onKeyUp="calcula();">
+                    <div class="input-field col s1" style="display:none;">
+                        <input id="precioMP"    type="number" class="validate"  value="10"  onChange="calcula();" onKeyUp="calcula();" disabled>
                         <label for="icon_prefix" ><span class="etiquelogin"></span>% Mayoreo</label>
                     </div>
 
 
 
 
-                    <div class="input-field col s10">
+                    <div class="input-field col s10" style="display:none;">
                         <i class="material-icons prefix"><img class="iconologin" src="../app/img/precioMayoreo.png" /></i>
-                        <input id="precioM"  disabled type="number" class="validate" onChange="calcula();" onKeyUp="calcula();">
+                        <input id="precioM"  disabled type="number" class="validate" onChange="calcula();" onKeyUp="calcula();" disabled>
                         <label for="icon_prefix" ><span class="etiquelogin">Precio Mayoreo</span></label>
                     </div>
                     
-                    <div class="input-field col s10">
+                    <div class="input-field col s10" style="display:none;">
                         <i class="material-icons prefix"><img class="iconologin" src="../app/img/precioMayoreo.png" /></i>
-                        <input id="MinimoCant"  type="number" class="validate">
+                        <input id="MinimoCant"  type="number" class="validate" disabled>
                         <label for="icon_prefix" ><span class="etiquelogin">Cantidad Minima</span></label>
                     </div>
 

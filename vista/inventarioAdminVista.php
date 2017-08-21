@@ -155,11 +155,11 @@ else
            <th>Marca</th>
            <th>Sector</th>
             <th>Presentacion</th>
-            <th>Descripcion</th>
+            
              <th>Costo</th>
             <th>Cantidad</th>
             <th>Precio General</th>
-            <th>Precio Mayorista</th>
+            
             <th>Proveedor U. Compra</th>
             <th>Fecha U. Compra</th>
             <th>No. Comprobante U. Compra</th>
@@ -208,12 +208,12 @@ else
                 $tabla .="<td>" .$fila["10"].      "</td>";
 				 $tabla .="<td>" .$tipo[$fila["15"]].      "</td>";
                  $tabla .="<td>" .$fila["14"].      "</td>";
-				 $tabla .="<td>" .$fila["4"].      "</td>";
+				 //$tabla .="<td>" .$fila["4"].      "</td>";
 				 $tabla .="<td>" .toMoney($fila["5"]).      "</td>";
 				$tabla .="<td>" .$fila["9"].      "</td>";
 				$tabla .="<td>" .toMoney($fila["6"]).      "</td>";
 				//$tabla .="<td>" .toMoney($fila["7"]).      "</td>";
-				$tabla .="<td>" .toMoney($fila["8"]).      "</td>";
+				//$tabla .="<td>" .toMoney($fila["8"]).      "</td>";
 				$tabla .="<td>" .$fila["16"].      "</td>";//proveedorU($fila["13"],$mysql)
 				$tabla .="<td>" .$fila["17"].      "</td>";//fechaU($fila["13"],$mysql)
 				$tabla .="<td>" .$fila["18"].      "</td>";//noDocU($fila["13"],$mysql)
