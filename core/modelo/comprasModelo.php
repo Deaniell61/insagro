@@ -134,7 +134,7 @@ function agregaInventario($datos)
 					  if($resultado->num_rows<1)
 					  {
 						$sqlInsert = "INSERT INTO inventario".$extra." (cantidad,precioCosto,precioVenta,precioClienteEs,precioDistribuidor, idproducto,medida,idpresentacion) VALUES (0,0,0,0,0,'".$fila[6]."','".$fila[7]."','".$fila[8]."')";
-						echo "<script>alert(\"".$sqlInsert."\")</script>";
+						//echo "<script>alert(\"".$sqlInsert."\")</script>";
 						if(!$mysql->query($sqlInsert)){
 							$mysql->query("ROLLBACK");
 						}
