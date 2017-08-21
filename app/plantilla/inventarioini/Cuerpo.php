@@ -10,6 +10,7 @@
                         <div class="lipUsuario">
                             <li class="centrarli"><a id="inventarioV" href="#" class="yellow darken-3 btn white-text tamatabsa "><i class="material-icons left"><img class="iconotab" src="../app/img/empleado.png" /></i>Vendedor</a></li>
                             <li class="centrarli"><a id="inventarioA" href="#" class="yellow darken-3   btn white-text  tamatabsa1"><i class="material-icons left"><img class="iconotab" src="../app/img/avatar.png" /></i>Administrador</a></li>
+                            <li class="centrarli"><a id="inventarioCo" href="#" class="yellow darken-3   btn white-text  tamatabsa1"><i class="material-icons left"><img class="iconotab" src="../app/img/avatar.png" /></i>Consignacion</a></li>
                             <li class="centrarli"><a id="inventarioI" href="#" class="yellow darken-4   btn white-text  tamatabsa"><i class="material-icons left"><img class="iconotab" src="../app/img/avatar.png" /></i>Inicial</a></li>
 
 

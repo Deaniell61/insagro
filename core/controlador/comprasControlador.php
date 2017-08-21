@@ -159,6 +159,7 @@ if($_POST)
 		$datos[5] = $_POST['precioM'];
 		$datos[6] = $_POST['proveedor'];
 		$datos[7] = $_POST['presentacion'];
+		$datos[8] = $_POST['tipocompra'];
 		
 		        
         agregaInventario($datos);

@@ -201,6 +201,11 @@ $('#CajaT').click(function(){
     window.location.href="?Caja";
 });
 
+$('#inventarioCo').click(function(){
+    
+        window.location.href="?InventarioConsignacion";
+    });
+
 $('#CajaT2').click(function(){
 
     window.location.href="?Caja";

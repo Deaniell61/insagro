@@ -76,6 +76,8 @@
             include('CobrarPagadas.php');
         }else if(isset($_GET['Consignacion'])){
             include('Consignacion.php');
+        }else if(isset($_GET['InventarioConsignacion'])){
+            include('InventarioConsignacion.php');
         }else{?>
               <script>
         window.location.href="../";

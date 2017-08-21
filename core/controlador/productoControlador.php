@@ -21,6 +21,7 @@ if($_POST)
 		$datos[7]=$_POST['medida'];
 		$datos[8]=$_POST['presentacion'];
 		$datos[9]=$_POST['idpresentacion'];
+		$datos[10]=$_POST['tipocompra'];
 		
         insertarProducto($datos);
         

@@ -14,6 +14,7 @@
 				{
 	  ?>
                             <li class="centrarli"><a id="inventarioA" href="#" class="yellow darken-3   btn white-text  tamatabsa1"><i class="material-icons left"><img class="iconotab" src="../app/img/avatar.png" /></i>Administrador</a></li>
+                            <li class="centrarli"><a id="inventarioCo" href="#" class="yellow darken-3   btn white-text  tamatabsa1"><i class="material-icons left"><img class="iconotab" src="../app/img/avatar.png" /></i>Consignacion</a></li>
                        <?php
 				}
 				

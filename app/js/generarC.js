@@ -156,12 +156,13 @@ function ingresoProducto(id,compra)
 	tipoRepuesto=$('#tipoRepuesto').val();
 	medida='0';
 	presentacion=$('#presentacion').val();
-	idpresentacion=$('#idpresentacion').val();
+    idpresentacion=$('#idpresentacion').val();
+    tipocompra=$('#tipoCompra').val();
         $.ajax
         ({
             type:"POST",
             url:"../core/controlador/productoControlador.php",
-            data:' codigoproducto=' +  codigoproducto + '&nombre=' + nombre + '&idpresentacion=' + idpresentacion + '&presentacion=' + presentacion + '&medida=' + medida + '&marca=' + marca + '&descripcion=' + descripcion + '&tipoRepuesto=' + tipoRepuesto + '&id=' + id + '&compra=' + compra + '&trasDato=' + trasDato,
+            data:' codigoproducto=' +  codigoproducto + '&tipocompra=' + tipocompra + '&nombre=' + nombre + '&idpresentacion=' + idpresentacion + '&presentacion=' + presentacion + '&medida=' + medida + '&marca=' + marca + '&descripcion=' + descripcion + '&tipoRepuesto=' + tipoRepuesto + '&id=' + id + '&compra=' + compra + '&trasDato=' + trasDato,
             success: function(resp)
             {
 
@@ -215,7 +216,8 @@ function agregaInvetario()
 	
 	var filas=(document.getElementById("tabla22").rows.length)-1;
 
-	
+    tipocompra=$('#tipoCompra').val();
+    
 	
 	{
 		{
@@ -235,7 +237,7 @@ function agregaInvetario()
         ({
             type:"POST",
             url:"../core/controlador/comprasControlador.php",
-            data:' codigo=' +  codigo + '&cantidad=' + cantidad + '&presentacion=' + Presentacion + '&costo=' + costo + '&precioG=' + precioG + '&precioE=' + precioE + '&precioM=' + precioM + '&proveedor=' + proveedor + '&trasDato=' + trasDato,
+            data:' codigo=' +  codigo + '&cantidad=' + cantidad + '&tipocompra=' + tipocompra + '&presentacion=' + Presentacion + '&costo=' + costo + '&precioG=' + precioG + '&precioE=' + precioE + '&precioM=' + precioM + '&proveedor=' + proveedor + '&trasDato=' + trasDato,
             success: function(resp)
             {
 

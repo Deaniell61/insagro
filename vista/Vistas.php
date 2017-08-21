@@ -128,6 +128,13 @@ function InventarioAdmin()
     include('../app/plantilla/inventarioadmin/Pie.php');
 }
 
+function InventarioConsig()
+{
+    include('../app/plantilla/inventarioconsig/Cabecera.php');
+    include('../app/plantilla/inventarioconsig/Cuerpo.php');
+    include('../app/plantilla/inventarioconsig/Pie.php');
+}
+
 
 function Pagar()
 {

@@ -48,7 +48,7 @@ function mostrarInventario()
         }
 
 	var  trasDato;
-	trasDato = 3;
+	trasDato = 13;
 	
         $.ajax
         ({
@@ -184,7 +184,7 @@ function eliminaInven(prod,inv)
 			({
 				type:"POST",
 				url:"../core/controlador/inventarioControlador.php",
-				data:' prod=' +  prod + '&inv=' + inv + '&tipo=1&trasDato=' + trasDato,
+				data:' prod=' +  prod + '&inv=' + inv + '&tipo=5&tipo=5&trasDato=' + trasDato,
 				success: function(resp)
 				{
 	
@@ -219,7 +219,7 @@ function editar(id)
         ({
             type:"POST",
             url:"../core/controlador/inventarioControlador.php",
-            data:' id=' +  id + '&tipo=1&trasDato=' + trasDato,
+            data:' id=' +  id + '&tipo=5&trasDato=' + trasDato,
             success: function(resp)
             {
 
@@ -259,7 +259,6 @@ function guardarInventario()
 	codigo=document.getElementById('codigo').value;
 	segmento=document.getElementById('tipoRepuesto').value;
 	presentacion=document.getElementById('idpresentacion').value;
-	tipo=0;
 	
 	
 	nombre=document.getElementById('producto').value;
@@ -270,7 +269,7 @@ function guardarInventario()
         ({
             type:"POST",
             url:"../core/controlador/inventarioControlador.php",
-            data:' id=' +  id + '&precioG=' + precioG + '&tipo=' + tipo + '&codigo=' + codigo + '&segmento=' + segmento + '&presentacion=' + presentacion + '&minimo=' + Minimo + '&costo=' + costo + '&cantidad=' + cantidad + '&precioE=' + precioE + '&precioM=' + precioM + '&nombre=' + nombre + '&marca=' + marca + '&descripcion=' + descripcion + '&prod=' + id2 + '&trasDato=' + trasDato,
+            data:' id=' +  id + '&precioG=' + precioG + '&tipo=5&codigo=' + codigo + '&segmento=' + segmento + '&presentacion=' + presentacion + '&minimo=' + Minimo + '&costo=' + costo + '&cantidad=' + cantidad + '&precioE=' + precioE + '&precioM=' + precioM + '&nombre=' + nombre + '&marca=' + marca + '&descripcion=' + descripcion + '&prod=' + id2 + '&trasDato=' + trasDato,
             success: function(resp)
             {
 

@@ -6,8 +6,11 @@ function buscarInventario($datos)
     
     
     $mysql = conexionMysql();
-    
-    $sql = "SELECT i.precioCosto,i.precioVenta,i.precioClienteEs,i.precioDistribuidor,i.cantidad,(select p.descripcion from productos p where i.idproducto=p.idproductos),(select p.marca2 from productos p where i.idproducto=p.idproductos),(select p.nombre from productos p where i.idproducto=p.idproductos),i.minimo,i.idproducto,(select p.codigoproducto from productos p where i.idproducto=p.idproductos),(select p.tiporepuesto from productos p where i.idproducto=p.idproductos),(select p.idpresentacion from productos p where i.idproducto=p.idproductos) from inventario i where idinventario='".$datos[0]."'";
+	$extra ='';
+	if($datos[1]=='5'){
+		$extra='C';
+	}
+    $sql = "SELECT i.precioCosto,i.precioVenta,i.precioClienteEs,i.precioDistribuidor,i.cantidad,(select p.descripcion from productos p where i.idproducto=p.idproductos),(select p.marca2 from productos p where i.idproducto=p.idproductos),(select p.nombre from productos p where i.idproducto=p.idproductos),i.minimo,i.idproducto,(select p.codigoproducto from productos p where i.idproducto=p.idproductos),(select p.tiporepuesto from productos p where i.idproducto=p.idproductos),(select p.idpresentacion from productos p where i.idproducto=p.idproductos) from inventario".$extra." i where idinventario".$extra."='".$datos[0]."'";
 	$form="";
     if($resultado = $mysql->query($sql))
     {
@@ -78,10 +81,13 @@ function actualizaInventario($datos)
     $form="";
 	session_start();
 	$mysql->query("BEGIN");
-	
+	$extra='';
+	if($datos[14]=='5'){
+		$extra='C';
+	}
 			 
-    $sql = "update inventario set precioventa='".$datos[1]."',precioClientees='".$datos[2]."',precioDistribuidor='".$datos[3]."',precioCosto='".$datos[4]."',cantidad='".$datos[5]."',minimo='".$datos[6]."',idpresentacion='".$datos[13]."' where idinventario='".$datos[0]."'";
- 	
+    $sql = "update inventario".$extra." set precioventa='".$datos[1]."',precioClientees='".$datos[2]."',precioDistribuidor='".$datos[3]."',precioCosto='".$datos[4]."',cantidad='".$datos[5]."',minimo='".$datos[6]."',idpresentacion='".$datos[13]."' where idinventario".$extra."='".$datos[0]."'";
+	
     if($mysql->query($sql))
     {
 						if(!$mysql->query("update productos set nombre='".$datos[7]."',marca2='".$datos[8]."',descripcion='".$datos[9]."',tiporepuesto='".$datos[12]."',codigoproducto='".$datos[11]."',idpresentacion='".$datos[13]."' where idproductos='".$datos[10]."'"))
@@ -113,14 +119,17 @@ function eliminarInventario($datos)
     $form="";
 	session_start();
 	$mysql->query("BEGIN");
-	
+	$extra='';
+	if($datos[2]=='5'){
+		$extra='C';
+	}
 			 
     echo $sql = "update productos set estado=0 where idproductos='".$datos[0]."'";
- 	
+	
     if($mysql->query($sql))
     {
 		
-			if(!$mysql->query("delete from inventario where idinventario='".$datos[1]."'"))
+			if(!$mysql->query("delete from inventario".$extra." where idinventario".$extra."='".$datos[1]."'"))
 			{
 				$mysql->query("ROLLBACK");
 			}

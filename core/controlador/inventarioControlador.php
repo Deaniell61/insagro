@@ -12,6 +12,7 @@ if($_POST)
     if($transaccion == 1)
     {
         $datos[0]=$_POST['id'];
+        $datos[1]=$_POST['tipo'];
 		
 		
         buscarInventario($datos);
@@ -37,6 +38,7 @@ if($_POST)
 		$datos[12]=$_POST['segmento'];
 		$datos[13]=$_POST['presentacion'];
 		
+        $datos[14]=$_POST['tipo'];
 		
         actualizaInventario($datos);
         
@@ -67,6 +69,7 @@ if($_POST)
     {
         $datos[0]=$_POST['prod'];
 		$datos[1]=$_POST['inv'];
+		$datos[2]=$_POST['tipo'];
 		
 		
         eliminarInventario($datos);
@@ -158,6 +161,15 @@ if($_POST)
 		        
         impInvAdminSinPres($datos);
 
+    }else if($transaccion == 13)
+    {
+        $datos[0]=$_POST['tipo'];
+		
+		
+        mostrarInventarioConsig($datos);
+        
+        
+    
     }
 	
 //----------- fin gestion ----------/    
