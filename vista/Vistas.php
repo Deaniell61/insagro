@@ -256,6 +256,13 @@ function estadisticaVentas()
     include('../app/plantilla/estadisticaVentas/Pie.php');
 }
 
+function estadisticaConsignacion()
+{
+	 include('../app/plantilla/estadisticaConsignacion/Cabecera.php');
+    include('../app/plantilla/estadisticaConsignacion/Cuerpo.php');
+    include('../app/plantilla/estadisticaConsignacion/Pie.php');
+}
+
 
 function Pago()
 {

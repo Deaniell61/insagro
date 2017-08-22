@@ -415,7 +415,7 @@ function impInvAdmin(div){
     
  }
 
- function impInvAdminSinPres(div){
+ function impInvConsignacion(div){
     
 
     
@@ -424,7 +424,7 @@ function impInvAdmin(div){
    //$('#impresionDeFacturaC11').html(encab);
      var cuerpo=""+encab;
      var trasDato;
-    trasDato = 12;
+    trasDato = 14;
     tipo=1;
     id=1;
         $.ajax({

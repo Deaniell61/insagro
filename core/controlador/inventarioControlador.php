@@ -170,6 +170,16 @@ if($_POST)
         
         
     
+    }else if($transaccion == 14)
+    {
+
+        $datos[0] = $_POST['id'];
+        $datos[1] = $_POST['tipo'];
+		
+		
+		        
+        impInvConsignacion($datos);
+
     }
 	
 //----------- fin gestion ----------/    

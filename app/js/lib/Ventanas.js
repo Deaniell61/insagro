@@ -248,6 +248,11 @@ $('#cobrarPagadas').click(function(){
     window.location.href="?CobrarPagadas";
 });
 
+$('#estadisticaConsignacion').click(function(){
+    
+        window.location.href="?estadisticaConsignacion";
+    });
+
 $('#pagar').click(function(){
 
     window.location.href="?Pagar";

@@ -12,6 +12,8 @@
 
            <li class="centrarli"><a id="estadisticaVentas" href="#" class=" btn white-text  yellow darken-4 tamatabsa  ">Ventas</a></li>
             <li class="centrarli"><a id="estadisticaClientes" href="#" class=" amber accent-4 btn white-text tamatabsa ">Clientes</a></li>
+            <li class="centrarli"><a id="estadisticaConsignacion" href="#" class=" amber accent-4 btn white-text tamatabsa ">Consignacion</a></li>
+
 
 
 <!-- <div class="indicator blue" style="z-index:1"></div>  -->

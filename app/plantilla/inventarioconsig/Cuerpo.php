@@ -35,7 +35,11 @@
 
 
     <!-- ********************************** tabla inicio ********************************** -->
-
+    <br>
+<center>
+                  <li class="centrarli"><a id="imprimirT" onClick="impInvConsignacion('mensaje3');" class="amber accent-3 btn white-text  " ><i class="material-icons left"><img class="iconotab" src="../app/img/imprimir.png" /></i>Imprimir Inventario Consignacion</a></li>
+                </center>
+                <br>
      <div style="display:none;">
         <center>
             <div class="radioFiltro">
