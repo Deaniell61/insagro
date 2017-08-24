@@ -46,7 +46,7 @@
                     <div class="row">
                         <div class="nav-wrapper grey darken-4">
                             <div>
-                                <p class="encabezadotextomodal"> Fragmentar </p>
+                                <p class="encabezadotextomodal"> Movimientos Internos </p>
 
                                 <a id="modalcerrar"  onClick="cierre();"  class=" modal-action modal-close waves-effect waves-light right  " ><i class="material-icons prefix"><img class="iconocerrarmodal" src="../app/img/desenfrenado.png"></i></a>
                             </div>

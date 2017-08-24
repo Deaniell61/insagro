@@ -32,7 +32,7 @@
             include('estadisticaVenta.php');
         }else if(isset($_GET['Flujo'])){
             include('Flujo.php');
-        }else if(isset($_GET['Fragmentar'])){
+        }else if(isset($_GET['MovsInternos'])){
             include('Fragmentar.php');
         }else if(isset($_GET['Gastos'])){
             include('Gastos.php');

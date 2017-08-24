@@ -287,7 +287,7 @@ function  buscarProducto($dato)
 
     $mysql = conexionMysql();
     $form="";
-    $sql = "SELECT p.nombre,i.precioventa,p.idproductos,p.codigoProducto,i.cantidad FROM inventario i inner join productos p on p.idproductos=i.idproducto WHERE p.nombre like '%".$dato[0]."%' or p.codigoProducto like '%".$dato[0]."%' and i.cantidad>=0";
+    $sql = "SELECT p.nombre,i.precioventa,p.idproductos,p.codigoProducto,i.cantidad,(select ps.descripcion from presentacion ps where ps.idpresentacion=i.idpresentacion) FROM inventario i inner join productos p on p.idproductos=i.idproducto WHERE p.nombre like '%".$dato[0]."%' or p.codigoProducto like '%".$dato[0]."%' and i.cantidad>=0";
  
     if($resultado = $mysql->query($sql))
     {
@@ -296,7 +296,12 @@ function  buscarProducto($dato)
 		  	
 		while($fila = $resultado->fetch_row())
 		{  
-			$form .="<div class='borde' onClick=\"seleccionaProducto('".$fila[2]."');\"><div ><span>Codigo: </span><span class='enlinea' >".$fila[3]."</span></diV><div><span>Producto: </span><span class=' enlinea'>".$fila[0]."</span></div><div><span>Cantidad: </span><span class='enlinea' >".$fila[4]."</span></div></div><div><br>";
+			$form .="<div class='borde' onClick=\"seleccionaProducto('".$fila[2]."');\">
+						<div ><span>Codigo: </span><span class='enlinea' >".$fila[3]."</span></diV>
+						<div><span>Producto: </span><span class=' enlinea'>".$fila[0]."</span></div>
+						<div><span>Cantidad: </span><span class='enlinea' >".$fila[4]."</span></div>
+						<div><span>Presentacion: </span><span class='enlinea' >".$fila[5]."</span></div>
+						</div><div><br>";
 		}
 		$resultado->free();    
 	  }

@@ -65,7 +65,7 @@ $('#proveedores1').click(function(){
 
 $('#fragmentar').click(function(){
 
-    window.location.href="?Fragmentar";
+    window.location.href="?MovsInternos";
 });
 
 $('#ayuda').click(function(){
