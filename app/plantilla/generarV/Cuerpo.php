@@ -114,6 +114,7 @@
 								  <option value="2">Credito</option>
 								  <option value="1" selected>Contado</option>
 								  <option value="3">Donación</option>
+								  <option value="5">Consignación</option>
 								</select>
 								<label>Tipo de Venta</label>
 							  </div>
