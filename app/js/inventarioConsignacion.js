@@ -320,8 +320,8 @@ function editar(id)
                     
 					
                      $('#mensaje3').html(resp); 
-                     document.getElementById('cantidad').disabled = true;
-                     mostrarConsignacionDetalle(id)
+                     //document.getElementById('cantidad').disabled = true;
+                     //mostrarConsignacionDetalle(id)
                 }
 
 
