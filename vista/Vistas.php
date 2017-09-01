@@ -135,6 +135,13 @@ function InventarioConsig()
     include('../app/plantilla/inventarioconsig/Pie.php');
 }
 
+function InventarioConsigEntrada()
+{
+    include('../app/plantilla/inventarioconsigEntrada/Cabecera.php');
+    include('../app/plantilla/inventarioconsigEntrada/Cuerpo.php');
+    include('../app/plantilla/inventarioconsigEntrada/Pie.php');
+}
+
 
 function Pagar()
 {

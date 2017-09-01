@@ -180,5 +180,181 @@ function abonarConsignacion($datos)
   
 }
 
+function abonarConsignacionInv($datos)
+{
+	$mysql = conexionMysql();
+    $form="";
+	session_start();
+	$mysql->query("BEGIN");
+	
+	if($cont=$mysql->query("select cantidad from inventarioC where idinventarioC='".$datos[0]."'"))
+	{
+			 
+				 $fila = $cont->fetch_row();
+				 
+				 if($fila[0]<$datos[1])
+				 {
+					 $datos[1]=$fila[0];
+				 }
+	$saldo=$datos[3]-$datos[1];
+	$total=$fila[0]-$datos[1];
+	if($datos[1]>0)
+	{		 
+    $sql = "INSERT INTO consignacionInv(consignado,retirado,saldo,fecha,descripcion,idInventario,idusuario) values('".$datos[5]."','".$datos[1]."','".$saldo."','".date('Y-m-d H:i:s')."','".$datos[4]."',".$datos[0].",'".$_SESSION['SOFT_USER_ID']."')";
+ 
+    if($mysql->query($sql))
+    {
+			 
+				 	  if(!$mysql->query("update inventarioC set cantidad=cantidad-".$datos[1]." where idinventarioC='".$datos[0]."'"))
+					 {
+						 $mysql->query("ROLLBACK");
+					 }
+					 else
+					 {
+						 if($cont=$mysql->query("select idinventarioC from inventarioP where idproducto='".$datos[6]."'"))
+						 {
+							if($cont->num_rows>0)
+							{
+							
+								$fila2 = $cont->fetch_row();
+								if(!$mysql->query("update inventarioP set cantidad=cantidad+".$datos[1]." where idinventarioC='".$fila2[0]."'"))
+								{
+									$mysql->query("ROLLBACK");
+								}
+
+							}else{
+								if(!$mysql->query("INSERT INTO inventarioP(cantidad,precioCosto,precioVenta,precioClienteEs,precioDistribuidor, idproducto,idpresentacion) VALUES ('".$datos[1]."',0,0,0,0,'".$datos[6]."','".$datos[7]."')"))
+								{
+									$mysql->query("ROLLBACK");
+								}
+							}
+						 }
+						
+						$mysql->query("COMMIT");
+						 
+						 echo "<script>window.location.reload();</script>";
+						 
+					 }
+				     
+			 
+			 
+		
+    		
+		
+	
+    }
+    else
+    {   
+    
+    	$form = $sql;
+    
+    }
+    
+    }
+	else
+	{
+		 	
+		 $mysql->query("ROLLBACK");
+		 
+	 }
+	}
+	else
+	{
+		echo "<script>window.location.reload();</script>";
+	}
+    $mysql->close();
+    
+    return printf($form);
+  
+}
+
+function abonarConsignacionInvEntr($datos)
+{
+	$mysql = conexionMysql();
+    $form="";
+	session_start();
+	$mysql->query("BEGIN");
+	
+	if($cont=$mysql->query("select cantidad from inventarioP where idinventarioC='".$datos[0]."'"))
+	{
+			 
+				 $fila = $cont->fetch_row();
+				 
+				 if($fila[0]<$datos[1])
+				 {
+					 $datos[1]=$fila[0];
+				 }
+	$saldo=$datos[3]-$datos[1];
+	$total=$fila[0]-$datos[1];
+	if($datos[1]>0)
+	{		 
+    $sql = "INSERT INTO consignacionInvEnt(consignado,retirado,saldo,fecha,descripcion,idInventario,idusuario) values('".$datos[5]."','".$datos[1]."','".$saldo."','".date('Y-m-d H:i:s')."','".$datos[4]."',".$datos[0].",'".$_SESSION['SOFT_USER_ID']."')";
+	echo "error";
+    if($mysql->query($sql))
+    {
+			 
+				 	  if(!$mysql->query("update inventarioP set cantidad=cantidad-".$datos[1]." where idinventarioC='".$datos[0]."'"))
+					 {
+						 $mysql->query("ROLLBACK");
+					 }
+					 else
+					 {
+						 if($cont=$mysql->query("select idinventario from inventario where idproducto='".$datos[6]."'"))
+						 {
+							if($cont->num_rows>0)
+							{
+							
+								$fila2 = $cont->fetch_row();
+								if(!$mysql->query("update inventario set cantidad=cantidad+".$datos[1]." where idinventario='".$fila2[0]."'"))
+								{
+									$mysql->query("ROLLBACK");
+								}
+
+							}else{
+								if(!$mysql->query("INSERT INTO inventario(cantidad,precioCosto,precioVenta,precioClienteEs,precioDistribuidor, idproducto,idpresentacion) VALUES ('".$datos[1]."',0,0,0,0,'".$datos[6]."','".$datos[7]."')"))
+								{
+									$mysql->query("ROLLBACK");
+								}
+							}
+						 }
+						
+						$mysql->query("COMMIT");
+						 
+						 echo "<script>window.location.reload();</script>";
+						 
+					 }
+				     
+			 
+			 
+		
+    		
+		
+	
+    }
+    else
+    {   
+    
+    	$form = $sql;
+    
+    }
+    
+    }
+	else
+	{
+		 	
+		 $mysql->query("ROLLBACK");
+		 
+	 }
+	}
+	else
+	{
+		echo "<script>window.location.reload();</script>";
+	}
+    $mysql->close();
+    
+    return printf($form);
+  
+}
+
 
 ?>

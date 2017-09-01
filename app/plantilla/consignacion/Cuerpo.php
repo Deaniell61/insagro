@@ -100,18 +100,18 @@
 								  <input  id="codigo" disabled type="text" class="validate">
 								  <label class="active" for="fecha" >Total Credito</label>
 								</div>
-                    <div class="input-field col s5">
+                                <div class="input-field col s6">
 
 										 <i class="material-icons prefix"><img class="iconologin" src="../app/img/usuario.png" /> </i>
 										<input id="proveedorED" disabled type="text" onKeyUp="buscarCliente(this,event)" class="validate">
 										 <label for="icon_prefix" ><span class="etiquelogin">Proveedor </span></label>        
 							  </div>
-                             <div class="input-field col s5">
+                             <div class="input-field col s6">
                                   <i  class="material-icons prefix"><img class="iconologin" src="../app/img/monto.png"/></i>
 								  <input  id="totalCreditoED" disabled type="number" class="validate">
 								  <label class="active" for="fecha" >Total Consignacion</label>
 								</div>
-                              <div class="input-field col s5">
+                              <div class="input-field col s6">
 
            <i class="material-icons prefix"><img class="iconologin" src="../app/img/plazo.png" /> </i>
           <input id="fechaInicialED" disabled type="date" class="validate">
@@ -119,7 +119,7 @@
                  
          </div>
                               
-                               <div class="input-field col s5">
+                               <div class="input-field col s6">
                                   <i  class="material-icons prefix"><img class="iconologin" src="../app/img/monto.png"/></i>
 								  <input  id="saldoED" disabled type="number" class="validate">
 								  <label class="active" for="fecha" >Saldo</label>
@@ -129,14 +129,14 @@
                              
                              
                               
-                                  <div class="input-field col s5">
+                                  <div class="input-field col s6">
 
 										 <i class="material-icons prefix"><img class="iconologin" src="../app/img/plazo.png" /> </i>
 										<input id="fechaPagoED" type="date" class="validate" value="<?php echo date('Y-m-d')?>">
 										 <label class="active" for="fecha" >Fecha de Pago</label>       
 							  </div>
                               
-                               <div class="input-field col s5">
+                               <div class="input-field col s6">
                                   <i  class="material-icons prefix"><img class="iconologin" src="../app/img/monto.png"/></i>
 								  <input  id="MontoED" type="number" onChange="verificaImpresion();" onkeyup="verificaImpresion();" class="validate" autofocus>
 								  <label class="active" for="fecha" >Monto</label>
@@ -225,8 +225,7 @@
 
 										 <i class="material-icons prefix"><img class="iconologin" src="../app/img/usuario.png" /> </i>
 										<input id="proveedorV" disabled type="text" class="validate">
-							
-                     <label for="icon_prefix" ><span class="etiquelogin">Proveedor </span></label>        
+                                        <label for="icon_prefix" ><span class="etiquelogin">Proveedor </span></label>        
 							  </div>
                              <div class="input-field col s10">
                                   <i  class="material-icons prefix"><img class="iconologin" src="../app/img/calle.png"/></i>

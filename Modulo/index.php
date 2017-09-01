@@ -78,6 +78,8 @@
             include('Consignacion.php');
         }else if(isset($_GET['InventarioConsignacion'])){
             include('InventarioConsignacion.php');
+        }else if(isset($_GET['InventarioConsignacionEntrada'])){
+            include('InventarioConsignacionEntrada.php');
         }else if(isset($_GET['estadisticaConsignacion'])){
             include('estadisticaConsignacion.php');
         }else{?>

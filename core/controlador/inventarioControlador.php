@@ -180,6 +180,52 @@ if($_POST)
 		        
         impInvConsignacion($datos);
 
+    }else if($transaccion == 15)
+    {
+        $datos[0]=$_POST['tipo'];
+		
+		
+        mostrarMovimientosInventarioConsignacion($datos);
+        
+        
+    
+    }
+    else if($transaccion == 16)
+    {
+        $datos[0]=$_POST['id'];
+        $datos[1]=$_POST['tipo'];
+		
+		
+        buscarInventarioConsig($datos);
+    
+    }else if($transaccion == 17)
+    {
+        $datos[0]=$_POST['tipo'];
+		
+		
+        mostrarInventarioConsigEntrada($datos);
+        
+        
+    
+    }
+    else if($transaccion == 18)
+    {
+        $datos[0]=$_POST['tipo'];
+		
+		
+        mostrarMovimientosInventarioConsignacionEntrada($datos);
+        
+        
+    
+    }
+    else if($transaccion == 19)
+    {
+        $datos[0]=$_POST['id'];
+        $datos[1]=$_POST['tipo'];
+		
+		
+        buscarInventarioConsigEnt($datos);
+    
     }
 	
 //----------- fin gestion ----------/    

@@ -67,6 +67,39 @@ if($_POST)
         abonarConsignacion($datos);
         
         
+    }else if($transaccion == 6)
+    {
+        
+        $datos[0] = $_POST['id'];
+		$datos[1] = $_POST['abono'];
+		$datos[2] = $_POST['fecha'];
+		$datos[3] = $_POST['saldo'];
+		$datos[4] = $_POST['descripcion'];
+		$datos[5] = $_POST['credito'];
+		$datos[6] = $_POST['id2'];
+		$datos[7] = $_POST['pres'];
+		
+		        
+        abonarConsignacionInv($datos);
+        
+        
+    }
+    else if($transaccion == 7)
+    {
+        
+        $datos[0] = $_POST['id'];
+		$datos[1] = $_POST['abono'];
+		$datos[2] = $_POST['fecha'];
+		$datos[3] = $_POST['saldo'];
+		$datos[4] = $_POST['descripcion'];
+		$datos[5] = $_POST['credito'];
+		$datos[6] = $_POST['id2'];
+		$datos[7] = $_POST['pres'];
+		
+		        
+        abonarConsignacionInvEntr($datos);
+        
+        
     }
     
 //----------- fin gestion ----------/    

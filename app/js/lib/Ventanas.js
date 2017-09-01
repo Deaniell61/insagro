@@ -206,6 +206,15 @@ $('#inventarioCo').click(function(){
         window.location.href="?InventarioConsignacion";
     });
 
+$('#inventarioCoSal').click(function(){
+    
+        window.location.href="?InventarioConsignacion";
+    });
+$('#inventarioCoEntrada').click(function(){
+    
+        window.location.href="?InventarioConsignacionEntrada";
+    });
+
 $('#CajaT2').click(function(){
 
     window.location.href="?Caja";

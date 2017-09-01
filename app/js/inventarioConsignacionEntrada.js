@@ -48,7 +48,7 @@ function mostrarInventario()
         }
 
 	var  trasDato;
-	trasDato = 13;
+	trasDato = 17;
 	
         $.ajax
         ({
@@ -118,7 +118,7 @@ function mostrarConsignacionDetalle(id)
         }
 
 	var  trasDato;
-	trasDato = 15;
+	trasDato = 18;
 	
         $.ajax
         ({
@@ -227,7 +227,7 @@ function abonarConsignacion()
 	 
     var idedit, trasDato; 
 		
-    trasDato = 6;
+    trasDato = 7;
 	var abono=document.getElementById('cantidadDeb').value;
 	var fecha=document.getElementById('fechaVenta').value;
 	var descripcion=document.getElementById('descripcionDeb').value;
@@ -298,7 +298,7 @@ function editar(id)
 	$('#modal1').openModal();
 
 	 var  trasDato;
-	trasDato = 16;
+	trasDato = 19;
 	habilita(false);
         $.ajax
         ({

@@ -77,6 +77,161 @@ function buscarInventario($datos)
     
 }
 
+
+function buscarInventarioConsig($datos)
+{
+    
+    
+    $mysql = conexionMysql();
+	$extra ='';
+	if($datos[1]=='5'){
+		$extra='C';
+	}
+    $sql = "SELECT i.precioCosto,i.precioVenta,i.precioClienteEs,i.precioDistribuidor,i.cantidad,(select p.descripcion from productos p where i.idproducto=p.idproductos),(select p.marca2 from productos p where i.idproducto=p.idproductos),(select p.nombre from productos p where i.idproducto=p.idproductos),i.minimo,i.idproducto,(select p.codigoproducto from productos p where i.idproducto=p.idproductos),(select p.tiporepuesto from productos p where i.idproducto=p.idproductos),(select p.idpresentacion from productos p where i.idproducto=p.idproductos),i.idinventario".$extra." from inventario".$extra." i where idinventario".$extra."='".$datos[0]."'";
+	$form="";
+    if($resultado = $mysql->query($sql))
+    {
+      if($resultado->num_rows>0)
+	  {
+		$fila = $resultado->fetch_row();    
+			
+		
+		$form .="<script>";
+		$form .=" 
+				document.getElementById('producto').value='".$fila[7]."';
+				document.getElementById('idproducto').value='".$datos[0]."';
+				document.getElementById('idproducto2').value='".$fila[9]."';
+				document.getElementById('marca').value='".$fila[6]."';
+				document.getElementById('descripcion').value='".$fila[5]."';
+				document.getElementById('costo').value='".$fila[0]."';
+				document.getElementById('cantidad').value='".$fila[4]."';
+				document.getElementById('precioG').value='".$fila[1]."';
+				document.getElementById('precioE').value='".$fila[2]."';
+				document.getElementById('precioM').value='".$fila[3]."';
+				document.getElementById('MinimoCant').value='".$fila[8]."';
+				document.getElementById('codigo').value='".$fila[10]."';
+				document.getElementById('codigo2').value='".$fila[13]."';
+				document.getElementById('tipoRepuesto').value='".$fila[11]."';
+				document.getElementById('idpresentacion').value='".$fila[12]."';
+				$('#tipoRepuesto').material_select();$('#idpresentacion').material_select();
+				document.getElementById('producto').focus();
+				document.getElementById('marca').focus();
+				document.getElementById('descripcion').focus();
+				document.getElementById('costo').focus();
+				document.getElementById('cantidad').focus();
+				document.getElementById('precioE').focus();
+				document.getElementById('precioM').focus();
+				document.getElementById('precioG').focus();
+				document.getElementById('codigo').focus();
+				document.getElementById('MinimoCant').focus();";
+		$form .=" habilita(true);
+		document.getElementById('cantidad').disabled=false;
+		";
+		
+		
+		$form .="</script>";
+			
+		$resultado->free();    
+	  }
+	  else
+	  {
+		$form= "error data no encontrada";
+		$resultado->free();   
+	  }
+    
+    }
+    else
+    {   
+    
+    $form = "<div><script>console.log('$idedit');</script></div>";
+    
+    }
+    
+    
+    $mysql->close();
+    
+    echo $form;
+    
+    
+}
+
+function buscarInventarioConsigEnt($datos)
+{
+    
+    
+    $mysql = conexionMysql();
+	$extra ='';
+	
+
+    $sql = "SELECT i.precioCosto,i.precioVenta,i.precioClienteEs,i.precioDistribuidor,i.cantidad,(select p.descripcion from productos p where i.idproducto=p.idproductos),(select p.marca2 from productos p where i.idproducto=p.idproductos),(select p.nombre from productos p where i.idproducto=p.idproductos),i.minimo,i.idproducto,(select p.codigoproducto from productos p where i.idproducto=p.idproductos),(select p.tiporepuesto from productos p where i.idproducto=p.idproductos),(select p.idpresentacion from productos p where i.idproducto=p.idproductos),i.idinventarioC from inventarioP i where idinventarioC='".$datos[0]."'";
+	$form="";
+    if($resultado = $mysql->query($sql))
+    {
+      if($resultado->num_rows>0)
+	  {
+		$fila = $resultado->fetch_row();    
+			
+		
+		$form .="<script>";
+		$form .=" 
+				document.getElementById('producto').value='".$fila[7]."';
+				document.getElementById('idproducto').value='".$datos[0]."';
+				document.getElementById('idproducto2').value='".$fila[9]."';
+				document.getElementById('marca').value='".$fila[6]."';
+				document.getElementById('descripcion').value='".$fila[5]."';
+				document.getElementById('costo').value='".$fila[0]."';
+				document.getElementById('cantidad').value='".$fila[4]."';
+				document.getElementById('precioG').value='".$fila[1]."';
+				document.getElementById('precioE').value='".$fila[2]."';
+				document.getElementById('precioM').value='".$fila[3]."';
+				document.getElementById('MinimoCant').value='".$fila[8]."';
+				document.getElementById('codigo').value='".$fila[10]."';
+				document.getElementById('codigo2').value='".$fila[13]."';
+				document.getElementById('tipoRepuesto').value='".$fila[11]."';
+				document.getElementById('idpresentacion').value='".$fila[12]."';
+				$('#tipoRepuesto').material_select();$('#idpresentacion').material_select();
+				document.getElementById('producto').focus();
+				document.getElementById('marca').focus();
+				document.getElementById('descripcion').focus();
+				document.getElementById('costo').focus();
+				document.getElementById('cantidad').focus();
+				document.getElementById('precioE').focus();
+				document.getElementById('precioM').focus();
+				document.getElementById('precioG').focus();
+				document.getElementById('codigo').focus();
+				document.getElementById('MinimoCant').focus();";
+		$form .=" habilita(true);
+		document.getElementById('cantidad').disabled=false;
+		";
+		
+		
+		$form .="</script>";
+			
+		$resultado->free();    
+	  }
+	  else
+	  {
+		$form= "error data no encontrada";
+		$resultado->free();   
+	  }
+    
+    }
+    else
+    {   
+    
+    $form = "<div><script>console.log('$idedit');</script></div>";
+    
+    }
+    
+    
+    $mysql->close();
+    
+    echo $form;
+    
+    
+}
+
+
 function actualizaInventario($datos)
 {
 	$mysql = conexionMysql();
