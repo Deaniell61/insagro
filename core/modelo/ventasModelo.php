@@ -445,15 +445,17 @@ function buscarVenta($dato)
 
 function cambiarTipoVenta($datos)
 {
+	session_start();
 	$mysql = conexionMysql();
     $form="";
 	
 		$mysql->query("BEGIN");
-    $sql = "update ventas set tipoVenta='".$datos[0]."' where idventas='".$datos[1]."'";
+    $sql = "update ventas set tipoVenta='".$datos[0]."' where idventas='".$_SESSION['idVenta']."'";
 //echo $sql;
     if($mysql->query($sql))
     {
-		
+echo "error";
+
 		$mysql->query("COMMIT");
 			    
 		
@@ -461,7 +463,8 @@ function cambiarTipoVenta($datos)
     }
     else
     {   
-    	$mysql->query("ROLLBACK");
+		$mysql->query("ROLLBACK");
+		
     $form = "<div><script>console.log('".$datos[0]."');</script></div>";
     
     }

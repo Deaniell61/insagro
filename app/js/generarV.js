@@ -647,7 +647,7 @@ function cambiarTipo(tipo, id) {
 
 
 
-                $('#mensajeC').html(resp);
+                $('#mensajeVV').html(resp);
                 agregaClick();
 
             }

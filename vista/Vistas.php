@@ -157,6 +157,13 @@ function Consignacion()
     include('../app/plantilla/consignacion/Pie.php');
 }
 
+function ConsignacionxCobrar()
+{
+    include('../app/plantilla/consignacionxCobrar/Cabecera.php');
+    include('../app/plantilla/consignacionxCobrar/Cuerpo.php');
+    include('../app/plantilla/consignacionxCobrar/Pie.php');
+}
+
 function Proveedor()
 {
     //include('../app/plantilla/proveedor/Cabecera.php');

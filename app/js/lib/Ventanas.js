@@ -89,6 +89,13 @@ $('#consignacion').click(function(){
     
     });
 
+    $('#consignacionxCobrar').click(function(){
+        
+          window.location.href="?ConsignacionxCobrar";
+        
+        
+        });
+
 
 
 $('#compraL').click(function(){
