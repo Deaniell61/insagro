@@ -17,12 +17,12 @@ function insertarProducto($datos)
     if($datos[10]=='5'){
         $extra ='C';
     }
-    echo $sql = "INSERT INTO productos (nombre, descripcion, codigoProducto,tiporepuesto,marca2, estado, idpresentacion) VALUES ('".$datos[1]."','".$datos[4]."','".$datos[2]."','".$datos[5]."','".$datos[3]."',1,'".$datos[9]."')";
+     $sql = "INSERT INTO productos (nombre, descripcion, codigoProducto,tiporepuesto,marca2, estado, idpresentacion) VALUES ('".$datos[1]."','".$datos[4]."','".$datos[2]."','".$datos[5]."','".$datos[3]."',1,'".$datos[9]."')";
     
     //$mysql->query("BEGIN");
     if($resultado = $mysql->query($sql))
     {
-		echo $sql = "INSERT INTO inventario".$extra." (cantidad,precioCosto,precioVenta,precioClienteEs,precioDistribuidor, idproducto,medida,idpresentacion) VALUES (0,0,0,0,0,(select idproductos from productos order by idproductos desc limit 1),'".$datos[7]."','".$datos[9]."')";
+	    $sql = "INSERT INTO inventario".$extra." (cantidad,precioCosto,precioVenta,precioClienteEs,precioDistribuidor, idproducto,medida,idpresentacion) VALUES (0,0,0,0,0,(select idproductos from productos order by idproductos desc limit 1),'".$datos[7]."','".$datos[9]."')";
 		
 		if($resultado = $mysql->query($sql))
 		{

@@ -222,10 +222,11 @@ function quitaInvetario() {
             }else{
                 tipo=1;
             }
-        $.ajax({
+            tipoventa = (document.getElementById('tipoVenta').value);
+            $.ajax({
             type: "POST",
             url: "../core/controlador/ventasControlador.php",
-            data: ' codigo=' + codigo + '&tipo=' + tipo + '&cantidad=' + cantidad + '&cliente=' + cliente + '&trasDato=' + trasDato,
+            data: ' codigo=' + codigo + '&tipoventa=' + tipoventa + '&tipo=' + tipo + '&cantidad=' + cantidad + '&cliente=' + cliente + '&trasDato=' + trasDato,
             success: function(resp) {
 
                 if (resp == '1') {

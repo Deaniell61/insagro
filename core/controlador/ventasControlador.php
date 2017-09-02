@@ -152,6 +152,7 @@ if($_POST)
 		$datos[1] = $_POST['cantidad'];
 		$datos[2] = $_POST['cliente'];
 		$datos[3] = $_POST['tipo'];
+		$datos[4] = $_POST['tipoventa'];
 		
 		        
         quitaInventario($datos);

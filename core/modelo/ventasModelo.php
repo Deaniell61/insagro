@@ -138,7 +138,30 @@ function quitaInventario($datos)
 				if($row[1]>0)
 				{			 
 					
-						 
+					if($datos[4]=='5'){
+						
+						$resultado=$mysql->query("select cantidad from inventarioCxCob where idProducto='".$row[0]."'");
+						if($resultado->num_rows>0)
+						{
+							$sql = "update inventarioCxCob set cantidad=cantidad+".$row[1]." where idProducto='".$row[0]."'";
+							
+							if(!$mysql->query($sql)){
+							echo "<script>alert(\"erro2 ".$sql."\");</script>";
+								$mysql->query("ROLLBACK");
+							}
+							
+						}else{
+							$sql = "INSERT INTO inventarioCxCob (cantidad,precioCosto,precioVenta,precioClienteEs,precioDistribuidor, idproducto,medida,idpresentacion) VALUES (".$row[1].",0,0,0,0,".$row[0].",null,(select idpresentacion from productos where idproductos='".$row[0]."'))";
+							if(!$mysql->query($sql)){
+							echo "<script>alert(\"erro2 ".$sql."\");</script>";
+							
+								$mysql->query("ROLLBACK");
+							}
+						}
+						
+				
+					}
+					
 				$sql = "update inventario set cantidad=cantidad-".$row[1]." where idProducto='".$row[0]."'";
 			
 					if($mysql->query($sql))
