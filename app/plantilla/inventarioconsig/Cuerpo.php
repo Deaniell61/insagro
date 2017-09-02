@@ -40,7 +40,7 @@
                   <li class="centrarli"><a id="imprimirT" onClick="impInvConsignacion('mensaje3');" class="amber accent-3 btn white-text  " ><i class="material-icons left"><img class="iconotab" src="../app/img/imprimir.png" /></i>Imprimir Inventario Consignacion</a></li>
                 </center>
                 <br>
-                <center style="">
+                <center style="display:none">
                 <li class="centrarli">
                     <a id="inventarioCoSal"  class="red accent-3 btn white-text  " ><i class="material-icons left"><img class="iconotab" src="../app/img/salida.png" /></i>Salidas</a>
                 <a id="inventarioCoEntrada"  class="green accent-3 btn white-text  " ><i class="material-icons left"><img class="iconotab" src="../app/img/entrada.png" /></i>Entradas</a></li>
@@ -117,33 +117,33 @@
                     <div class="row">
                         <div class="input-field col s6">
                             <i  class="material-icons prefix"><img class="iconologin" src="../app/img/codigo.png"/></i>
-                            <input id="codigo" onKeyUp="" type="text" class="validate" disabled>
+                            <input id="codigo" onKeyUp="" type="text" class="validate" >
                             <label for="icon_telephone" ><span class="etiquelogin">Codigo</span></label>
                         </div>
                         <div class="input-field col s6" style="display:none;">
                             <i  class="material-icons prefix"><img class="iconologin" src="../app/img/codigo.png"/></i>
-                            <input id="codigo2" onKeyUp="" type="text" class="validate" disabled>
+                            <input id="codigo2" onKeyUp="" type="text" class="validate" >
                             <label for="icon_telephone" ><span class="etiquelogin">Codigo</span></label>
                         </div>
                         <div class="input-field col s6">
                             <i class="material-icons prefix"><img class="iconologin" src="../app/img/producto.png" /></i>
-                            <input id="producto" type="text" class="validate" disabled>
+                            <input id="producto" type="text" class="validate" >
                             <label for="icon_prefix" ><span class="etiquelogin">Productos</span></label>
                         </div>
                         
                         <div class="input-field col s6">
                             <i class="material-icons prefix"><img class="iconologin" src="../app/img/marca.png" /></i>
-                            <input id="marca" type="text" class="validate" disabled>
+                            <input id="marca" type="text" class="validate" >
                             <label for="icon_prefix" ><span class="etiquelogin">Marca</span></label>
                         </div>
                         <div class="input-field col s6">
                             <i class="material-icons prefix"><img class="iconologin" src="../app/img/descripcion.png" /></i>
-                            <input id="descripcion" type="text" class="validate" disabled>
+                            <input id="descripcion" type="text" class="validate" >
                             <label for="icon_prefix" ><span class="etiquelogin">Descripcion</span></label>
                         </div>
                         <div class="input-field col s6">
                         <i  class="material-icons prefix"><img class="iconologin" src="../app/img/tipoR.png"/></i>
-                        <select id="tipoRepuesto" onChange="" disabled>
+                        <select id="tipoRepuesto" onChange="" >
                             <option value="" disabled selected>Sector</option>
                             <option value="1">Sector Fertilizantes</option>
                             <option value="2">Sector Herbicidas</option>
@@ -166,7 +166,7 @@
 
                         <div class="input-field col s6">
                         <i  class="material-icons prefix"><img class="iconologin" src="../app/img/tipoR.png"/></i>
-                        <select id="idpresentacion" onChange="" disabled>
+                        <select id="idpresentacion" onChange="" >
                             <?php
                             include('../vista/compra2Vista.php');
                             comboPresentacion();
@@ -178,31 +178,22 @@
 
                         <div class="input-field col s6">
                             <i class="material-icons prefix"><img class="iconologin" src="../app/img/cantidad.png" /></i>
-                            <input id="cantidad" disabled type="number" class="validate" disabled>
+                            <input id="cantidad"  type="number" class="validate" >
                             <label for="icon_prefix" ><span class="etiquelogin">Cantidad</span></label>
                         </div>
 
-                        <div class="input-field col s6" style="display:none">
+                        <div class="input-field col s6" >
                             <i class="material-icons prefix"><img class="iconologin" src="../app/img/precioCosto.png" /></i>
-                            <input id="costo" disabled type="text" class="validate" onChange="calcula();" onKeyUp="calcula();" disabled>
+                            <input id="costo"  type="text" class="validate" onChange="calcula();" onKeyUp="calcula();" >
                             <label for="icon_prefix" ><span class="etiquelogin">Costo</span></label>
                         </div>
-                        <div class="input-field col s6">
+                        <div class="input-field col s6" style="display:none">
 
                             <i class="material-icons prefix"><img class="iconologin" src="../app/img/plazo.png" /> </i>
                             <input id="fechaVenta" type="date" class="validate" value="<?php echo date('Y-m-d')?>">
-                            <label class="active" for="fecha" >Fecha de Venta</label>       
+                            <label class="active" for="fecha" >Fecha</label>       
                         </div>
-                        <div class="input-field col s6">
-                            <i class="material-icons prefix"><img class="iconologin" src="../app/img/cantidad.png" /></i>
-                            <input id="cantidadDeb" type="number" class="validate" >
-                            <label for="icon_prefix" ><span class="etiquelogin">Cantidad Debitada</span></label>
-                        </div>
-                        <div class="input-field col s6">
-                            <i class="material-icons prefix"><img class="iconologin" src="../app/img/descripcion.png" /></i>
-                            <input id="descripcionDeb" type="text" class="validate" >
-                            <label for="icon_prefix" ><span class="etiquelogin">Descripcion</span></label>
-                        </div>
+                        
                         
             </div>
                         
@@ -271,14 +262,13 @@
                         </div>
 
                         <div class="col s12 right-align">
-                        <a id="guardar" class="waves-effect waves-light btn blue lighten-1 modal-trigger" onClick="abonarConsignacion();" ><i class="material-icons left"><img class="iconoaddcrud" src="../app/img/guardar.png" /></i>Guardar</a>
+                        <a id="guardar" class="waves-effect waves-light btn blue lighten-1 modal-trigger" onClick="guardarInventario();" ><i class="material-icons left"><img class="iconoaddcrud" src="../app/img/guardar.png" /></i>Guardar</a>
 
                         </div>
 
                         <p id="restante" class=" col s3 right">Restante</p>
 				 <div id="resumenPEdit" class="col s10"   >
                
-				    Tabla(fecha de pago, Descripcion, Abono, Credito)
                      
 					 </div>   
 
