@@ -59,6 +59,7 @@ require_once('../../vista/pagoSueldoVista.php');
 require_once('../../vista/gastosVista.php');
 require_once('../../vista/cajaVista.php');
 require_once('../../vista/consignacionVista.php');
+require_once('../../vista/consignacionxCobrarVista.php');
 
 
 ?>

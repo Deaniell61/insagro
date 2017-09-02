@@ -39,7 +39,7 @@ function mostrarConsignacionxCobrar($dato)
               <?php
           $extra="";
           $mysql = conexionMysql();
-           $sql = "SELECT c.fecha,c.nocomprobante,p.nit,p.nombre,c.total,(select tv.Descripcion from tipoventa tv where tv.idtipo=c.tipoventa),c.idventas,(select u.user from usuarios u where u.idusuarios=c.idusuario) FROM ventas c inner join cliente p on p.idcliente=c.idcliente inner join ventasdetalle cd on cd.idventa=c.idventas inner join productos pd on pd.idproductos=cd.idproductos where c.estado=5 and cd.estado=1 $busca group by c.idventas order by c.fecha desc";
+           $sql = "SELECT c.fecha,c.nocomprobante,p.nit,p.nombre,c.total,(select tv.Descripcion from tipoventa tv where tv.idtipo=c.tipoventa),c.idventas,(select u.user from usuarios u where u.idusuarios=c.idusuario) FROM ventas c inner join cliente p on p.idcliente=c.idcliente inner join ventasdetalle cd on cd.idventa=c.idventas inner join productos pd on pd.idproductos=cd.idproductos where c.estado=1 and cd.estado=1 and c.tipoventa=5 $busca group by c.idventas order by c.fecha desc";
           $tabla="";
           if($resultado = $mysql->query($sql))
           {
@@ -72,13 +72,13 @@ function mostrarConsignacionxCobrar($dato)
                     $tabla .="<td class='anchoC'>";
                       if($_SESSION['SOFT_ACCESOElimina'.'ventas']=='1')
                       {
-                      $tabla .="<a class='waves-effect waves-light btn red lighten-1 modal-trigger botonesm ' onClick=\"anularVenta('".$fila["6"]."');\"><i class='material-icons left'><img class='iconoaddcrud' src='../app/img/boton-borrar.png' /></i></a>";
-                      }
-    
-    
-    
-                      $tabla .="<a class='waves-effect waves-light btn yellow dark-1 modal-trigger botonesm modalver'  onClick=\"buscarVenta('".$fila["6"]."');\"><i class='material-icons left'><img class='iconoeditcrud' src='../app/img/ojo.png' /></i></a>";
-                      //$tabla .="<a class='waves-effect waves-light btn green dark-1 modal-trigger botonesm'  onClick=\"imprimirFactura('".$fila["6"]."','mensaje3');\"><i class='material-icons left'><img class='iconoeditcrud' src='../app/img/imprimir.png' /></i></a></td>";
+                        $tabla .="<a class='waves-effect waves-light btn orange lighten-1 modal-trigger botonesm editar' onclick=\"editar('".$fila["6"]."')\"><i class='material-icons left'><img class='iconoeditcrud' src='../app/img/editar.png' /></i></a>";
+                        
+                        }
+                        
+        
+                        $tabla .="<a class='waves-effect waves-light btn yellow dark-1 modal-trigger botonesm ver' onClick=\"ver('".$fila["6"]."');\"><i class='material-icons left'><img class='iconoeditcrud' src='../app/img/ojo.png' /></i></a>";
+                        //$tabla .="<a class='waves-effect waves-light btn green dark-1 modal-trigger botonesm'  onClick=\"imprimirFactura('".$fila["6"]."','mensaje3');\"><i class='material-icons left'><img class='iconoeditcrud' src='../app/img/imprimir.png' /></i></a></td>";
                       $tabla .= "</tr>";
                       $contaId++;
                   }
@@ -108,7 +108,7 @@ function mostrarConsignacionxCobrar($dato)
 }
 
 
-function mostrarMovimientosConsignacion($id)
+function mostrarMovimientosConsignacionxCobrar($id)
 {
 
     //creacion de la tabla

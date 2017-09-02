@@ -100,6 +100,29 @@ if($_POST)
         abonarConsignacionInvEntr($datos);
         
         
+    }else if($transaccion == 8)
+    {
+
+        $datos[0]=$nombre = $_POST['tipo'];
+		
+		
+		        
+        mostrarConsignacionxCobrar($datos);
+
+    }
+    else if($transaccion == 9)
+    {
+        
+          
+
+        
+        $datos[0] = $_POST['id'];
+       
+
+        
+        editarConsignacionxCobrar($datos);
+        
+    
     }
     
 //----------- fin gestion ----------/    

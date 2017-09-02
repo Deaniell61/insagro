@@ -357,4 +357,58 @@ function abonarConsignacionInvEntr($datos)
 }
 
 
+
+
+function editarConsignacionxCobrar($dato)
+{
+	
+
+    $mysql = conexionMysql();
+	$form="";
+	
+    $sql = "SELECT c.fecha,c.nocomprobante,p.nit,p.nombre,c.total,c.tipoventa,c.idventas,p.direccion,(select cong.saldo from consignacion cong where cong.idcompras=c.idventas order by cong.fecha desc limit 1) FROM ventas c inner join cliente p on p.idcliente=c.idcliente where (c.estado=1 or c.estado=0) and c.tipoventa=5 and c.idventas='".$dato[0]."' ";
+	
+
+    if($resultado = $mysql->query($sql))
+    {
+      if($resultado->num_rows>0)
+	  {
+		  if($fila = $resultado->fetch_row())
+		  {
+			  if($fila[8]==''){
+				$fila[8]=$fila[4];
+			  }
+		  	$form .="<script>";
+			$form .="document.getElementById('saldoED').disabled=false;document.getElementById('saldoED').value='".$fila[8]."';document.getElementById('saldoED').focus();document.getElementById('saldoED').disabled=true;";
+			$form .="document.getElementById('codigo').disabled=false;document.getElementById('codigo').value='".$fila[6]."';document.getElementById('codigo').focus();document.getElementById('codigo').disabled=true;";
+			$form .="document.getElementById('totalCreditoED').disabled=false;document.getElementById('totalCreditoED').value='".$fila[4]."';document.getElementById('totalCreditoED').focus();document.getElementById('totalCreditoED').disabled=true;";
+			$form .="document.getElementById('fechaInicialED').disabled=false;document.getElementById('fechaInicialED').value='".substr($fila[0],0,10)."';document.getElementById('fechaInicialED').focus();document.getElementById('fechaInicialED').disabled=true;";
+			$form .="document.getElementById('proveedorED').disabled=false;document.getElementById('proveedorED').value='".$fila[3]."';document.getElementById('proveedorED').focus();document.getElementById('proveedorED').disabled=true;";
+			$form .="cargarConsignaciones('".$dato[0]."');";
+			$form .="</script>";
+			
+		}
+		$resultado->free();    
+	  }
+	  else
+	  {
+		$form .="<script>";
+			$form .="document.getElementById('productosContenedor').hidden=true;";
+			$form .="</script>";
+	  }
+    
+    }
+    else
+    {   
+    
+    $form = "<div>$sql<script>console.log('".$dato[0]."');</script></div>";
+    
+    }
+    
+    
+    $mysql->close();
+    
+    return printf($form);
+    
+}
 ?>

@@ -61,7 +61,7 @@ function mostrarConsignacion()
         }
 
 	var  trasDato;
-	trasDato = 1;
+	trasDato = 8;
 	
         $.ajax
         ({
@@ -192,7 +192,7 @@ function editar(id)
 
     $('#modal1').openModal();
 
-    trasDato = 2;
+    trasDato = 9;
 
 
     $.ajax
