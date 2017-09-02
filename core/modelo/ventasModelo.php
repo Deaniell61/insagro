@@ -142,9 +142,7 @@ function quitaInventario($datos)
 								 $row[1]=$fila[0];
 							 }
 				if($row[1]>0)
-				{			 
-					
-<<<<<<< HEAD
+				{			 					
 					if($datos[4]=='5'){
 						
 						$resultado=$mysql->query("select cantidad from inventarioCxCob where idProducto='".$row[0]."'");
@@ -170,28 +168,6 @@ function quitaInventario($datos)
 					}
 					
 				$sql = "update inventario set cantidad=cantidad-".$row[1]." where idProducto='".$row[0]."'";
-=======
-					if($extra!=''){
-						$sqlQuery = "select * from inventario".$extra." where idproducto='".$fila[6]."'";
-						if($resultado = $mysql->query($sqlQuery))
-						{
-						  if($resultado->num_rows<1)
-						  {
-							$sqlInsert = "INSERT INTO inventario".$extra." (cantidad,precioCosto,precioVenta,precioClienteEs,precioDistribuidor, idproducto,medida,idpresentacion) VALUES (0,0,0,0,0,'".$fila[6]."','".$fila[7]."','".$fila[8]."')";
-							//echo "<script>alert(\"".$sqlInsert."\")</script>";
-							if(!$mysql->query($sqlInsert)){
-								$mysql->query("ROLLBACK");
-							}
-						  }
-	
-						}
-						$sql = "update inventario".$extra." set cantidad=cantidad+".$fila[1].",preciocosto='".$fila[2]."',precioventa='".$fila[3]."',precioClientees='".$fila[4]."',precioDistribuidor='".$fila[5]."',medida='".$fila[7]."',idpresentacion='".$fila[8]."' where idproducto='".$fila[6]."'";
-						$mysql->query($sql);
-						
-					}
-						 
-				$sql = "update inventario".$extra." set cantidad=cantidad-".$row[1]." where idProducto='".$row[0]."'";
->>>>>>> 91239e883e9085c54b4c9dd3deb61fabca7bcef3
 			
 					if($mysql->query($sql))
 					{
