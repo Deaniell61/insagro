@@ -67,6 +67,14 @@ $('#fragmentar').click(function(){
 
     window.location.href="?MovsInternos";
 });
+$('#FragSalida').click(function(){
+    
+        window.location.href="?MovsInternos";
+    });
+    $('#FragEntrada').click(function(){
+        
+            window.location.href="?MovsInternosEntrada";
+        });
 
 $('#ayuda').click(function(){
 

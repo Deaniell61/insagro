@@ -18,8 +18,8 @@
 
                 <center>
                 <li class="centrarli">
-                    <a id="FragSalida"  class="red accent-5 btn white-text  " ><i class="material-icons left"><img class="iconotab" src="../app/img/salida.png" /></i>Salidas</a>
-                <a id="FragEntrada"  class="green accent-2 btn white-text  " ><i class="material-icons left"><img class="iconotab" src="../app/img/entrada.png" /></i>Entradas</a></li>
+                    <a id="FragSalida"  class="red accent-2 btn white-text  " ><i class="material-icons left"><img class="iconotab" src="../app/img/salida.png" /></i>Salidas</a>
+                <a id="FragEntrada"  class="green accent-5 btn white-text  " ><i class="material-icons left"><img class="iconotab" src="../app/img/entrada.png" /></i>Entradas</a></li>
                 </center>
 
 
@@ -27,15 +27,15 @@
             </tr>
         </table>
 
-
 <div id="respuesta">
     
 </div>
+
    <?php
 
     include('../vista/fragmentarVista.php');
 
-    mostrarfragmentar();
+    mostrarfragmentarEntrada();
 
 
     ?>
@@ -172,19 +172,19 @@
             <div class="input-field col s8 ">
                 <i  class="material-icons prefix"><img class="iconologin" src="../app/img/precioCosto.png"/></i>
                 <input id="cantidadQ" type="text" value="0" class="validate" onKeyUp="siguiente(event,'precioG');">
-                <label for="icon_telephone" ><span class="etiquelogin">Cantidad de Quintales</span></label>
+                <label for="icon_telephone" ><span class="etiquelogin">Cantidad de Libras</span></label>
             </div>
 
             <div class="input-field col s8 ">
                 <i  class="material-icons prefix"><img class="iconologin" src="../app/img/precioCosto.png"/></i>
                 <input id="precioCQu" type="text" value="0" class="validate" onKeyUp="siguiente(event,'precioG');">
-                <label for="icon_telephone" ><span class="etiquelogin">Precio Costo de Quintales</span></label>
+                <label for="icon_telephone" ><span class="etiquelogin">Precio Costo de Libra</span></label>
             </div>
             
             <div class="input-field col s8 ">
                 <i  class="material-icons prefix"><img class="iconologin" src="../app/img/precioCosto.png"/></i>
                 <input id="cantidadL" type="text" value="0" class="validate" onKeyUp="CalculaCostoLibra();">
-                <label for="icon_telephone" ><span class="etiquelogin">Cantidad de Libras</span></label>
+                <label for="icon_telephone" ><span class="etiquelogin">Cantidad de Libras a Inventario</span></label>
             </div>
 
             <div class="input-field col s8 ">
@@ -194,7 +194,7 @@
             </div>
 
             
-            <div class="input-field col s8 " >
+            <div class="input-field col s8 " style="display:none">
                 <i  class="material-icons prefix"><img class="iconologin" src="../app/img/precioGeneral.png"/></i>
                 <input id="precioG" type="text" value="0" class="validate" onKeyUp="siguiente(event,'precioE');calcularPrecios('precioE','precioM',this.value);">
                 <label for="icon_telephone"  ><span class="etiquelogin">Precio Venta general</span></label>

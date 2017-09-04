@@ -411,4 +411,80 @@ function editarConsignacionxCobrar($dato)
     return printf($form);
     
 }
+
+function abonarConsignacionxCob($datos)
+{
+	$mysql = conexionMysql();
+    $form="";
+	session_start();
+	$mysql->query("BEGIN");
+	
+	if($cont=$mysql->query("select total from ventas where idventas='".$datos[0]."'"))
+	{
+			 
+				 $fila = $cont->fetch_row();
+				 
+				 if($fila[0]<$datos[1])
+				 {
+					 $datos[1]=$fila[0];
+				 }
+	$saldo=$datos[3]-$datos[1];
+	$total=$fila[0]-$datos[1];
+	if($datos[1]>0)
+	{		 
+    $sql = "INSERT INTO consignacionxCob(consignado,retirado,saldo,fecha,descripcion,idVentas,idusuario) values('".$datos[5]."','".$datos[1]."','".$saldo."','".date('Y-m-d H:i:s')."','".$datos[4]."',".$datos[0].",'".$_SESSION['SOFT_USER_ID']."')";
+ 
+    if($mysql->query($sql))
+    {
+			 
+				 	  if(!$mysql->query("update compras set total=total where idCompras='".$datos[0]."'"))
+					 {
+						
+						 $mysql->query("ROLLBACK");
+					 }
+					 else
+					 {
+						 if($total==0)
+						 {
+							 if(!$mysql->query("update compras set tipocompra=1 where idCompras='".$datos[0]."'"))
+							 {
+								  $mysql->query("ROLLBACK");
+							 }
+						 }
+						 
+						 echo "<script>window.location.reload();cargarConsignaciones('".$datos[0]."');limpiarAbono();document.getElementById('saldoE').innerHTML='Saldo: ".toMoney($saldo)."';</script>";
+						 
+					 }
+				     
+			 
+			 
+		
+    		$mysql->query("COMMIT");
+		
+	
+    }
+    else
+    {   
+    
+    	$form = $sql;
+    
+    }
+    
+    }
+	else
+	{
+		 	
+		 $mysql->query("ROLLBACK");
+		 
+	 }
+	}
+	else
+	{
+		echo "<script>window.location.reload();</script>";
+	}
+    $mysql->close();
+    
+    return printf($form);
+  
+}
 ?>

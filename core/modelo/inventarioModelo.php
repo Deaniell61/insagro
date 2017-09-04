@@ -163,7 +163,7 @@ function buscarInventarioConsigEnt($datos)
 	$extra ='';
 	
 
-    $sql = "SELECT i.precioCosto,i.precioVenta,i.precioClienteEs,i.precioDistribuidor,i.cantidad,(select p.descripcion from productos p where i.idproducto=p.idproductos),(select p.marca2 from productos p where i.idproducto=p.idproductos),(select p.nombre from productos p where i.idproducto=p.idproductos),i.minimo,i.idproducto,(select p.codigoproducto from productos p where i.idproducto=p.idproductos),(select p.tiporepuesto from productos p where i.idproducto=p.idproductos),(select p.idpresentacion from productos p where i.idproducto=p.idproductos),i.idinventarioC from inventarioP i where idinventarioC='".$datos[0]."'";
+    $sql = "SELECT i.precioCosto,i.precioVenta,i.precioClienteEs,i.precioDistribuidor,i.cantidad,(select p.descripcion from productos p where i.idproducto=p.idproductos),(select p.marca2 from productos p where i.idproducto=p.idproductos),(select p.nombre from productos p where i.idproducto=p.idproductos),i.minimo,i.idproducto,(select p.codigoproducto from productos p where i.idproducto=p.idproductos),(select p.tiporepuesto from productos p where i.idproducto=p.idproductos),(select p.idpresentacion from productos p where i.idproducto=p.idproductos),i.idinventarioC from inventarioCxCob i where idinventarioC='".$datos[0]."'";
 	$form="";
     if($resultado = $mysql->query($sql))
     {
@@ -238,12 +238,16 @@ function actualizaInventario($datos)
     $form="";
 	session_start();
 	$mysql->query("BEGIN");
-	$extra='';
+	$extra='';$extra2='';
 	if($datos[14]=='5'){
-		$extra='C';
+		$extra='C';$extra2='';
+	}
+
+	if($datos[14]=='7'){
+		$extra='C';$extra2='xCob';
 	}
 			 
-    $sql = "update inventario".$extra." set precioventa='".$datos[1]."',precioClientees='".$datos[2]."',precioDistribuidor='".$datos[3]."',precioCosto='".$datos[4]."',cantidad='".$datos[5]."',minimo='".$datos[6]."',idpresentacion='".$datos[13]."' where idinventario".$extra."='".$datos[0]."'";
+    $sql = "update inventario".$extra.$extra2." set precioventa='".$datos[1]."',precioClientees='".$datos[2]."',precioDistribuidor='".$datos[3]."',precioCosto='".$datos[4]."',cantidad='".$datos[5]."',minimo='".$datos[6]."',idpresentacion='".$datos[13]."' where idinventario".$extra."='".$datos[0]."'";
 	
     if($mysql->query($sql))
     {
@@ -398,44 +402,139 @@ function fragmentarInventario($datos)
 {
     
     $mysql = conexionMysql();
-    $form=array();
-    $mysql->query("BEGIN");
-    $sql = "update inventario set precioCosto='".$datos[4]."',precioVenta='".$datos[1]."',cantidad=cantidad+".$datos[5]." where idproducto='".$datos[9]."' ";
-	$form['status']=$sql;
-	if($datos[0]!=""){
-		if($resultado = $mysql->query($sql))
-		{
-			if($resultado->num_rows>0){
-				$sql2 = "update inventario set cantidad=cantidad-(".$datos[5]."/100) where idproducto='".$datos[0]."' ";
-				if($resultado2 = $mysql->query($sql2))
+    $form="";
+	$mysql->query("BEGIN");
+	$query="select * from inventarioFrag where idproducto='".$datos[9]."'";
+	
+	if($resultadoF = $mysql->query($query))
+	{
+		if($resultadoF->num_rows>0){
+			$sql = "update inventarioFrag set precioCosto='".$datos[4]."',precioVenta='".$datos[1]."',cantidad=cantidad+".$datos[5]." where idproducto='".$datos[9]."' ";
+			if($datos[0]!=""){
+				if($resultado = $mysql->query($sql))
 				{
-					$mysql->query("COMMIT");
-					$form['status']='1';
-					$form['message']='Fragmentado Correctamente';
-				}else{
-					$mysql->query("ROLLBACK");
-					$form['message']="Error sql\n".$sql;
-					$form['status']="0";
+					
+						$sql2 = "update inventario set cantidad=cantidad-(".$datos[5]."/100) where idproducto='".$datos[0]."' ";
+						if($resultado2 = $mysql->query($sql2))
+						{
+							$mysql->query("COMMIT");
+							$form='<script>
+							limpiarFragmentar();
+							location.reload();
+							</script>';
+						}else{
+							$mysql->query("ROLLBACK");
+							$form='<script>
+							alers("error");
+							</script>';
+						}
+					
 				}
+				else
+				{   
+					$mysql->query("ROLLBACK");
+					$form='<script>
+					alers("error");
+					</script>';
+				}
+			}else{
+				$mysql->query("ROLLBACK");
+				$form='<script>
+				alers("error");
+				</script>';
 			}
+		}else
+		{
+			$sql = "insert into inventarioFrag(precioCosto,precioVenta,cantidad,idproducto)  values('".$datos[4]."','".$datos[1]."',".$datos[5].",'".$datos[9]."') ";
 			
+			if($datos[0]!=""){
+				if($resultado = $mysql->query($sql))
+				{
+					
+						$sql2 = "update inventario set cantidad=cantidad-(".$datos[5]."/100) where idproducto='".$datos[0]."' ";
+						if($resultado2 = $mysql->query($sql2))
+						{
+							$mysql->query("COMMIT");
+							$form='<script>
+							limpiarFragmentar();
+							location.reload();
+							</script>';
+						}else{
+							$mysql->query("ROLLBACK");
+							$form='<script>
+							alers("error");
+							</script>';
+						}
+					
+				}
+				else
+				{   
+					$mysql->query("ROLLBACK");
+					$form='<script>
+					alers("error");
+					</script>';
+				}
+			}else{
+				$mysql->query("ROLLBACK");
+				$form='<script>
+				alers("error");
+				</script>';
+			}
 		}
-		else
-		{   
-			$mysql->query("ROLLBACK");
-			$form['message']="Error sql\n".$sql;
-			$form['status']="0";
-		}
-	}else{
-		$mysql->query("ROLLBACK");
-		$form['message']="No existe el producto\n".$sql;
-		$form['status']="0";
 	}
     
     
     $mysql->close();
     
-    echo json_encode($form);
+    echo ($form);
+    
+    
+}
+
+function fragmentarInventarioEntrada($datos)
+{
+    
+    $mysql = conexionMysql();
+    $form=array();
+    $mysql->query("BEGIN");
+    $sql = "update inventario set precioCosto='".$datos[4]."',precioVenta='".$datos[1]."',cantidad=cantidad+".$datos[5]." where idproducto='".$datos[9]."' ";
+	if($datos[0]!=""){
+		if($resultado = $mysql->query($sql))
+		{
+				$sql2 = "update inventarioFrag set cantidad=cantidad-(".$datos[5].") where idproducto='".$datos[0]."' ";
+				if($resultado2 = $mysql->query($sql2))
+				{
+					$mysql->query("COMMIT");
+					$form='<script>
+					limpiarFragmentar();
+					location.reload();
+					</script>';
+				}else{
+					$mysql->query("ROLLBACK");
+					$form='<script>
+					alers("error");
+					</script>';
+				}
+			
+		}
+		else
+		{   
+			$mysql->query("ROLLBACK");
+			$form='<script>
+			alers("error");
+			</script>';
+		}
+	}else{
+		$mysql->query("ROLLBACK");
+		$form='<script>
+		alers("error");
+		</script>';
+	}
+    
+    
+    $mysql->close();
+    
+    echo ($form);
     
     
 }

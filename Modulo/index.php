@@ -34,6 +34,8 @@
             include('Flujo.php');
         }else if(isset($_GET['MovsInternos'])){
             include('Fragmentar.php');
+        }else if(isset($_GET['MovsInternosEntrada'])){
+            include('FragmentarEntrada.php');
         }else if(isset($_GET['Gastos'])){
             include('Gastos.php');
         }else if(isset($_GET['GenerarCaja'])){

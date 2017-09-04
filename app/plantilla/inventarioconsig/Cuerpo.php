@@ -40,10 +40,10 @@
                   <li class="centrarli"><a id="imprimirT" onClick="impInvConsignacion('mensaje3');" class="amber accent-3 btn white-text  " ><i class="material-icons left"><img class="iconotab" src="../app/img/imprimir.png" /></i>Imprimir Inventario Consignacion</a></li>
                 </center>
                 <br>
-                <center style="display:none">
+                <center>
                 <li class="centrarli">
-                    <a id="inventarioCoSal"  class="red accent-3 btn white-text  " ><i class="material-icons left"><img class="iconotab" src="../app/img/salida.png" /></i>Salidas</a>
-                <a id="inventarioCoEntrada"  class="green accent-3 btn white-text  " ><i class="material-icons left"><img class="iconotab" src="../app/img/entrada.png" /></i>Entradas</a></li>
+                    <a id="inventarioCoSal"  class="red accent-5 btn white-text  " ><i class="material-icons left"><img class="iconotab" src="../app/img/salida.png" /></i>Por Pagar</a>
+                <a id="inventarioCoEntrada"  class="green accent-3 btn white-text  " ><i class="material-icons left"><img class="iconotab" src="../app/img/entrada.png" /></i>Por Cobrar</a></li>
                 </center>
      <div style="display:none;">
         <center>

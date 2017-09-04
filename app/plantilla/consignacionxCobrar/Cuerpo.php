@@ -3,7 +3,7 @@
     
     <ul class="collapsible popout" data-collapsible="accordion">
         <li>
-            <div class="collapsible-header"><i class="material-icons"><img class="imgSub" src="../app/img/flecha-hacia-abajo-signo-para-navegar.png" /></i>Consignacion</div>
+            <div class="collapsible-header"><i class="material-icons"><img class="imgSub" src="../app/img/flecha-hacia-abajo-signo-para-navegar.png" /></i>Consignacion Por Cobrar</div>
                 <div class="collapsible-body">        
                     <div class="col s12">
                         <ul id="tabsn" class="tabsUsuarios centrartab blue darken-1 ">

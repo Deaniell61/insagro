@@ -59,25 +59,28 @@ function ocultarF(){
             {
                 //alert(resp['status'])
                 $('#codigo').val(resp['id']);
-                $('#nombreC').val(resp[0]);$('#nombreC').focus();$('#nombreC').prop('disabled',true);
+                $('#nombreC').val(resp[0]+"ss");$('#nombreC').focus();$('#nombreC').prop('disabled',true);
                 $('#tipoRepuesto').material_select('destroy');
+                $('#prodpadre').material_select('destroy');
                 $('#idpresentacion').material_select('destroy');
                 $('#Producto').val(resp[1]);$('#Producto').focus();$('#Producto').prop('disabled',true);
                 $('#marca').val(resp[2]);$('#marca').focus();$('#marca').prop('disabled',true);
                 $('#descripcion').val(resp[3]);$('#descripcion').focus();$('#descripcion').prop('disabled',true);        
                 $('#tipoRepuesto').val(resp[4]);$('#tipoRepuesto').focus();$('#tipoRepuesto').prop('disabled',true);     
+                $('#prodpadre').val(resp['id']);$('#prodpadre').focus();$('#prodpadre').prop('disabled',true);     
                 $('#idpresentacion').val(resp[7]);$('#idpresentacion').focus();$('#idpresentacion').prop('disabled',true); 
                 $('#cantidadQ').val(resp[5]);$('#cantidadQ').focus();$('#cantidadQ').prop('disabled',true); 
                 $('#precioCQu').val(resp[6]);$('#precioCQu').focus();$('#precioCQu').prop('disabled',true);        
                 $('#tipoRepuesto').material_select();
                 $('#idpresentacion').material_select();
+                $('#prodpadre').material_select();
                 $('#Cantidad').focus();
             }
         });
 }
 function CalculaCostoLibra()
 {
-    $('#precioC').val(($('#precioCQu').val()/100));
+    $('#precioC').val(($('#precioCQu').val()));
 }
 function fragmentarProducto(){
 
@@ -99,9 +102,9 @@ function fragmentarProducto(){
    
     if(padre==""){
       //  alert(padre);
-        var trasDato = 10;
+        var trasDato = 21;
     }else{
-        var trasDato = 9;
+        var trasDato = 20;
     }
     $.ajax
         ({
@@ -111,6 +114,7 @@ function fragmentarProducto(){
             success: function(resp)
             {
                 
+                    
                     $('#respuesta').html(resp)
                 
                 
@@ -159,16 +163,19 @@ function abrirFragmentar(id){
                  $('#codigo').val(resp['id']);
                 $('#nombreC').val(resp[0]);$('#nombreC').focus();$('#nombreC').prop('disabled',true);
                 $('#tipoRepuesto').material_select('destroy');
+                $('#prodpadre').material_select('destroy');
                 $('#idpresentacion').material_select('destroy');
                 $('#Producto').val(resp[1]);$('#Producto').focus();$('#Producto').prop('disabled',true);
                 $('#marca').val(resp[2]);$('#marca').focus();$('#marca').prop('disabled',true);
                 $('#descripcion').val(resp[3]);$('#descripcion').focus();$('#descripcion').prop('disabled',true);        
+                $('#prodpadre').val(resp['id']);$('#prodpadre').focus();$('#prodpadre').prop('disabled',true);     
                 $('#tipoRepuesto').val(resp[4]);$('#tipoRepuesto').focus();$('#tipoRepuesto').prop('disabled',true);     
                 $('#idpresentacion').val(resp[7]);$('#idpresentacion').focus();$('#idpresentacion').prop('disabled',true); 
                 $('#cantidadQ').val(resp[5]);$('#cantidadQ').focus();$('#cantidadQ').prop('disabled',true); 
                 $('#precioCQu').val(resp[6]);$('#precioCQu').focus();$('#precioCQu').prop('disabled',true);        
                 $('#tipoRepuesto').material_select();
                 $('#idpresentacion').material_select();
+                $('#prodpadre').material_select();
                 $('#Cantidad').focus();
             }
         });

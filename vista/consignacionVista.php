@@ -34,7 +34,7 @@ else
             <th>NIT</th>
             <th>Proveedor</th>
             <th>Total</th>
-            <th>Tipo de Compra</th>
+            <th>Saldo</th>
             <th></th>
             
         </tr>
