@@ -106,18 +106,13 @@ function fragmentarProducto(){
     $.ajax
         ({
             type:"POST",
-            dataType: "json",
             url:"../core/controlador/inventarioControlador.php",
             data:' id=' +  id + '&precioG=' + precioG + '&codigo=' + codigo + '&presentacion=' + presentacion + '&costo=' + costo + '&cantidad=' + cantidad + '&precioE=' + precioE + '&precioM=' + precioM + '&nombre=' + nombre + '&padre=' + padre + '&trasDato=' + trasDato,
             success: function(resp)
             {
-                if(resp['status']=='1'){
-                    
-                    limpiarFragmentar();
-                    location.reload();
-                }else{
-                    alert(resp['status']);
-                }
+                
+                    $('#respuesta').html(resp)
+                
                 
             }
         });

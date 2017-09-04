@@ -16,7 +16,11 @@
                 </td>
                 <td class="">
 
-
+                <center>
+                <li class="centrarli">
+                    <a id="FragSalida"  class="red accent-5 btn white-text  " ><i class="material-icons left"><img class="iconotab" src="../app/img/salida.png" /></i>Salidas</a>
+                <a id="FragEntrada"  class="green accent-2 btn white-text  " ><i class="material-icons left"><img class="iconotab" src="../app/img/entrada.png" /></i>Entradas</a></li>
+                </center>
 
 
                 </td>
@@ -24,7 +28,9 @@
         </table>
 
 
-
+<div id="respuesta">
+    
+</div>
    <?php
 
     include('../vista/fragmentarVista.php');
