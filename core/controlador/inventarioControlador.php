@@ -227,7 +227,25 @@ if($_POST)
         buscarInventarioConsigEnt($datos);
     
     }
-	
+	else if($transaccion == 20)
+    {
+        $datos[0]=$_POST['id'];         
+        $datos[1]=$_POST['precioG'];         
+        $datos[2]=$_POST['codigo'];         
+        $datos[3]=$_POST['presentacion'];         
+        $datos[4]=$_POST['costo'];         
+        $datos[5]=$_POST['cantidad'];         
+        $datos[6]=$_POST['precioE'];         
+        $datos[7]=$_POST['precioM'];         
+        $datos[8]=$_POST['nombre'];         
+        $datos[9]=$_POST['padre'];
+		
+		
+        fragmentarInventarioEntrada($datos);
+        
+        
+    
+    }
 //----------- fin gestion ----------/    
     
 }

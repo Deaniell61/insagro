@@ -283,9 +283,9 @@ else
             <th>Cantidad</th>
             <th>Precio General</th>
             
-            <th>Proveedor U. Compra</th>
-            <th>Fecha U. Compra</th>
-            <th>No. Comprobante U. Compra</th>
+            <th>Cliente U. Venta</th>
+            <th>Fecha U. Venta</th>
+            <th>No. Comprobante U. Venta</th>
             <th></th>
 
         </tr>
@@ -294,7 +294,7 @@ else
         <?php
 
     $mysql = conexionMysql();
-    $sql = "SELECT p.nombre,i.preciocosto,p.idproductos,p.codigoproducto,p.descripcion,i.precioCosto,i.precioVenta,i.precioClienteEs,i.precioDistribuidor,i.cantidad,p.marca2,p.codigoproducto,i.idinventarioC,p.idproductos,(select ps.descripcion from presentacion ps where ps.idpresentacion=i.idpresentacion),p.tiporepuesto,(select pr.nombreempresa from proveedor pr inner join compras c on c.iddistribuidor=pr.idproveedor inner join compradetalle cd on cd.idcompras=c.idcompras where cd.idproductos=p.idproductos order by c.idcompras desc limit 1),(select c.fecha from proveedor pr inner join compras c on c.iddistribuidor=pr.idproveedor inner join compradetalle cd on cd.idcompras=c.idcompras where cd.idproductos=p.idproductos order by c.idcompras desc limit 1),(select c.nocomprobante from proveedor pr inner join compras c on c.iddistribuidor=pr.idproveedor inner join compradetalle cd on cd.idcompras=c.idcompras where cd.idproductos=p.idproductos order by c.idcompras desc limit 1) FROM inventarioP i inner join productos p on p.idproductos=i.idproducto where  i.cantidad>=0 $mas order by p.codigoproducto";
+    $sql = "SELECT p.nombre,i.preciocosto,p.idproductos,p.codigoproducto,p.descripcion,i.precioCosto,i.precioVenta,i.precioClienteEs,i.precioDistribuidor,i.cantidad,p.marca2,p.codigoproducto,i.idinventarioC,p.idproductos,(select ps.descripcion from presentacion ps where ps.idpresentacion=i.idpresentacion),p.tiporepuesto,(select pr.nombre from cliente pr inner join ventas c on c.idcliente=pr.idcliente inner join ventasdetalle cd on cd.idventa=c.idventas where cd.idproductos=p.idproductos order by c.idventas desc limit 1),(select c.fecha from cliente pr inner join ventas c on c.idcliente=pr.idcliente inner join ventasdetalle cd on cd.idventa=c.idventas where cd.idproductos=p.idproductos order by c.idventas desc limit 1),(select c.nocomprobante from cliente pr inner join ventas c on c.idcliente=pr.idcliente inner join ventasdetalle cd on cd.idventa=c.idventas where cd.idproductos=p.idproductos order by c.idventas desc limit 1) FROM inventarioCxCob i inner join productos p on p.idproductos=i.idproducto where  i.cantidad>=0 $mas order by p.codigoproducto";
     $tabla="";
 	$cont=0;
     	$tipo=array('','Sector Fertilizantes','Sector Herbicidas','Sector Insecticidas','Sector Veterinarios','Sector semillas','Sector Caceros','Sector Concentrados','Sector Equipo Agricola','Sector Foliares','Sector Fungicidas','Sector Adherentes','Sector Bolsas','Sector Plastico','Sector Pintura');
@@ -354,6 +354,7 @@ else
     }
     else
     {
+        echo $sql;
         $respuesta = "<div class='error'>Error: no se ejecuto la consulta a BD</div>";
 
     }
