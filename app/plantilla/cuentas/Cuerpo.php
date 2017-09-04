@@ -9,8 +9,8 @@
                             <div class="lipUsuario">
                                 <li class="centrarli"><a id="cobrar" href="#" class="amber accent-4 btn white-text tamatabsa  "><i class="material-icons left"><img class="iconotab" src="../app/img/empleado.png" /></i>Cobrar</a></li>
                                 <li class="centrarli"><a id="pagar" href="#" class="amber accent-4 btn white-text tamatabsa  "><i class="material-icons left"><img class="iconotab" src="../app/img/avatar.png" /></i>Pagar</a></li>
-                                <li class="centrarli"><a id="consignacion" href="#" class="amber accent-4 btn white-text tamatabsa  "><i class="material-icons left"><img class="iconotab" src="../app/img/avatar.png" /></i>Consignacion Por Pagar</a></li>
-                                <li class="centrarli"><a id="consignacionxCobrar" href="#" class="amber accent-4 btn white-text tamatabsa  "><i class="material-icons left"><img class="iconotab" src="../app/img/avatar.png" /></i>Consignacion Por Cobrar</a></li>
+                                <li class="centrarli"><a id="consignacion" href="#" class="amber accent-4 btn white-text tamatabsa  "><i class="material-icons left"><img class="iconotab" src="../app/img/avatar.png" /></i>Consignacion Compra</a></li>
+                                <li class="centrarli"><a id="consignacionxCobrar" href="#" class="amber accent-4 btn white-text tamatabsa  "><i class="material-icons left"><img class="iconotab" src="../app/img/avatar.png" /></i>Consignacion Venta</a></li>
                         
 
                         <!-- <div class="indicator blue" style="z-index:1"></div>  -->
