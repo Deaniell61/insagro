@@ -39,7 +39,7 @@ function mostrarConsignacionxCobrar($dato)
               <?php
           $extra="";
           $mysql = conexionMysql();
-           $sql = "SELECT c.fecha,c.nocomprobante,p.nit,p.nombre,c.total,(select tv.Descripcion from tipoventa tv where tv.idtipo=c.tipoventa),c.idventas,(select u.user from usuarios u where u.idusuarios=c.idusuario) FROM ventas c inner join cliente p on p.idcliente=c.idcliente inner join ventasdetalle cd on cd.idventa=c.idventas inner join productos pd on pd.idproductos=cd.idproductos where c.estado=1 and cd.estado=1 and c.tipoventa=5 $busca group by c.idventas order by c.fecha desc";
+           $sql = "SELECT c.fecha,c.nocomprobante,p.nit,p.nombre,c.total,(select tv.Descripcion from tipoventa tv where tv.idtipo=c.tipoventa),c.idventas,(select u.user from usuarios u where u.idusuarios=c.idusuario),(select cong.saldo from consignacion cong where cong.idcompras=c.idventas order by cong.fecha desc limit 1) FROM ventas c inner join cliente p on p.idcliente=c.idcliente inner join ventasdetalle cd on cd.idventa=c.idventas inner join productos pd on pd.idproductos=cd.idproductos where c.estado=1 and cd.estado=1 and c.tipoventa=5 $busca group by c.idventas order by c.fecha desc";
           $tabla="";
           if($resultado = $mysql->query($sql))
           {
@@ -64,7 +64,7 @@ function mostrarConsignacionxCobrar($dato)
                       $tabla .="<td>" .$fila["3"].      "</td>";
                       $tabla .="<td>" .toMoney($fila["4"]).      "</td>";
     
-                      $tabla .="<td>" .$fila["5"].      "</td>";
+                      $tabla .="<td>" .toMoney($fila["8"]).      "</td>";
                     if($_SESSION['SOFT_ROL']=='1' || $_SESSION['SOFT_ROL']=='0')
                       {
                     $tabla .="<td>" .$fila["7"].      "</td>";
@@ -129,7 +129,7 @@ function mostrarMovimientosConsignacionxCobrar($id)
         <?php
 
     $mysql = conexionMysql();
-    $sql = "SELECT cc.fecha,cc.descripcion,cc.retirado,cc.consignado FROM consignacion cc  WHERE cc.idcompras=".$id['0'];
+    $sql = "SELECT cc.fecha,cc.descripcion,cc.retirado,cc.consignado FROM consignacion cc  WHERE cc.idCompras=".$id['0'];
     $tabla="";
     if($resultado = $mysql->query($sql))
     {

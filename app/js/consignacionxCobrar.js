@@ -120,7 +120,7 @@ function mostrarConsignacion()
 function cargarConsignaciones(id)
 {
 	var  trasDato;
-	trasDato = 4;
+	trasDato = 11;
 		
         $.ajax
         ({

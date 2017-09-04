@@ -123,6 +123,31 @@ if($_POST)
         editarConsignacionxCobrar($datos);
         
     
+    }else if($transaccion == 10)
+    {
+        
+        $datos[0] = $_POST['id'];
+		$datos[1] = $_POST['abono'];
+		$datos[2] = $_POST['fecha'];
+		$datos[3] = $_POST['saldo'];
+		$datos[4] = $_POST['descripcion'];
+		$datos[5] = $_POST['credito'];
+		
+		        
+        abonarConsignacionxCob($datos);
+        
+        
+    }
+    else if($transaccion == 11)
+    {
+        
+        $datos[0] = $_POST['id'];
+       
+
+        
+        mostrarMovimientosConsignacionxCobrar($datos);
+        
+        
     }
     
 //----------- fin gestion ----------/    

@@ -320,8 +320,8 @@ function editar(id)
                     
 					
                      $('#mensaje3').html(resp); 
-                     document.getElementById('cantidad').disabled = true;
-                     mostrarConsignacionDetalle(id)
+                    //  document.getElementById('cantidad').disabled = true;
+                    //  mostrarConsignacionDetalle(id)
                 }
 
 
@@ -355,7 +355,7 @@ function guardarInventario()
         ({
             type:"POST",
             url:"../core/controlador/inventarioControlador.php",
-            data:' id=' +  id + '&precioG=' + precioG + '&tipo=5&codigo=' + codigo + '&segmento=' + segmento + '&presentacion=' + presentacion + '&minimo=' + Minimo + '&costo=' + costo + '&cantidad=' + cantidad + '&precioE=' + precioE + '&precioM=' + precioM + '&nombre=' + nombre + '&marca=' + marca + '&descripcion=' + descripcion + '&prod=' + id2 + '&trasDato=' + trasDato,
+            data:' id=' +  id + '&precioG=' + precioG + '&tipo=7&codigo=' + codigo + '&segmento=' + segmento + '&presentacion=' + presentacion + '&minimo=' + Minimo + '&costo=' + costo + '&cantidad=' + cantidad + '&precioE=' + precioE + '&precioM=' + precioM + '&nombre=' + nombre + '&marca=' + marca + '&descripcion=' + descripcion + '&prod=' + id2 + '&trasDato=' + trasDato,
             success: function(resp)
             {
 

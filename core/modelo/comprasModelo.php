@@ -134,7 +134,7 @@ function agregaInventario($datos)
 					{
 					  if($resultado->num_rows<1)
 					  {
-						$sqlInsert = "INSERT INTO inventario".$extra." (cantidad,precioCosto,precioVenta,precioClienteEs,precioDistribuidor, idproducto,medida,idpresentacion) VALUES (0,0,0,0,0,'".$fila[6]."','".$fila[7]."','".$fila[8]."')";
+						$sqlInsert = "INSERT INTO inventario".$extra." (cantidad,precioCosto,precioVenta,precioClienteEs,precioDistribuidor, idproducto,medida,idpresentacion) VALUES (0,0,0,0,0,'".$fila[6]."','".$fila[7]."','".$fila[8]==''?0:$fila[8]."')";
 						//echo "<script>alert(\"".$sqlInsert."\")</script>";
 						if(!$mysql->query($sqlInsert)){
 							$mysql->query("ROLLBACK");
@@ -160,8 +160,14 @@ function agregaInventario($datos)
 
 					}
 					
-					
-				$sql = "update inventario set cantidad=cantidad+".$fila[1].",preciocosto='".$fila[2]."',precioventa='".$fila[3]."',precioClientees='".$fila[4]."',precioDistribuidor='".$fila[5]."',medida='".$fila[7]."',idpresentacion='".$fila[8]."' where idproducto='".$fila[6]."'";
+					if($fila[8]=='')
+					{
+						$fila[8]="null";
+					}
+					else{
+						$fila[8]="'".$fila[8]."'";
+					}
+				$sql = "update inventario set cantidad=cantidad+".$fila[1].",preciocosto='".$fila[2]."',precioventa='".$fila[3]."',precioClientees='".$fila[4]."',precioDistribuidor='".$fila[5]."',medida='".$fila[7]."',idpresentacion=".$fila[8]." where idproducto='".$fila[6]."'";
 				
 					if($mysql->query($sql))
 					{
@@ -660,8 +666,9 @@ function  buscarPresentacion($dato)
 			<a class='waves-effect waves-light btn modal-close  green lighten-1 modal-trigger botonesm editar' onclick=\"seleccionaPresentacion(document.getElementById('pres".$contador."').value,'".$fila[0]."');\"><i class='material-icons left'><img class='iconoeditcrud' src='../app/img/seleccion.png' /></i></a>
 			<a class='waves-effect waves-light btn green lighten-1 modal-trigger botonesm guardar ' style=\"display:none\" id=\"save".$contador."\" onclick=\"guardarPresentacion('".$fila["0"]."','".$contador."');\"><i class='material-icons left'><img class='iconoeditcrud' src='../app/img/guardar.png' /></i></a>
 			<a class='waves-effect waves-light btn orange lighten-1 modal-trigger botonesm editar'  id=\"editar".$contador."\" onclick=\"editarPresentacion('".$contador."');\"><i class='material-icons left'><img class='iconoeditcrud' src='../app/img/editar.png' /></i></a>
-			<a class='waves-effect waves-light btn red lighten-1 modal-trigger botonesm modaleliminar' onClick=\"eliminaPresentacion('".$fila["0"]."');\"><i class='material-icons left'><img class='iconoaddcrud' src='../app/img/boton-borrar.png' /></i></a> 
 			</div>";
+			// <a class='waves-effect waves-light btn red lighten-1 modal-trigger botonesm modaleliminar' onClick=\"eliminaPresentacion('".$fila["0"]."');\"><i class='material-icons left'><img class='iconoaddcrud' src='../app/img/boton-borrar.png' /></i></a> 
+			
 		}
 		$resultado->free();    
 	  }

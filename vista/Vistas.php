@@ -315,6 +315,13 @@ function Fragmentar()
    include('../app/plantilla/fragmentar/Pie.php');
 }
 
+function FragmentarEntrada()
+{
+  include('../app/plantilla/fragmentarEntrada/Cabecera.php');
+   include('../app/plantilla/fragmentarEntrada/Cuerpo.php');
+   include('../app/plantilla/fragmentarEntrada/Pie.php');
+}
+
 
 
 ?>
