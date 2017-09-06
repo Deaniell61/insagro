@@ -64,7 +64,7 @@
               
           <div id="nuevoFrag"  class="fragmentarFor">
 
-        <div class="col s5">
+        <div class="col s5" >
           <div id="productosCompra" class="alto">
 
                              </div>
@@ -72,24 +72,24 @@
 
         <div class="col s5">
 
-            <div class="input-field col s8" style="display:none">
+            <div class="input-field col s6" style="display:none">
             <i  class="material-icons prefix"><img class="iconologin" src="../app/img/codigo.png"/></i>
             <input id="codigo" type="text" class="validate">
             <label for="icon_telephone" ><span class="etiquelogin">Codigo</span></label>
         </div>
-        <div class="input-field col s8">
+        <div class="input-field col s6">
             <i  class="material-icons prefix"><img class="iconologin" src="../app/img/codigo.png"/></i>
             <input id="nombreC" onKeyUp="buscaProducto(this)" type="text" class="validate" autofocus>
             <label for="icon_telephone" ><span class="etiquelogin">Codigo</span></label>
         </div>
 
 
-        <div class="input-field col s8 ">
+        <div class="input-field col s6 ">
             <i  class="material-icons prefix"><img class="iconologin" src="../app/img/producto.png"/></i>
             <input id="Producto" onKeyUp="buscaProducto(this)" type="text" class="validate">
             <label for="icon_telephone" ><span class="etiquelogin">Producto</span></label>
         </div>
-        <div class="input-field col s8 ">
+        <div class="input-field col s6 ">
             <i  class="material-icons prefix"><img class="iconologin" src="../app/img/marca.png"/></i>
             <input id="marca" onKeyUp="buscaMarca(this)" type="text" class="validate">
             <label for="icon_telephone" ><span class="etiquelogin">Laboratorio</span></label>
@@ -101,12 +101,12 @@
                 </center>
         </div>
 
-         <div class="input-field col s10">
+         <div class="input-field col s6">
                         <i class="material-icons prefix"><img class="iconologin" src="../app/img/descripcion.png" /></i>
                         <input id="descripcion" type="text" class="validate">
                         <label for="icon_prefix" ><span class="etiquelogin">Descripcion</span></label>
                     </div>
-                    <div class="input-field col s8">
+                    <div class="input-field col s6">
                     <i  class="material-icons prefix"><img class="iconologin" src="../app/img/tipoR.png"/></i>
                     <select id="tipoRepuesto" onChange="cambiarTipoProd(this.value,document.getElementById('codigo').value)">
                         <option value="" disabled selected>Sector</option>
@@ -128,7 +128,7 @@
                     </select>
                     <label>Sector de Producto</label>
                     </div>
-                    <div class="input-field col s8">
+                    <div class="input-field col s6">
                     <i  class="material-icons prefix"><img class="iconologin" src="../app/img/tipoR.png"/></i>
                     <select id="idpresentacion" onChange="">
                         <?php
@@ -158,7 +158,7 @@
                         <label for="idpresentacion" ><span class="etiquelogin">Presentacion</span></label>
                         
                     </div>-->
-            <div class="input-field col s8">
+            <div class="input-field col s6">
             <i  class="material-icons prefix"><img class="iconologin" src="../app/img/tipoR.png"/></i>
             <select id="prodpadre">
                 <?php
@@ -169,54 +169,55 @@
             </select>
             <label>Sector de Producto</label>
             </div>
-            <div class="input-field col s8 ">
+            <div class="input-field col s6 ">
                 <i  class="material-icons prefix"><img class="iconologin" src="../app/img/precioCosto.png"/></i>
                 <input id="cantidadQ" type="text" value="0" class="validate" onKeyUp="siguiente(event,'precioG');">
                 <label for="icon_telephone" ><span class="etiquelogin">Cantidad de Quintales</span></label>
             </div>
 
-            <div class="input-field col s8 ">
+            <div class="input-field col s6 ">
                 <i  class="material-icons prefix"><img class="iconologin" src="../app/img/precioCosto.png"/></i>
                 <input id="precioCQu" type="text" value="0" class="validate" onKeyUp="siguiente(event,'precioG');">
                 <label for="icon_telephone" ><span class="etiquelogin">Precio Costo de Quintales</span></label>
             </div>
             
-            <div class="input-field col s8 ">
+            <div class="input-field col s6 ">
                 <i  class="material-icons prefix"><img class="iconologin" src="../app/img/precioCosto.png"/></i>
                 <input id="cantidadL" type="text" value="0" class="validate" onKeyUp="CalculaCostoLibra();">
                 <label for="icon_telephone" ><span class="etiquelogin">Cantidad de Libras</span></label>
             </div>
 
-            <div class="input-field col s8 ">
+            <div class="input-field col s6 ">
                 <i  class="material-icons prefix"><img class="iconologin" src="../app/img/precioCosto.png"/></i>
                 <input id="precioC" type="text" value="0" class="validate" onKeyUp="" disabled>
                 <label for="icon_telephone" ><span class="etiquelogin">Precio Costo</span></label>
             </div>
 
             
-            <div class="input-field col s8 " >
+            <div class="input-field col s6 " >
                 <i  class="material-icons prefix"><img class="iconologin" src="../app/img/precioGeneral.png"/></i>
                 <input id="precioG" type="text" value="0" class="validate" onKeyUp="siguiente(event,'precioE');calcularPrecios('precioE','precioM',this.value);">
                 <label for="icon_telephone"  ><span class="etiquelogin">Precio Venta general</span></label>
             </div>
 
-            <div class="input-field col s8 "  style="display:none;">
+            <div class="input-field col s6 "  style="display:none;">
                 <i  class="material-icons prefix"><img class="iconologin" src="../app/img/precioEspecial.png"/></i>
                 <input id="precioE" type="text" value="0" class="validate" onKeyUp="siguiente(event,'precioM');">
                 <label for="icon_telephone" ><span class="etiquelogin">Precio Venta Especial</span></label>
 
             </div>
 
-            <div class="input-field col s8 "  style="display:none;">
+            <div class="input-field col s6 "  style="display:none;">
                 <i  class="material-icons prefix"><img class="iconologin" src="../app/img/precioMayoreo.png"/></i>
                 <input id="precioM" type="text" value="0" class="validate" onKeyUp="siguiente(event,'compra1');">
                 <label for="icon_telephone" ><span class="etiquelogin">Precio Mayoreo</span></label>
             </div>
-  </div>
-
-            <div class="modal-footer col s5 right">
+            <div class="modal-footer col s12 right-align">
                 <a id="btnInsertarFrag" onClick="fragmentarProducto()" class=" modal-action waves-effect waves-light btn blue lighten-1" >Aceptar</a>
             </div>
+  </div>
+
+            
 
           </div>
 
