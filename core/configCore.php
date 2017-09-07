@@ -55,6 +55,7 @@ require_once('../../vista/cuentasPVista.php');
 require_once('../../vista/cuentasCVista.php');
 require_once('../../vista/inventarioVista.php');
 require_once('../../vista/inventarioAdminVista.php');
+require_once('../../vista/fragmentarVista.php');
 require_once('../../vista/pagoSueldoVista.php');
 require_once('../../vista/gastosVista.php');
 require_once('../../vista/cajaVista.php');

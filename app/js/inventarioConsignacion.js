@@ -320,8 +320,9 @@ function editar(id)
                     
 					
                      $('#mensaje3').html(resp); 
-                     //document.getElementById('cantidad').disabled = true;
-                     //mostrarConsignacionDetalle(id)
+                     document.getElementById('codigo').disabled = true;
+                     document.getElementById('cantidad').disabled = true;
+                     mostrarConsignacionDetalle(id)
                 }
 
 
@@ -567,4 +568,3 @@ function impInvAdmin(div){
         });
     
  }
-

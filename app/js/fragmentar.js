@@ -88,18 +88,20 @@ function fragmentarProducto(){
 	precioM=document.getElementById('precioM').value;
 	costo=document.getElementById('precioC').value;
 	cantidad=document.getElementById('cantidadL').value;
+	cantidadQ=document.getElementById('cantidadQ').value;
 	codigo=document.getElementById('nombreC').value;
 	presentacion=3;
 	
 	
 	nombre=document.getElementById('Producto').value;
+	descripcionA=document.getElementById('DescripcionAbono').value;
 	marca=document.getElementById('marca').value;
 	descripcion=document.getElementById('descripcion').value;
     var padre= $('#prodpadre').val();
    
     if(padre==""){
       //  alert(padre);
-        var trasDato = 10;
+        alert('Debe seleccionar un producto al cual acreditar')
     }else{
         var trasDato = 9;
     }
@@ -107,7 +109,7 @@ function fragmentarProducto(){
         ({
             type:"POST",
             url:"../core/controlador/inventarioControlador.php",
-            data:' id=' +  id + '&precioG=' + precioG + '&codigo=' + codigo + '&presentacion=' + presentacion + '&costo=' + costo + '&cantidad=' + cantidad + '&precioE=' + precioE + '&precioM=' + precioM + '&nombre=' + nombre + '&padre=' + padre + '&trasDato=' + trasDato,
+            data:' id=' +  id + '&descripcionA=' + descripcionA + '&precioG=' + precioG + '&codigo=' + codigo + '&presentacion=' + presentacion + '&costo=' + costo + '&cantidadQ=' + cantidadQ + '&cantidad=' + cantidad + '&precioE=' + precioE + '&precioM=' + precioM + '&nombre=' + nombre + '&padre=' + padre + '&trasDato=' + trasDato,
             success: function(resp)
             {
                 
@@ -144,9 +146,10 @@ function abrirFragmentar(id){
 
    
     $('#modal1P').openModal();
-	cierre();
+    cierre();
+    
     trasDato = 8;
- 
+    
     $.ajax
         ({
             type:"POST",
@@ -170,10 +173,69 @@ function abrirFragmentar(id){
                 $('#tipoRepuesto').material_select();
                 $('#idpresentacion').material_select();
                 $('#Cantidad').focus();
+                mostratDetalle(id);
             }
         });
+        
 }
+function mostratDetalle(id){
+    var  trasDato;
+    trasDato = 21;
+    
+        $.ajax
+        ({
+            type:"POST",
+            url:"../core/controlador/inventarioControlador.php",
+            data:' tipo=' +  id + '&trasDato=' + trasDato,
+            success: function(resp)
+            {
 
+               if(resp == '1')
+                {
+
+
+                    //$('#mensaje').html('Datos Incorrectos.');         
+                    //$('#precargar').hide();    
+                }
+                else
+                {
+                    
+                    
+                     $('#tablaAbonos').html(resp); 
+                     
+                     $('#tabla').DataTable( {
+
+                                            info:     false,
+                                        
+                                        
+                                        
+                                            language: {
+                                        
+                                                search: "Buscar",
+                                                sLengthMenu:" _MENU_ ",
+                                        
+                                                paginate:{
+                                        
+                                                    previous: "Anterior",
+                                                    next: "Siguiente",
+                                        
+                                                },
+                                        
+                                            },
+                                            /*
+                                                       "scrollY":        "375px",
+                                                "scrollCollapse": true,
+                                                "paging":         true
+                                                 */
+                                        } );
+                                        $('select').material_select();
+
+                }
+
+
+            }     
+        });
+}
 function mostrarTablaFragmentar(id){
     trasDato = 7;
     $.ajax

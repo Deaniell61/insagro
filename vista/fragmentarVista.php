@@ -3,13 +3,6 @@
 
 function mostrarFragmentar()
 {
-echo "<script>
-	if(document.getElementById('tipoVenta'))
-	{
-		$('#tipoVenta').material_select('destroy');
-	}
-	</script>";
-
 
     //creacion de la tabla
 ?>
@@ -84,6 +77,161 @@ echo "<script>
     else
     {
         $respuesta = "<div class='error'>Error: no se ejecuto la consulta a BD</div>";
+
+    }
+
+    //cierro la conexion
+    $mysql->close();
+
+    //debuelvo la variable resultado
+    echo ($respuesta);
+        ?>
+    </tbody>
+</table>
+<?php
+
+}
+
+
+function mostrarDetalleFragmentar($datos)
+{
+
+    //creacion de la tabla
+?>
+
+<table id='tabla' class='bordered centered highlight responsive-table centrarT'>
+    <thead>
+        <tr>
+            <th>Fecha</th>
+            <th>Descripcion</th>
+            <th>Quintales Acreditado</th>
+
+
+        </tr>
+    </thead>
+    <tbody>
+        <?php
+	$extra="";
+    $mysql = conexionMysql();
+    $cont=0;
+    $sql = "SELECT fecha,descripcion,retirado FROM detalleFragmentar where  idinventario=(select i.idinventario from inventario i where i.idproducto='".$datos[0]."')";
+    
+    $medidas=array('','KG','LB','OZ','GR');
+    $medida['']="";
+    $tabla="";
+    if($resultado = $mysql->query($sql))
+    {
+
+        if(mysqli_num_rows($resultado)==0)
+        {
+            $respuesta = "<div class='error'>No hay Compras BD vacia</div>";
+        }
+
+        else
+        {
+
+            while($fila = $resultado->fetch_row())
+            {
+                $cont++;
+
+                $tabla .= "<tr>";
+
+                $tabla .="<td>" .$fila["0"]." </td>";
+                $tabla .="<td>" .$fila["1"].      "</td>";
+				$tabla .="<td>" .$fila["2"].      "</td>";
+      
+
+
+                $tabla .= "</tr>";
+
+            }
+
+            $resultado->free();//librerar variable
+
+
+            $respuesta = $tabla;
+        }
+    }
+    else
+    {
+        $respuesta = "<div class='error'>Error: no se ejecuto la consulta a BD</div>".$sql;
+
+    }
+
+    //cierro la conexion
+    $mysql->close();
+
+    //debuelvo la variable resultado
+    echo ($respuesta);
+        ?>
+    </tbody>
+</table>
+<?php
+
+}
+
+function mostrarDetalleFragmentarEntrada($datos)
+{
+
+    //creacion de la tabla
+?>
+
+<table id='tabla' class='bordered centered highlight responsive-table centrarT'>
+    <thead>
+        <tr>
+            <th>Fecha</th>
+            <th>Descripcion</th>
+            <th>Quintales Acreditado</th>
+
+
+        </tr>
+    </thead>
+    <tbody>
+        <?php
+	$extra="";
+    $mysql = conexionMysql();
+    $cont=0;
+    $sql = "SELECT fecha,descripcion,retirado FROM detalleFragmentarEntr where  idinventario=(select i.idinventario from inventarioFrag i where i.idproducto='".$datos[0]."')";
+    
+    $medidas=array('','KG','LB','OZ','GR');
+    $medida['']="";
+    $tabla="";
+    if($resultado = $mysql->query($sql))
+    {
+
+        if(mysqli_num_rows($resultado)==0)
+        {
+            $respuesta = "<div class='error'>No hay Compras BD vacia</div>";
+        }
+
+        else
+        {
+
+            while($fila = $resultado->fetch_row())
+            {
+                $cont++;
+
+                $tabla .= "<tr>";
+
+                $tabla .="<td>" .$fila["0"]." </td>";
+                $tabla .="<td>" .$fila["1"].      "</td>";
+				$tabla .="<td>" .$fila["2"].      "</td>";
+      
+
+
+                $tabla .= "</tr>";
+
+            }
+
+            $resultado->free();//librerar variable
+
+
+            $respuesta = $tabla;
+        }
+    }
+    else
+    {
+        $respuesta = "<div class='error'>Error: no se ejecuto la consulta a BD</div>".$sql;
 
     }
 

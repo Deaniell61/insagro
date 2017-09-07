@@ -398,13 +398,56 @@ function buscarInventarioProductoFragmentar($datos)
     
 }
 
+function buscarInventarioProductoFragmentarEntrada($datos)
+{
+    $medida=array('','KG','LB','OZ','GR');
+	$medida['']="";
+    
+    $mysql = conexionMysql();
+    $form=array();
+    $sql = "SELECT codigoProducto,nombre,marca2,descripcion,tipoRepuesto,(select i.cantidad from inventarioFrag i where i.idproducto=p.idproductos),(select i.precioCosto from inventarioFrag i where i.idproducto=p.idproductos),idpresentacion from productos p where idproductos='".$datos[0]."'";
+	$form['status']=$sql;
+    if($resultado = $mysql->query($sql))
+    {
+      if($resultado->num_rows>0)
+	  {
+		$fila = $resultado->fetch_row();    
+			
+		$form=$fila;
+		$form['id']=$datos[0];
+		//$form[1]=$medida[$fila[1]];
+			$form['status']="1";
+		$resultado->free();    
+	  }
+	  else
+	  {
+		$form['status']="Consulta 0";
+		$resultado->free();   
+	  }
+    
+    }
+    else
+    {   
+    $form['status']="Error sql\n".$sql;
+    
+    
+    }
+    
+    
+    $mysql->close();
+    
+    echo json_encode($form);
+    
+    
+}
+
 function fragmentarInventario($datos)
 {
-    
+    session_start();
     $mysql = conexionMysql();
     $form="";
 	$mysql->query("BEGIN");
-	$query="select * from inventarioFrag where idproducto='".$datos[9]."'";
+	$query="select cantidad,idinventario from inventarioFrag where idproducto='".$datos[9]."'";
 	
 	if($resultadoF = $mysql->query($query))
 	{
@@ -417,15 +460,31 @@ function fragmentarInventario($datos)
 						$sql2 = "update inventario set cantidad=cantidad-(".$datos[5]."/100) where idproducto='".$datos[0]."' ";
 						if($resultado2 = $mysql->query($sql2))
 						{
-							$mysql->query("COMMIT");
-							$form='<script>
-							limpiarFragmentar();
-							location.reload();
-							</script>';
+							$query="select idinventario from inventario where idproducto='".$datos[0]."'";
+							
+							if($resultadoF = $mysql->query($query))
+							{
+									$fila = $resultadoF->fetch_row(); 
+									$saldo = $datos[11]-($datos[5]/100);
+									$squery = "INSERT INTO detalleFragmentar(consignado,retirado,saldo,fecha,descripcion,idinventario,idusuario) values('".$datos[11]."',(".$datos[5]."/100),'".$saldo."','".date('Y-m-d H:i:s')."','".$datos[10]."',".$fila[0].",'".$_SESSION['SOFT_USER_ID']."');";
+									if(!$mysql->query($squery)){
+										$mysql->query("ROLLBACK");
+										$form='<script>
+										alert("error");
+										</script>';
+									}else{
+									$mysql->query("COMMIT");
+									$mysql->query("COMMIT");
+								$form='<script>
+								limpiarFragmentar();
+								location.reload();
+								</script>';}
+							}
+
 						}else{
 							$mysql->query("ROLLBACK");
 							$form='<script>
-							alers("error");
+							alert("error");
 							</script>';
 						}
 					
@@ -434,13 +493,13 @@ function fragmentarInventario($datos)
 				{   
 					$mysql->query("ROLLBACK");
 					$form='<script>
-					alers("error");
+					alert("error");
 					</script>';
 				}
 			}else{
 				$mysql->query("ROLLBACK");
 				$form='<script>
-				alers("error");
+				alert("error");
 				</script>';
 			}
 		}else
@@ -454,15 +513,31 @@ function fragmentarInventario($datos)
 						$sql2 = "update inventario set cantidad=cantidad-(".$datos[5]."/100) where idproducto='".$datos[0]."' ";
 						if($resultado2 = $mysql->query($sql2))
 						{
-							$mysql->query("COMMIT");
-							$form='<script>
-							limpiarFragmentar();
-							location.reload();
-							</script>';
+							$query="select idinventario from inventario where idproducto='".$datos[0]."'";
+							
+							if($resultadoF = $mysql->query($query))
+							{
+									$fila = $resultadoF->fetch_row(); 
+									$saldo = $datos[11]-($datos[5]/100);
+									$squery = "INSERT INTO detalleFragmentar(consignado,retirado,saldo,fecha,descripcion,idinventario,idusuario) values('".$datos[11]."',(".$datos[5]."/100),'".$saldo."','".date('Y-m-d H:i:s')."','".$datos[10]."',".$fila[0].",'".$_SESSION['SOFT_USER_ID']."');";
+									if(!$mysql->query($squery)){
+										$mysql->query("ROLLBACK");
+										$form='<script>
+										alert("error");
+										</script>';
+									}else{
+								$mysql->query("COMMIT");
+								$mysql->query("COMMIT");
+								$form='<script>
+								//alert("'.$sql.'");
+								limpiarFragmentar();
+								location.reload();
+								</script>';}
+							}
 						}else{
 							$mysql->query("ROLLBACK");
 							$form='<script>
-							alers("error");
+							alert("error");
 							</script>';
 						}
 					
@@ -471,13 +546,13 @@ function fragmentarInventario($datos)
 				{   
 					$mysql->query("ROLLBACK");
 					$form='<script>
-					alers("error");
+					alert("error");
 					</script>';
 				}
 			}else{
 				$mysql->query("ROLLBACK");
 				$form='<script>
-				alers("error");
+				alert("error");
 				</script>';
 			}
 		}
@@ -493,7 +568,7 @@ function fragmentarInventario($datos)
 
 function fragmentarInventarioEntrada($datos)
 {
-    
+    session_start();
     $mysql = conexionMysql();
     $form=array();
     $mysql->query("BEGIN");
@@ -504,15 +579,33 @@ function fragmentarInventarioEntrada($datos)
 				$sql2 = "update inventarioFrag set cantidad=cantidad-(".$datos[5].") where idproducto='".$datos[0]."' ";
 				if($resultado2 = $mysql->query($sql2))
 				{
-					$mysql->query("COMMIT");
-					$form='<script>
-					limpiarFragmentar();
-					location.reload();
-					</script>';
+					$query="select idinventario from inventarioFrag where idproducto='".$datos[0]."'";
+					
+					if($resultadoF = $mysql->query($query))
+					{
+							if($fila = $resultadoF->fetch_row()){
+								$saldo = $datos[11]-($datos[5]);
+								$squery1 = "INSERT INTO detalleFragmentarEntr(consignado,retirado,saldo,fecha,descripcion,idinventario,idusuario) values('".$datos[11]."',(".$datos[5]."),'".$saldo."','".date('Y-m-d H:i:s')."','".$datos[10]."',".$fila[0].",'".$_SESSION['SOFT_USER_ID']."');";
+								if(!$mysql->query($squery1)){
+									$mysql->query("ROLLBACK");
+									$form='<script>
+									alert("'.$squery1.'");
+									</script>';
+								}else{
+									$mysql->query("COMMIT");
+									$mysql->query("COMMIT");
+								$form='<script>
+								limpiarFragmentar();
+								location.reload();
+								</script>';
+								}
+							}
+							
+					}
 				}else{
 					$mysql->query("ROLLBACK");
 					$form='<script>
-					alers("error");
+					alert("error");
 					</script>';
 				}
 			
@@ -521,13 +614,13 @@ function fragmentarInventarioEntrada($datos)
 		{   
 			$mysql->query("ROLLBACK");
 			$form='<script>
-			alers("error");
+			alert("error");
 			</script>';
 		}
 	}else{
 		$mysql->query("ROLLBACK");
 		$form='<script>
-		alers("error");
+		alert("error");
 		</script>';
 	}
     

@@ -77,19 +77,19 @@
             <input id="codigo" type="text" class="validate">
             <label for="icon_telephone" ><span class="etiquelogin">Codigo</span></label>
         </div>
-        <div class="input-field col s8">
+        <div class="input-field col s6">
             <i  class="material-icons prefix"><img class="iconologin" src="../app/img/codigo.png"/></i>
             <input id="nombreC" onKeyUp="buscaProducto(this)" type="text" class="validate" autofocus>
             <label for="icon_telephone" ><span class="etiquelogin">Codigo</span></label>
         </div>
 
 
-        <div class="input-field col s8 ">
+        <div class="input-field col s6 ">
             <i  class="material-icons prefix"><img class="iconologin" src="../app/img/producto.png"/></i>
             <input id="Producto" onKeyUp="buscaProducto(this)" type="text" class="validate">
             <label for="icon_telephone" ><span class="etiquelogin">Producto</span></label>
         </div>
-        <div class="input-field col s8 ">
+        <div class="input-field col s8 " style="display:none">
             <i  class="material-icons prefix"><img class="iconologin" src="../app/img/marca.png"/></i>
             <input id="marca" onKeyUp="buscaMarca(this)" type="text" class="validate">
             <label for="icon_telephone" ><span class="etiquelogin">Laboratorio</span></label>
@@ -101,12 +101,12 @@
                 </center>
         </div>
 
-         <div class="input-field col s10">
+         <div class="input-field col s10" style="display:none">
                         <i class="material-icons prefix"><img class="iconologin" src="../app/img/descripcion.png" /></i>
                         <input id="descripcion" type="text" class="validate">
                         <label for="icon_prefix" ><span class="etiquelogin">Descripcion</span></label>
                     </div>
-                    <div class="input-field col s8">
+                    <div class="input-field col s6">
                     <i  class="material-icons prefix"><img class="iconologin" src="../app/img/tipoR.png"/></i>
                     <select id="tipoRepuesto" onChange="cambiarTipoProd(this.value,document.getElementById('codigo').value)">
                         <option value="" disabled selected>Sector</option>
@@ -128,7 +128,7 @@
                     </select>
                     <label>Sector de Producto</label>
                     </div>
-                    <div class="input-field col s8">
+                    <div class="input-field col s6">
                     <i  class="material-icons prefix"><img class="iconologin" src="../app/img/tipoR.png"/></i>
                     <select id="idpresentacion" onChange="">
                         <?php
@@ -158,7 +158,19 @@
                         <label for="idpresentacion" ><span class="etiquelogin">Presentacion</span></label>
                         
                     </div>-->
-            <div class="input-field col s8">
+            
+            <div class="input-field col s6 ">
+                <i  class="material-icons prefix"><img class="iconologin" src="../app/img/precioCosto.png"/></i>
+                <input id="cantidadQ" type="text" value="0" class="validate" onKeyUp="siguiente(event,'precioG');">
+                <label for="icon_telephone" ><span class="etiquelogin">Cantidad de Libras</span></label>
+            </div>
+
+            <div class="input-field col s6 ">
+                <i  class="material-icons prefix"><img class="iconologin" src="../app/img/precioCosto.png"/></i>
+                <input id="precioCQu" type="text" value="0" class="validate" onKeyUp="siguiente(event,'precioG');">
+                <label for="icon_telephone" ><span class="etiquelogin">Precio Costo de Libra</span></label>
+            </div>
+            <div class="input-field col s6">
             <i  class="material-icons prefix"><img class="iconologin" src="../app/img/tipoR.png"/></i>
             <select id="prodpadre">
                 <?php
@@ -169,25 +181,19 @@
             </select>
             <label>Sector de Producto</label>
             </div>
-            <div class="input-field col s8 ">
-                <i  class="material-icons prefix"><img class="iconologin" src="../app/img/precioCosto.png"/></i>
-                <input id="cantidadQ" type="text" value="0" class="validate" onKeyUp="siguiente(event,'precioG');">
-                <label for="icon_telephone" ><span class="etiquelogin">Cantidad de Libras</span></label>
-            </div>
-
-            <div class="input-field col s8 ">
-                <i  class="material-icons prefix"><img class="iconologin" src="../app/img/precioCosto.png"/></i>
-                <input id="precioCQu" type="text" value="0" class="validate" onKeyUp="siguiente(event,'precioG');">
-                <label for="icon_telephone" ><span class="etiquelogin">Precio Costo de Libra</span></label>
-            </div>
-            
-            <div class="input-field col s8 ">
+            <div class="input-field col s6 ">
                 <i  class="material-icons prefix"><img class="iconologin" src="../app/img/precioCosto.png"/></i>
                 <input id="cantidadL" type="text" value="0" class="validate" onKeyUp="CalculaCostoLibra();">
                 <label for="icon_telephone" ><span class="etiquelogin">Cantidad de Libras a Inventario</span></label>
             </div>
 
-            <div class="input-field col s8 ">
+            <div class="input-field col s12 ">
+                <i  class="material-icons prefix"><img class="iconologin" src="../app/img/precioCosto.png"/></i>
+                <input id="DescripcionAbono" type="text"  class="validate">
+                <label for="icon_telephone" ><span class="etiquelogin">Descripcion</span></label>
+            </div>
+
+            <div class="input-field col s8 " style="display:none">
                 <i  class="material-icons prefix"><img class="iconologin" src="../app/img/precioCosto.png"/></i>
                 <input id="precioC" type="text" value="0" class="validate" onKeyUp="" disabled>
                 <label for="icon_telephone" ><span class="etiquelogin">Precio Costo</span></label>
@@ -219,7 +225,9 @@
             </div>
 
           </div>
+          <div id="tablaAbonos">
 
+            </div>
 
         </div>
       </div>

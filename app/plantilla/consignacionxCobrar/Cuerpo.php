@@ -70,122 +70,122 @@
         <!-- nuevo --> 
 
         <div id="modal1" class="modal">
-           
-              
-                    	
-                  
-                        <div class="nav-wrapper grey darken-4">
-                            <div>
-                                <p class="encabezadotextomodal">Consignacion</p>
-
-                                <a id="modalcerrar" class=" modal-action modal-close waves-effect waves-light right  " ><i class="material-icons prefix"><img class="iconocerrarmodal" src="../app/img/desenfrenado.png"></i></a> 
-                            </div>	
-						</div>
-                      
-                      
-                      
-                      
-                       <div class="row">
-     
         
-         
-      
-                      <div class="col s12 ">
-         
-         
- <div id="mensajecv"></div>
-         
-                
-           			<div class="input-field col s5" hidden>
-                                  <i  class="material-icons prefix"><img class="iconologin" src="../app/img/monto.png"/></i>
-								  <input  id="codigo" disabled type="text" class="validate">
-								  <label class="active" for="fecha" >Total Credito</label>
-								</div>
-                                <div class="input-field col s6">
-
-										 <i class="material-icons prefix"><img class="iconologin" src="../app/img/usuario.png" /> </i>
-										<input id="proveedorED" disabled type="text" onKeyUp="buscarCliente(this,event)" class="validate">
-										 <label for="icon_prefix" ><span class="etiquelogin">Proveedor </span></label>        
-							  </div>
-                             <div class="input-field col s6">
-                                  <i  class="material-icons prefix"><img class="iconologin" src="../app/img/monto.png"/></i>
-								  <input  id="totalCreditoED" disabled type="number" class="validate">
-								  <label class="active" for="fecha" >Total Consignacion</label>
-								</div>
-                              <div class="input-field col s6">
-
-           <i class="material-icons prefix"><img class="iconologin" src="../app/img/plazo.png" /> </i>
-          <input id="fechaInicialED" disabled type="date" class="validate">
-           <label class="active" for="fecha" >Fecha Inicio</label>
-                 
-         </div>
-                              
-                               <div class="input-field col s6">
-                                  <i  class="material-icons prefix"><img class="iconologin" src="../app/img/monto.png"/></i>
-								  <input  id="saldoED" disabled type="number" class="validate">
-								  <label class="active" for="fecha" >Saldo</label>
-								</div>
-                               
-                               
-                             
-                             
-                              
-                                  <div class="input-field col s6">
-
-										 <i class="material-icons prefix"><img class="iconologin" src="../app/img/plazo.png" /> </i>
-										<input id="fechaPagoED" type="date" class="validate" value="<?php echo date('Y-m-d')?>">
-										 <label class="active" for="fecha" >Fecha de Pago</label>       
-							  </div>
-                              
-                               <div class="input-field col s6">
-                                  <i  class="material-icons prefix"><img class="iconologin" src="../app/img/monto.png"/></i>
-								  <input  id="MontoED" type="number" onChange="verificaImpresion();" onkeyup="verificaImpresion();" class="validate" autofocus>
-								  <label class="active" for="fecha" >Monto</label>
-								</div>
-                              
-                              
-                             
-                                <div class="input-field col s10">   
-								  <i  class="material-icons prefix"><img class="iconologin" src="../app/img/descripcion.png"/></i>
-								  <input id="descripcionED" type="text" class="validate">
-								  <label for="icon_telephone" ><span class="etiquelogin">Descripcion</span></label>
-							  </div>
-
-                               
-                               
-                              
-                                                 
-          
-				<!-- reumen --> 
-		          
-				 <p id="saldoE" class=" col s3 right">Saldo</p>
-				 <div id="resumenPEdit" class="col s10"   >
-               
-				    Tabla(fecha de pago, Descripcion, Abono, Credito)
+           
                      
-					 </div>   
-          
-                          
-                          <?php
-	  if($_SESSION['SOFT_ACCESOAgrega'.'cuentas']=='1')
-				{
-	  ?>
-                            <a id="guardar" class="waves-effect waves-light btn blue lighten-1 modal-trigger" onClick="abonarConsignacion();" ><i class="material-icons left"><img class="iconoaddcrud" src="../app/img/guardar.png" /></i>Guardar</a>
-                       
-                       
-                            
-                        
-                        
-                    <?php
-				}?>
+               
+                     <div class="nav-wrapper grey darken-4">
+                         <div>
+                             <p class="encabezadotextomodal">Consignacion</p>
+
+                             <a id="modalcerrar" class=" modal-action modal-close waves-effect waves-light right  " ><i class="material-icons prefix"><img class="iconocerrarmodal" src="../app/img/desenfrenado.png"></i></a> 
+                         </div>	
+                     </div>
                    
-           </div>	   
-             <!-- <a id="imprimePro11"  onClick="imprimirCuentaPagar('codigo','mensajecv');" class="waves-effect waves-light btn green lighten-1 modal-trigger botonG " ><i class="material-icons left"><img class="iconoaddcrud" src="../app/img/imprimir.png" /></i>Imprimir Detalle</a> 
-          -->
-       
-      </div>
+                   
+                   
+                   
+                    <div class="row">
+  
+     
       
- </div>
+   
+                   <div class="col s12 ">
+      
+      
+<div id="mensajecv"></div>
+      
+             
+                    <div class="input-field col s5" hidden>
+                               <i  class="material-icons prefix"><img class="iconologin" src="../app/img/monto.png"/></i>
+                               <input  id="codigo" disabled type="text" class="validate">
+                               <label class="active" for="fecha" >Total Credito</label>
+                             </div>
+                             <div class="input-field col s6">
+
+                                      <i class="material-icons prefix"><img class="iconologin" src="../app/img/usuario.png" /> </i>
+                                     <input id="proveedorED" disabled type="text" onKeyUp="buscarCliente(this,event)" class="validate">
+                                      <label for="icon_prefix" ><span class="etiquelogin">Proveedor </span></label>        
+                           </div>
+                          <div class="input-field col s6">
+                               <i  class="material-icons prefix"><img class="iconologin" src="../app/img/monto.png"/></i>
+                               <input  id="totalCreditoED" disabled type="number" class="validate">
+                               <label class="active" for="fecha" >Total Consignacion</label>
+                             </div>
+                           <div class="input-field col s6">
+
+        <i class="material-icons prefix"><img class="iconologin" src="../app/img/plazo.png" /> </i>
+       <input id="fechaInicialED" disabled type="date" class="validate">
+        <label class="active" for="fecha" >Fecha Inicio</label>
+              
+      </div>
+                           
+                            <div class="input-field col s6">
+                               <i  class="material-icons prefix"><img class="iconologin" src="../app/img/monto.png"/></i>
+                               <input  id="saldoED" disabled type="number" class="validate">
+                               <label class="active" for="fecha" >Saldo</label>
+                             </div>
+                            
+                            
+                          
+                          
+                           
+                               <div class="input-field col s6">
+
+                                      <i class="material-icons prefix"><img class="iconologin" src="../app/img/plazo.png" /> </i>
+                                     <input id="fechaPagoED" type="date" class="validate" value="<?php echo date('Y-m-d')?>">
+                                      <label class="active" for="fecha" >Fecha de Pago</label>       
+                           </div>
+                           
+                            <div class="input-field col s6">
+                               <i  class="material-icons prefix"><img class="iconologin" src="../app/img/monto.png"/></i>
+                               <input  id="MontoED" type="number" class="validate" autofocus>
+                               <label class="active" for="fecha" >Monto</label>
+                             </div>
+                           
+                           
+                          
+                             <div class="input-field col s10">   
+                               <i  class="material-icons prefix"><img class="iconologin" src="../app/img/descripcion.png"/></i>
+                               <input id="descripcionED" type="text" class="validate">
+                               <label for="icon_telephone" ><span class="etiquelogin">Descripcion</span></label>
+                           </div>
+
+                            
+                            
+                           
+                                              
+       
+             <!-- reumen --> 
+               
+              <p id="saldoE" class=" col s3 right">Saldo</p>
+              <div id="resumenPEdit" class="col s10"   >
+            
+                 Tabla(fecha de pago, Descripcion, Abono, Credito)
+                  
+                  </div>   
+       
+                       
+                       <?php
+   if($_SESSION['SOFT_ACCESOAgrega'.'cuentas']=='1')
+             {
+   ?>
+                         <a id="guardar" class="waves-effect waves-light btn blue lighten-1 modal-trigger" onClick="abonarConsignacion();" ><i class="material-icons left"><img class="iconoaddcrud" src="../app/img/guardar.png" /></i>Guardar</a>
+                    
+                    
+                         
+                     
+                     
+                 <?php
+             }?>
+                
+        </div>	   
+          <!-- <a id="imprimePro11"  onClick="imprimirCuentaPagar('codigo','mensajecv');" class="waves-effect waves-light btn green lighten-1 modal-trigger botonG " ><i class="material-icons left"><img class="iconoaddcrud" src="../app/img/imprimir.png" /></i>Imprimir Detalle</a> 
+       -->
+    
+   </div>
+   
+</div>
 
 
                        

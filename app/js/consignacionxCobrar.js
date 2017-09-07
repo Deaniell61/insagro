@@ -157,7 +157,7 @@ function abonarConsignacion()
 	 
     var idedit, trasDato; 
 		
-    trasDato = 5;
+    trasDato = 10;
 	var abono=document.getElementById('MontoED').value;
 	var fecha=document.getElementById('fechaPagoED').value;
 	var descripcion=document.getElementById('descripcionED').value;

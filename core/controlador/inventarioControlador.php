@@ -116,6 +116,8 @@ if($_POST)
         $datos[7]=$_POST['precioM'];         
         $datos[8]=$_POST['nombre'];         
         $datos[9]=$_POST['padre'];
+        $datos[10]=$_POST['descripcionA'];
+        $datos[11]=$_POST['cantidadQ'];
 		
 		
         fragmentarInventario($datos);
@@ -239,9 +241,41 @@ if($_POST)
         $datos[7]=$_POST['precioM'];         
         $datos[8]=$_POST['nombre'];         
         $datos[9]=$_POST['padre'];
+        $datos[10]=$_POST['descripcionA'];
+        $datos[11]=$_POST['cantidadQ'];
+		
 		
 		
         fragmentarInventarioEntrada($datos);
+        
+        
+    
+    }
+    else if($transaccion == 21)
+    {
+        $datos[0]=$_POST['tipo'];
+		
+		
+        mostrarDetalleFragmentar($datos);
+        
+        
+    
+    }
+    else if($transaccion == 22)
+    {
+        $datos[0]=$_POST['tipo'];
+		
+		
+        mostrarDetalleFragmentarEntrada($datos);
+        
+        
+    
+    }
+    else if($transaccion == 23)
+    {
+        $datos[0]=$_POST['id'];
+		
+        buscarInventarioProductoFragmentarEntrada($datos);
         
         
     

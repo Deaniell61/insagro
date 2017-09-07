@@ -366,7 +366,7 @@ function editarConsignacionxCobrar($dato)
     $mysql = conexionMysql();
 	$form="";
 	
-    $sql = "SELECT c.fecha,c.nocomprobante,p.nit,p.nombre,c.total,c.tipoventa,c.idventas,p.direccion,(select cong.saldo from consignacion cong where cong.idcompras=c.idventas order by cong.fecha desc limit 1) FROM ventas c inner join cliente p on p.idcliente=c.idcliente where (c.estado=1 or c.estado=0) and c.tipoventa=5 and c.idventas='".$dato[0]."' ";
+    $sql = "SELECT c.fecha,c.nocomprobante,p.nit,p.nombre,c.total,c.tipoventa,c.idventas,p.direccion,(select cong.saldo from consignacionxCob cong where cong.idventas=c.idventas order by cong.fecha desc limit 1) FROM ventas c inner join cliente p on p.idcliente=c.idcliente where (c.estado=1 or c.estado=0) and c.tipoventa=5 and c.idventas='".$dato[0]."' ";
 	
 
     if($resultado = $mysql->query($sql))
@@ -452,7 +452,7 @@ function abonarConsignacionxCob($datos)
 							 }
 						 }
 						 
-						 echo "<script>window.location.reload();cargarConsignaciones('".$datos[0]."');limpiarAbono();document.getElementById('saldoE').innerHTML='Saldo: ".toMoney($saldo)."';</script>";
+						 echo "<script>window.location.reload();</script>";
 						 
 					 }
 				     

@@ -122,28 +122,28 @@
                         </div>
                         <div class="input-field col s6" style="display:none;">
                             <i  class="material-icons prefix"><img class="iconologin" src="../app/img/codigo.png"/></i>
-                            <input id="codigo2" onKeyUp="" type="text" class="validate" >
+                            <input id="codigo2" onKeyUp="" disabled type="text" class="validate" >
                             <label for="icon_telephone" ><span class="etiquelogin">Codigo</span></label>
                         </div>
                         <div class="input-field col s6">
                             <i class="material-icons prefix"><img class="iconologin" src="../app/img/producto.png" /></i>
-                            <input id="producto" type="text" class="validate" >
+                            <input id="producto" type="text" disabled class="validate" >
                             <label for="icon_prefix" ><span class="etiquelogin">Productos</span></label>
                         </div>
                         
                         <div class="input-field col s6">
                             <i class="material-icons prefix"><img class="iconologin" src="../app/img/marca.png" /></i>
-                            <input id="marca" type="text" class="validate" >
+                            <input id="marca" type="text" disabled class="validate" >
                             <label for="icon_prefix" ><span class="etiquelogin">Marca</span></label>
                         </div>
                         <div class="input-field col s6">
                             <i class="material-icons prefix"><img class="iconologin" src="../app/img/descripcion.png" /></i>
-                            <input id="descripcion" type="text" class="validate" >
+                            <input id="descripcion" type="text" disabled class="validate" >
                             <label for="icon_prefix" ><span class="etiquelogin">Descripcion</span></label>
                         </div>
                         <div class="input-field col s6">
                         <i  class="material-icons prefix"><img class="iconologin" src="../app/img/tipoR.png"/></i>
-                        <select id="tipoRepuesto" onChange="" >
+                        <select id="tipoRepuesto" onChange="" disabled >
                             <option value="" disabled selected>Sector</option>
                             <option value="1">Sector Fertilizantes</option>
                             <option value="2">Sector Herbicidas</option>
@@ -166,7 +166,7 @@
 
                         <div class="input-field col s6">
                         <i  class="material-icons prefix"><img class="iconologin" src="../app/img/tipoR.png"/></i>
-                        <select id="idpresentacion" onChange="" >
+                        <select id="idpresentacion" onChange="" disabled >
                             <?php
                             include('../vista/compra2Vista.php');
                             comboPresentacion();
@@ -187,11 +187,21 @@
                             <input id="costo"  type="text" class="validate" onChange="calcula();" onKeyUp="calcula();" >
                             <label for="icon_prefix" ><span class="etiquelogin">Costo</span></label>
                         </div>
-                        <div class="input-field col s6" style="display:none">
+                        <div class="input-field col s6" >
 
                             <i class="material-icons prefix"><img class="iconologin" src="../app/img/plazo.png" /> </i>
                             <input id="fechaVenta" type="date" class="validate" value="<?php echo date('Y-m-d')?>">
                             <label class="active" for="fecha" >Fecha</label>       
+                        </div>
+                        <div class="input-field col s6" >
+                            <i class="material-icons prefix"><img class="iconologin" src="../app/img/precioCosto.png" /></i>
+                            <input id="cantidadDeb"  type="number" class="validate"  >
+                            <label for="icon_prefix" ><span class="etiquelogin">Cantidad a Debitar</span></label>
+                        </div>
+                        <div class="input-field col s12" >
+                            <i class="material-icons prefix"><img class="iconologin" src="../app/img/precioCosto.png" /></i>
+                            <input id="descripcionDeb"  type="text" class="validate"  >
+                            <label for="icon_prefix" ><span class="etiquelogin">Descripcion</span></label>
                         </div>
                         
                         
@@ -262,7 +272,8 @@
                         </div>
 
                         <div class="col s12 right-align">
-                        <a id="guardar" class="waves-effect waves-light btn blue lighten-1 modal-trigger" onClick="guardarInventario();" ><i class="material-icons left"><img class="iconoaddcrud" src="../app/img/guardar.png" /></i>Guardar</a>
+                        <a id="guardar1" style="display:none" class="waves-effect waves-light btn blue lighten-1 modal-trigger" onClick="guardarInventario();" ><i class="material-icons left"><img class="iconoaddcrud" src="../app/img/guardar.png" /></i>Guardar</a>
+                        <a id="guardar" class="waves-effect waves-light btn blue lighten-1 modal-trigger" onClick="abonarConsignacion();" ><i class="material-icons left"><img class="iconoaddcrud" src="../app/img/guardar.png" /></i>Guardar</a>
 
                         </div>
 
