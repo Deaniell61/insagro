@@ -430,3 +430,70 @@ $('#btnInsertarP').click(function(){
 
 
 });
+
+function impInvConsignacion(div){
+    
+
+    
+    $('#'+div).html('<div id="impresionInvent"></div>');
+     var encab="<div class=\"\" style=\"margin-bottom: 0px ;\"><img class=\"logo\" src=\"../app/img/logoinsagro1.png\"/><div style=\"height: 18px; text-align:right;color:#ccc;margin-top: -75px;\"><strong>Insagro</strong></div><div  style=\"height: 18px; text-align:right;color:#ccc;\">\"Lo mejor para tus plantas\"</div><div  style=\"height: 18px; text-align:right;color:#ccc;\">Direccion: Mazatenango</div><div  style=\"height: 18px; text-align:right;color:#ccc;\">Tel. 77737775</div><div  style=\"height: 18px; text-align:right;color:#ccc;\">Cel. 42207608</div></div><br>";
+   //$('#impresionDeFacturaC11').html(encab);
+     var cuerpo=""+encab;
+     var trasDato;
+    trasDato = 25;
+    tipo=1;
+    id=1;
+        $.ajax({
+            type: "POST",
+            //dataType: "json",
+            url: "../core/controlador/inventarioControlador.php",
+            data: ' tipo=' + tipo + '&id=' + id + '&trasDato=' + trasDato,
+            success: function(resp) {
+                
+
+                
+                    cuerpo+=resp;
+                        $('#impresionInvent').html(cuerpo);
+                        
+                        //document.getElementById('impresionDeFactura11').print();
+                        // setTimeout(function(){printDiv('impresionDeFactura11');},500);
+                        ImprimirVar('impresionInvent');
+                   
+                        
+            },
+            error: function( jqXHR, textStatus, errorThrown ) {
+
+          if (jqXHR.status === 0) {
+
+            alert('Not connect: Verify Network.');
+
+          } else if (jqXHR.status == 404) {
+
+            alert('Requested page not found [404]');
+
+          } else if (jqXHR.status == 500) {
+
+            alert('Internal Server Error [500].');
+
+          } else if (textStatus === 'parsererror') {
+
+            alert('Requested JSON parse failed.');
+
+          } else if (textStatus === 'timeout') {
+
+            alert('Time out error.');
+
+          } else if (textStatus === 'abort') {
+
+            alert('Ajax request aborted.');
+
+          } else {
+
+            alert('Uncaught Error: ' + jqXHR.responseText);
+
+          }
+
+        }
+        });
+    
+ }

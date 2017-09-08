@@ -510,7 +510,7 @@ function impInvAdmin(div){
    //$('#impresionDeFacturaC11').html(encab);
      var cuerpo=""+encab;
      var trasDato;
-    trasDato = 14;
+    trasDato = 24;
     tipo=1;
     id=1;
         $.ajax({

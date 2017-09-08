@@ -1128,24 +1128,586 @@ $mysql = conexionMysql();
 				$precio =0;
 				$costo =0;
 				$subtotalgen=0;
-				$return.='<div class="deposito">';
-				$return.='<center><h5>'.$tipo[$o+1].'</h5>';
-				$return.='<table  class="depositosTabla">';
+				
 				
 				
 				$i=0;
-				$sql = "SELECT p.nombre,i.preciocosto,p.idproductos,p.codigoproducto,p.descripcion,i.precioCosto,i.precioVenta,i.precioClienteEs,i.precioDistribuidor,i.cantidad,p.marca2,p.codigoproducto,i.idinventarioC,p.idproductos,p.tiporepuesto,(select ps.descripcion from presentacion ps where ps.idpresentacion=i.idpresentacion) FROM inventarioC i inner join productos p on p.idproductos=i.idproducto where i.cantidad>=0 $mas  order by p.codigoproducto";
+				$sql = "SELECT p.nombre,i.preciocosto,p.idproductos,p.codigoproducto,p.descripcion,i.precioCosto,i.precioVenta,i.precioClienteEs,i.precioDistribuidor,i.cantidad,p.marca2,p.codigoproducto,i.idinventarioC,p.idproductos,p.tiporepuesto,(select ps.descripcion from presentacion ps where ps.idpresentacion=i.idpresentacion) FROM inventarioC i inner join productos p on p.idproductos=i.idproducto where i.cantidad>=0 and p.tiporepuesto='".$filaSegmento[0]."' $mas  order by p.codigoproducto";
     
 				if($resultado = $mysql->query($sql))
 				{
 
-					if(mysqli_num_rows($resultado)==0)
+					if(mysqli_num_rows($resultado)<=0)
 					{
 						$respuesta = "<div class='error'>No hay usuarios BD vacia</div>";
 					}
 
 					else
 					{
+						$return.='<div class="deposito">';
+						$return.='<center><h5>'.$tipo[$o+1].'</h5>';
+						$return.='<table  class="depositosTabla">';
+						$r=1;
+						   $return.='<tr class="FilaInventarioT">'.
+									'<th class="InventarioColumnaT">Correlativo</th>'.
+									'<th class="InventarioColumnaT">Codigo</th>'.
+									'<th class="InventarioColumnaTProd">Producto</th>'.
+									'<th class="InventarioColumnaT">Marca</th>'.
+									'<th class="InventarioColumnaT">Presentacion</th>'.
+									'<th class="InventarioColumnaT">Cantidad</th>'.
+									'<th class="InventarioColumnaT">Costo</th>'.
+									'<th class="InventarioColumnaT">Subtotal</th>'.
+									'</tr>';
+							
+							while($fila = $resultado->fetch_row())
+							{
+								
+								if($fila["14"]==$filaSegmento[0])
+									{
+										
+							$cont++;
+							$precio+=$fila["9"];
+							$costo+=$fila["5"];
+							$precioG+=$fila["6"];
+							$costoG+=$fila["5"];
+							$cantidadG+=$fila["9"];
+							$subtotalgen+=($fila["5"]*1)*($fila["9"]*1);
+							$subtotalgenG+=($fila["5"]*1)*($fila["9"]*1);
+									$return.='<tr class="FilaInventario">'.
+                                '<td class="InventarioColumna">'.$cont.'</td>'.
+                                '<td class="InventarioColumna">'.$fila["11"].'</td>'.
+                                '<td class="InventarioColumna">'.($fila["0"]).'</td>'.
+                                '<td class="InventarioColumna">'.($fila["10"]).'</td>'.
+                                '<td class="InventarioColumna">'.($fila["15"]).'</td>'.
+                                '<td class="InventarioColumna">'.($fila["9"]).'</td>'.
+                                '<td class="InventarioColumna">'.toMoney($fila["5"]).'</td>'.
+                                '<td class="InventarioColumna">'.toMoney(($fila["5"]*1)*($fila["9"]*1)).'</td>'.
+                                
+                                '</tr>';
+									
+										$i++;
+									}
+
+							}
+							$return.='<tr class="FilaInventario">'.
+                                
+                                '<td class="InventarioColumna"></td>'.
+                                '<td class="InventarioColumna"></td>'.
+                                '<td class="InventarioColumna"></td>'.
+                                '<td class="InventarioColumna"></td>'.
+                                '<td class="InventarioColumna"></td>'.
+                                '<td class="InventarioColumna"></td>'.
+                                '<td class="InventarioColumna">Total=</td>'.
+                                '<td class="InventarioColumna">'.toMoney(($subtotalgen).'').'</td>'.
+                                
+                                '</tr>';
+
+							$return.='</table></center></div>';
+
+							$resultado->free();//librerar variable
+
+
+					
+					}
+				}
+				else
+				{
+					$return.= $sql."<div class='error'>Error: no se ejecuto la consulta a BD</div>";
+
+				}
+				$i++;
+				$o++;
+			}
+			$return.='<div class="deposito">';
+				$return.='<table  class="depositosTabla">';
+				$return.='<tr class="FilaInventarioT">'.
+				'<th class="InventarioColumnaT"></th>'.
+				'<th class="InventarioColumnaT"></th>'.
+				'<th class="InventarioColumnaT"></th>'.
+				'<th class="InventarioColumnaT"></th>'.
+				'<th class="InventarioColumnaT"></th>'.
+				'<th class="InventarioColumnaT"></th>'.
+				'<th class="InventarioColumnaT"></th>'.
+				'<th class="InventarioColumnaT">Total</th>'.
+				'</tr>';
+				$return.='<tr class="FilaInventario">'.
+				
+				'<td class="InventarioColumna"></td>'.
+				'<td class="InventarioColumna"></td>'.
+				'<td class="InventarioColumna"></td>'.
+				'<td class="InventarioColumna"></td>'.
+				'<td class="InventarioColumna"></td>'.
+				'<td class="InventarioColumna"></td>'.
+				'<td class="InventarioColumna"></td>'.
+				'<td class="InventarioColumna">'.toMoney(($subtotalgenG).'').'</td>'.
+				
+				'</tr>';
+				
+				$return.='</table></center></div>';
+			$resultadoSegmento->free();//librerar variable
+		}
+	}else
+				{
+					$respuesta = "<div class='error'>Error: no se ejecuto la consulta a BD</div>";
+
+				}
+
+    //cierro la conexion
+    $mysql->close();
+	echo ($return);
+}
+
+
+function impInvConsignacionEntrada($datos){
+	
+session_start();
+if(isset($_SESSION['codigoBuscaProducto_SOFT']))
+{
+	if($_SESSION['codigoBuscaProducto_SOFT']!="")
+	{
+		$mas=" and p.codigoproducto='".$_SESSION['codigoBuscaProducto_SOFT']."' and i.cantidad<=i.minimo ";
+	}
+	else
+		{
+			$mas="";
+		}
+}
+else
+{
+	$mas="";
+}
+	//creamos la pestaña
+	
+	
+	$o=0;
+	
+	$i = 3;
+
+	$ss = 0;
+
+	   
+
+$mysql = conexionMysql();
+    $sqlSegmento = "select tiporepuesto from productos group by tiporepuesto order by tiporepuesto;";
+    $tipo=array('','Sector Fertilizantes','Sector Herbicidas','Sector Insecticidas','Sector Veterinarios','Sector semillas','Sector Caceros','Sector Concentrados','Sector Equipo Agricola','Sector Foliares','Sector Fungicidas','Sector Adherentes','Sector Bolsas','Sector Plastico','Sector Pintura');
+    $return="";
+	$cont=0;
+
+	if($resultadoSegmento = $mysql->query($sqlSegmento))
+    {
+
+        if(mysqli_num_rows($resultadoSegmento)==0)
+        {
+            $respuesta = "<div class='error'>No hay usuarios BD vacia</div>";
+        }
+
+        else
+        {
+
+			$ini=0;
+			$cantidadG=0;
+			$costoG=0;
+			$precioG=0;
+			$subtotalgenG=0;
+            while($filaSegmento = $resultadoSegmento->fetch_row())
+			{
+				$cont=0;
+				$precio =0;
+				$costo =0;
+				$subtotalgen=0;
+				
+				
+				
+				$i=0;
+				$sql = "SELECT p.nombre,i.preciocosto,p.idproductos,p.codigoproducto,p.descripcion,i.precioCosto,i.precioVenta,i.precioClienteEs,i.precioDistribuidor,i.cantidad,p.marca2,p.codigoproducto,i.idinventarioC,p.idproductos,p.tiporepuesto,(select ps.descripcion from presentacion ps where ps.idpresentacion=i.idpresentacion) FROM inventarioCxCob i inner join productos p on p.idproductos=i.idproducto where i.cantidad>=0 and p.tiporepuesto='".$filaSegmento[0]."' $mas  order by p.codigoproducto";
+    
+				if($resultado = $mysql->query($sql))
+				{
+
+					if(mysqli_num_rows($resultado)<=0)
+					{
+						$respuesta = "<div class='error'>No hay usuarios BD vacia</div>";
+					}
+
+					else
+					{
+						$return.='<div class="deposito">';
+						$return.='<center><h5>'.$tipo[$o+1].'</h5>';
+						$return.='<table  class="depositosTabla">';
+						$r=1;
+						   $return.='<tr class="FilaInventarioT">'.
+									'<th class="InventarioColumnaT">Correlativo</th>'.
+									'<th class="InventarioColumnaT">Codigo</th>'.
+									'<th class="InventarioColumnaTProd">Producto</th>'.
+									'<th class="InventarioColumnaT">Marca</th>'.
+									'<th class="InventarioColumnaT">Presentacion</th>'.
+									'<th class="InventarioColumnaT">Cantidad</th>'.
+									'<th class="InventarioColumnaT">Costo</th>'.
+									'<th class="InventarioColumnaT">Subtotal</th>'.
+									'</tr>';
+							
+							while($fila = $resultado->fetch_row())
+							{
+								
+								if($fila["14"]==$filaSegmento[0])
+									{
+										
+							$cont++;
+							$precio+=$fila["9"];
+							$costo+=$fila["5"];
+							$precioG+=$fila["6"];
+							$costoG+=$fila["5"];
+							$cantidadG+=$fila["9"];
+							$subtotalgen+=($fila["5"]*1)*($fila["9"]*1);
+							$subtotalgenG+=($fila["5"]*1)*($fila["9"]*1);
+									$return.='<tr class="FilaInventario">'.
+                                '<td class="InventarioColumna">'.$cont.'</td>'.
+                                '<td class="InventarioColumna">'.$fila["11"].'</td>'.
+                                '<td class="InventarioColumna">'.($fila["0"]).'</td>'.
+                                '<td class="InventarioColumna">'.($fila["10"]).'</td>'.
+                                '<td class="InventarioColumna">'.($fila["15"]).'</td>'.
+                                '<td class="InventarioColumna">'.($fila["9"]).'</td>'.
+                                '<td class="InventarioColumna">'.toMoney($fila["5"]).'</td>'.
+                                '<td class="InventarioColumna">'.toMoney(($fila["5"]*1)*($fila["9"]*1)).'</td>'.
+                                
+                                '</tr>';
+									
+										$i++;
+									}
+
+							}
+							$return.='<tr class="FilaInventario">'.
+                                
+                                '<td class="InventarioColumna"></td>'.
+                                '<td class="InventarioColumna"></td>'.
+                                '<td class="InventarioColumna"></td>'.
+                                '<td class="InventarioColumna"></td>'.
+                                '<td class="InventarioColumna"></td>'.
+                                '<td class="InventarioColumna"></td>'.
+                                '<td class="InventarioColumna">Total=</td>'.
+                                '<td class="InventarioColumna">'.toMoney(($subtotalgen).'').'</td>'.
+                                
+                                '</tr>';
+
+							$return.='</table></center></div>';
+
+							$resultado->free();//librerar variable
+
+
+					
+					}
+				}
+				else
+				{
+					$return.= $sql."<div class='error'>Error: no se ejecuto la consulta a BD</div>";
+
+				}
+				$i++;
+				$o++;
+			}
+			$return.='<div class="deposito">';
+				$return.='<table  class="depositosTabla">';
+				$return.='<tr class="FilaInventarioT">'.
+				'<th class="InventarioColumnaT"></th>'.
+				'<th class="InventarioColumnaT"></th>'.
+				'<th class="InventarioColumnaT"></th>'.
+				'<th class="InventarioColumnaT"></th>'.
+				'<th class="InventarioColumnaT"></th>'.
+				'<th class="InventarioColumnaT"></th>'.
+				'<th class="InventarioColumnaT"></th>'.
+				'<th class="InventarioColumnaT">Total</th>'.
+				'</tr>';
+				$return.='<tr class="FilaInventario">'.
+				
+				'<td class="InventarioColumna"></td>'.
+				'<td class="InventarioColumna"></td>'.
+				'<td class="InventarioColumna"></td>'.
+				'<td class="InventarioColumna"></td>'.
+				'<td class="InventarioColumna"></td>'.
+				'<td class="InventarioColumna"></td>'.
+				'<td class="InventarioColumna"></td>'.
+				'<td class="InventarioColumna">'.toMoney(($subtotalgenG).'').'</td>'.
+				
+				'</tr>';
+				
+				$return.='</table></center></div>';
+			$resultadoSegmento->free();//librerar variable
+		}
+	}else
+				{
+					$respuesta = "<div class='error'>Error: no se ejecuto la consulta a BD</div>";
+
+				}
+
+    //cierro la conexion
+    $mysql->close();
+	echo ($return);
+}
+
+
+function impFragmentarSalida($datos){
+	
+session_start();
+if(isset($_SESSION['codigoBuscaProducto_SOFT']))
+{
+	if($_SESSION['codigoBuscaProducto_SOFT']!="")
+	{
+		$mas=" and p.codigoproducto='".$_SESSION['codigoBuscaProducto_SOFT']."' and i.cantidad<=i.minimo ";
+	}
+	else
+		{
+			$mas="";
+		}
+}
+else
+{
+	$mas="";
+}
+	//creamos la pestaña
+	
+	
+	$o=0;
+	
+	$i = 3;
+
+	$ss = 0;
+
+	   
+
+$mysql = conexionMysql();
+    $sqlSegmento = "select tiporepuesto from productos group by tiporepuesto order by tiporepuesto;";
+    $tipo=array('','Sector Fertilizantes','Sector Herbicidas','Sector Insecticidas','Sector Veterinarios','Sector semillas','Sector Caceros','Sector Concentrados','Sector Equipo Agricola','Sector Foliares','Sector Fungicidas','Sector Adherentes','Sector Bolsas','Sector Plastico','Sector Pintura');
+    $return="";
+	$cont=0;
+
+	if($resultadoSegmento = $mysql->query($sqlSegmento))
+    {
+
+        if(mysqli_num_rows($resultadoSegmento)==0)
+        {
+            $respuesta = "<div class='error'>No hay usuarios BD vacia</div>";
+        }
+
+        else
+        {
+
+			$ini=0;
+			$cantidadG=0;
+			$costoG=0;
+			$precioG=0;
+			$subtotalgenG=0;
+            while($filaSegmento = $resultadoSegmento->fetch_row())
+			{
+				$cont=0;
+				$precio =0;
+				$costo =0;
+				$subtotalgen=0;
+				
+				
+				
+				$i=0;
+				$sql = "SELECT p.nombre,i.preciocosto,p.idproductos,p.codigoproducto,p.descripcion,i.precioCosto,i.precioVenta,i.precioClienteEs,i.precioDistribuidor,i.cantidad,p.marca2,p.codigoproducto,i.idinventario,p.idproductos,p.tiporepuesto,(select ps.descripcion from presentacion ps where ps.idpresentacion=i.idpresentacion) FROM inventario i inner join productos p on p.idproductos=i.idproducto where i.cantidad>=0 and p.tiporepuesto='".$filaSegmento[0]."' and i.idpresentacion=(select ppp.idpresentacion from presentacion ppp where ppp.descripcion='Quintales' and ppp.estado=1)  $mas  order by p.codigoproducto";
+    
+				if($resultado = $mysql->query($sql))
+				{
+
+					if(mysqli_num_rows($resultado)<=0)
+					{
+						$respuesta = "<div class='error'>No hay usuarios BD vacia</div>";
+					}
+
+					else
+					{
+						$return.='<div class="deposito">';
+						$return.='<center><h5>'.$tipo[$o+1].'</h5>';
+						$return.='<table  class="depositosTabla">';
+						$r=1;
+						   $return.='<tr class="FilaInventarioT">'.
+									'<th class="InventarioColumnaT">Correlativo</th>'.
+									'<th class="InventarioColumnaT">Codigo</th>'.
+									'<th class="InventarioColumnaTProd">Producto</th>'.
+									'<th class="InventarioColumnaT">Marca</th>'.
+									'<th class="InventarioColumnaT">Presentacion</th>'.
+									'<th class="InventarioColumnaT">Cantidad</th>'.
+									'<th class="InventarioColumnaT">Costo</th>'.
+									'<th class="InventarioColumnaT">Subtotal</th>'.
+									'</tr>';
+							
+							while($fila = $resultado->fetch_row())
+							{
+								
+								if($fila["14"]==$filaSegmento[0])
+									{
+										
+							$cont++;
+							$precio+=$fila["9"];
+							$costo+=$fila["5"];
+							$precioG+=$fila["6"];
+							$costoG+=$fila["5"];
+							$cantidadG+=$fila["9"];
+							$subtotalgen+=($fila["5"]*1)*($fila["9"]*1);
+							$subtotalgenG+=($fila["5"]*1)*($fila["9"]*1);
+									$return.='<tr class="FilaInventario">'.
+                                '<td class="InventarioColumna">'.$cont.'</td>'.
+                                '<td class="InventarioColumna">'.$fila["11"].'</td>'.
+                                '<td class="InventarioColumna">'.($fila["0"]).'</td>'.
+                                '<td class="InventarioColumna">'.($fila["10"]).'</td>'.
+                                '<td class="InventarioColumna">'.($fila["15"]).'</td>'.
+                                '<td class="InventarioColumna">'.($fila["9"]).'</td>'.
+                                '<td class="InventarioColumna">'.toMoney($fila["5"]).'</td>'.
+                                '<td class="InventarioColumna">'.toMoney(($fila["5"]*1)*($fila["9"]*1)).'</td>'.
+                                
+                                '</tr>';
+									
+										$i++;
+									}
+
+							}
+							$return.='<tr class="FilaInventario">'.
+                                
+                                '<td class="InventarioColumna"></td>'.
+                                '<td class="InventarioColumna"></td>'.
+                                '<td class="InventarioColumna"></td>'.
+                                '<td class="InventarioColumna"></td>'.
+                                '<td class="InventarioColumna"></td>'.
+                                '<td class="InventarioColumna"></td>'.
+                                '<td class="InventarioColumna">Total=</td>'.
+                                '<td class="InventarioColumna">'.toMoney(($subtotalgen).'').'</td>'.
+                                
+                                '</tr>';
+
+							$return.='</table></center></div>';
+
+							$resultado->free();//librerar variable
+
+
+					
+					}
+				}
+				else
+				{
+					$return.= $sql."<div class='error'>Error: no se ejecuto la consulta a BD</div>";
+
+				}
+				$i++;
+				$o++;
+			}
+			$return.='<div class="deposito">';
+				$return.='<table  class="depositosTabla">';
+				$return.='<tr class="FilaInventarioT">'.
+				'<th class="InventarioColumnaT"></th>'.
+				'<th class="InventarioColumnaT"></th>'.
+				'<th class="InventarioColumnaT"></th>'.
+				'<th class="InventarioColumnaT"></th>'.
+				'<th class="InventarioColumnaT"></th>'.
+				'<th class="InventarioColumnaT"></th>'.
+				'<th class="InventarioColumnaT"></th>'.
+				'<th class="InventarioColumnaT">Total</th>'.
+				'</tr>';
+				$return.='<tr class="FilaInventario">'.
+				
+				'<td class="InventarioColumna"></td>'.
+				'<td class="InventarioColumna"></td>'.
+				'<td class="InventarioColumna"></td>'.
+				'<td class="InventarioColumna"></td>'.
+				'<td class="InventarioColumna"></td>'.
+				'<td class="InventarioColumna"></td>'.
+				'<td class="InventarioColumna"></td>'.
+				'<td class="InventarioColumna">'.toMoney(($subtotalgenG).'').'</td>'.
+				
+				'</tr>';
+				
+				$return.='</table></center></div>';
+			$resultadoSegmento->free();//librerar variable
+		}
+	}else
+				{
+					$respuesta = "<div class='error'>Error: no se ejecuto la consulta a BD</div>";
+
+				}
+
+    //cierro la conexion
+    $mysql->close();
+	echo ($return);
+}
+
+
+function impFragmentarEntrada($datos){
+	
+session_start();
+if(isset($_SESSION['codigoBuscaProducto_SOFT']))
+{
+	if($_SESSION['codigoBuscaProducto_SOFT']!="")
+	{
+		$mas=" and p.codigoproducto='".$_SESSION['codigoBuscaProducto_SOFT']."' and i.cantidad<=i.minimo ";
+	}
+	else
+		{
+			$mas="";
+		}
+}
+else
+{
+	$mas="";
+}
+	//creamos la pestaña
+	
+	
+	$o=0;
+	
+	$i = 3;
+
+	$ss = 0;
+
+	   
+
+$mysql = conexionMysql();
+    $sqlSegmento = "select tiporepuesto from productos group by tiporepuesto order by tiporepuesto;";
+    $tipo=array('','Sector Fertilizantes','Sector Herbicidas','Sector Insecticidas','Sector Veterinarios','Sector semillas','Sector Caceros','Sector Concentrados','Sector Equipo Agricola','Sector Foliares','Sector Fungicidas','Sector Adherentes','Sector Bolsas','Sector Plastico','Sector Pintura');
+    $return="";
+	$cont=0;
+
+	if($resultadoSegmento = $mysql->query($sqlSegmento))
+    {
+
+        if(mysqli_num_rows($resultadoSegmento)==0)
+        {
+            $respuesta = "<div class='error'>No hay usuarios BD vacia</div>";
+        }
+
+        else
+        {
+
+			$ini=0;
+			$cantidadG=0;
+			$costoG=0;
+			$precioG=0;
+			$subtotalgenG=0;
+            while($filaSegmento = $resultadoSegmento->fetch_row())
+			{
+				$cont=0;
+				$precio =0;
+				$costo =0;
+				$subtotalgen=0;
+				
+				
+				
+				$i=0;
+				$sql = "SELECT p.nombre,i.preciocosto,p.idproductos,p.codigoproducto,p.descripcion,i.precioCosto,i.precioVenta,i.precioClienteEs,i.precioDistribuidor,i.cantidad,p.marca2,p.codigoproducto,i.idinventario,p.idproductos,p.tiporepuesto,(select ps.descripcion from presentacion ps where ps.idpresentacion=i.idpresentacion) FROM inventarioFrag i inner join productos p on p.idproductos=i.idproducto where i.cantidad>=0 and p.tiporepuesto='".$filaSegmento[0]."' $mas  order by p.codigoproducto";
+    
+				if($resultado = $mysql->query($sql))
+				{
+
+					if(mysqli_num_rows($resultado)<=0)
+					{
+						$respuesta = "<div class='error'>No hay usuarios BD vacia</div>";
+					}
+
+					else
+					{
+						$return.='<div class="deposito">';
+						$return.='<center><h5>'.$tipo[$o+1].'</h5>';
+						$return.='<table  class="depositosTabla">';
 						$r=1;
 						   $return.='<tr class="FilaInventarioT">'.
 									'<th class="InventarioColumnaT">Correlativo</th>'.

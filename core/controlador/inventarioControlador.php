@@ -280,6 +280,41 @@ if($_POST)
         
     
     }
+    else if($transaccion == 24)
+    {
+
+        $datos[0] = $_POST['id'];
+        $datos[1] = $_POST['tipo'];
+		
+		
+		        
+        impInvConsignacionEntrada($datos);
+
+    }
+
+    else if($transaccion == 25)
+    {
+
+        $datos[0] = $_POST['id'];
+        $datos[1] = $_POST['tipo'];
+		
+		
+		        
+        impFragmentarSalida($datos);
+
+    }
+
+    else if($transaccion == 26)
+    {
+
+        $datos[0] = $_POST['id'];
+        $datos[1] = $_POST['tipo'];
+		
+		
+		        
+        impFragmentarEntrada($datos);
+
+    }
 //----------- fin gestion ----------/    
     
 }
@@ -290,6 +325,7 @@ else
     //regrsar a index
     echo'regresar al index';
 }
+
 
 
 ?>

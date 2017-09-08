@@ -8,6 +8,21 @@
 
 
         <table>
+        <tr>
+                <td class="">
+                    <div class="input-field ">
+                    
+                    </div>
+                </td>
+                <td class="">
+
+                <center>
+                  <li class="centrarli"><a id="imprimirT" onClick="impInvConsignacion('mensaje3');" class="amber accent-3 btn white-text  " ><i class="material-icons left"><img class="iconotab" src="../app/img/imprimir.png" /></i>Imprimir Movimientos Internos Entrada</a></li>
+                </center>
+
+
+                </td>
+            </tr>
             <tr>
                 <td class="">
                     <div class="input-field ">
@@ -26,7 +41,7 @@
                 </td>
             </tr>
         </table>
-
+        <div id="mensaje3"></div>
 <div id="respuesta">
     
 </div>

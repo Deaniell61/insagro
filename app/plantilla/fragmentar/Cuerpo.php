@@ -11,12 +11,28 @@
             <tr>
                 <td class="">
                     <div class="input-field ">
-
+                    
                     </div>
                 </td>
                 <td class="">
 
                 <center>
+                  <li class="centrarli"><a id="imprimirT" onClick="impInvConsignacion('mensaje3');" class="amber accent-3 btn white-text  " ><i class="material-icons left"><img class="iconotab" src="../app/img/imprimir.png" /></i>Imprimir Movimientos Internos Salida</a></li>
+                </center>
+
+
+                </td>
+            </tr>
+            <tr>
+                <td class="">
+                    <div class="input-field ">
+                    
+                    </div>
+                </td>
+                <td class="">
+
+                <center>
+                
                 <li class="centrarli">
                     <a id="FragSalida"  class="red accent-5 btn white-text  " ><i class="material-icons left"><img class="iconotab" src="../app/img/salida.png" /></i>Salidas</a>
                 <a id="FragEntrada"  class="green accent-2 btn white-text  " ><i class="material-icons left"><img class="iconotab" src="../app/img/entrada.png" /></i>Entradas</a></li>
@@ -26,7 +42,7 @@
                 </td>
             </tr>
         </table>
-
+        <div id="mensaje3"></div>
 
 <div id="respuesta">
     
