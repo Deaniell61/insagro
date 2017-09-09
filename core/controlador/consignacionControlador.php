@@ -173,6 +173,54 @@ if($_POST)
         
         
     }
+    else if($transaccion == 14)
+    {
+        
+        $datos[0] = $_POST['id'];
+        $datos[1] = $_POST['tipo'];
+        
+
+        
+        datosImpInvCongnacion($datos);
+        
+        
+    }
+    else if($transaccion == 15)
+    {
+        
+        $datos[0] = $_POST['id'];
+        $datos[1] = $_POST['tipo'];
+        
+
+        
+        datosImpInvCongnacionxCob($datos);
+        
+        
+    }
+    else if($transaccion == 16)
+    {
+        
+        $datos[0] = $_POST['id'];
+        $datos[1] = $_POST['tipo'];
+        
+
+        
+        datosImpInvFragmentar($datos);
+        
+        
+    }
+    else if($transaccion == 17)
+    {
+        
+        $datos[0] = $_POST['id'];
+        $datos[1] = $_POST['tipo'];
+        
+
+        
+        datosImpInvFragmentarxCob($datos);
+        
+        
+    }
     
 //----------- fin gestion ----------/    
     

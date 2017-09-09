@@ -670,4 +670,372 @@ function datosImpCongnacion($datos){
 			$mysql->close();
 			echo ($return);
 		}
+
+
+function datosImpInvCongnacion($datos){
+	
+		$mysql = conexionMysql();
+		$sql = "SELECT p.nombre,i.preciocosto,p.idproductos,p.codigoproducto,p.descripcion,i.precioCosto,i.precioVenta,i.precioClienteEs,i.precioDistribuidor,i.cantidad,p.marca2,p.codigoproducto,i.idinventarioC,p.idproductos,(select ps.descripcion from presentacion ps where ps.idpresentacion=i.idpresentacion),p.tiporepuesto FROM inventarioC i inner join productos p on p.idproductos=i.idproducto where  i.cantidad>=0 and i.idInventarioC='".$datos[0]."' order by p.codigoproducto";
+		$fecha=date('Y-m-d');
+		$cont=0;
+		$i=0;
+		$return="";
+		$encab="<div class=\"navbar-fixed\"><nav><div class=\"nav-wrapper grey darken-4\"><a  class=\"brand-logo\"><img class=\"logo\" src=\"../app/img/logoinsagro1.png\"/></a><div style=\"height: 18px; text-align:right;\">Insagro</div><div  style=\"height: 18px; text-align:right;\">\"Lo mejor para tus plantas\"</div><div  style=\"height: 18px; text-align:right;\">Direccion: Mazatenango</div><div  style=\"height: 18px; text-align:right;\">Tel. 77737775</div><div  style=\"height: 18px; text-align:right;\">Cel. 42207608</div></div></nav></div><br>";
+		$plazo = array('','day','month','year');
+				$plazo2 = array('','Dia','Mes','Año');
+		if($resultado = $mysql->query($sql))
+		{
+	
+			if(mysqli_num_rows($resultado)==0)
+			{
+				$respuesta = "<div class='error'>No hay usuarios BD vacia</div>";
+			}
+	
+			else
+			{
+	
+				while($fila = $resultado->fetch_row())
+				{
+
+					
+					$return.=$encab.'<div class="ingresos" style="margin-top:20px;">'.
+					'<center><h5 style="text-align: left;" class="CuentasTitulo">Producto: '.$fila['0'].'</h5></center>'.
+					'<center><div style="text-align: left;">Codigo: '.$fila['3'].'</div></center>'.
+					'<center><div style="text-align: left;">Presentacion: '.$fila['14'].' </div></center>'.
+					'<center><div style="text-align: left;">Cantidad: '.$fila['9'].' </div></center>'.
+					'<center><div style="text-align: left;">Precio General: '.$fila['6'].' </div></center>'.
+					'<center><div style="text-align: left;">Saldo: '.$fila['15'].' </div></center>'.
+					'</div>';
+					$return.='<div class="deposito">'.
+					'<center><h5>Abonos</h5>';
+					$return.='<table  class="depositos">';
+					$return.='<tr>'.
+								'<th>Descripcion</th>'.
+								'<th>Descripcion</th>'.
+								'<th>Abono</th>'.
+								'</tr>';
+					
+								$sqlDetalleCuentaC = "SELECT cc.fecha,cc.descripcion,cc.retirado,cc.consignado FROM consignacionInv cc  WHERE cc.idInventario=".$datos['0'];
+								
+								if($resultado1 = $mysql->query($sqlDetalleCuentaC))
+								{
+									$total =0;
+							
+									if(mysqli_num_rows($resultado1)==0)
+									{
+										$respuesta = "<div class='error'>No hay usuarios BD vacia</div>";
+									}
+							
+									else
+									{
+							
+										while($fila1 = $resultado1->fetch_row())
+										{
+										$return.='<tr class="FilaDeposito">'.
+										'<td class="fechaFila">'.$fila1['0'].'</td>'.
+										'<td class="noCuentaFila">'.$fila1['1'].'</td>'.
+										'<td class="bancoFila">'.$fila1['2'].'</td>'.
+										'</tr>';
+											
+											$total+=$fila1['2'];
+										}
+									}
+								$return.='</table>';
+								
+					
+					
+								}		 
+				}
+	
+				$resultado->free();//librerar variable
+	
+	
+				
+			}
+		}
+		else
+		{
+			$respuesta = "<div class='error'>Error: no se ejecuto la consulta a BD</div>";
+	
+		}
+	
+		//cierro la conexion
+		$mysql->close();
+		echo ($return);
+	}
+		
+function datosImpInvCongnacionxCob($datos){
+	
+		$mysql = conexionMysql();
+	    $sql = "SELECT p.nombre,i.preciocosto,p.idproductos,p.codigoproducto,p.descripcion,i.precioCosto,i.precioVenta,i.precioClienteEs,i.precioDistribuidor,i.cantidad,p.marca2,p.codigoproducto,i.idinventarioC,p.idproductos,(select ps.descripcion from presentacion ps where ps.idpresentacion=i.idpresentacion),p.tiporepuesto,(select cong.saldo from consignacionInvEnt cong where cong.idInventario=i.idInventarioC order by cong.fecha desc limit 1) FROM inventarioCxCob i inner join productos p on p.idproductos=i.idproducto where  i.cantidad>=0 and i.idInventarioC='".$datos[0]."' order by p.codigoproducto";
+		//$sql = "SELECT c.fecha,c.nocomprobante,p.nit,p.nombre,c.total,(select tv.Descripcion from tipoventa tv where tv.idtipo=c.tipoventa),c.idventas,(select u.user from usuarios u where u.idusuarios=c.idusuario),(select cong.saldo from consignacionInvEnt cong where cong.idInventario=c.idInventario order by cong.fecha desc limit 1) FROM ventas c inner join cliente p on p.idcliente=c.idcliente inner join ventasdetalle cd on cd.idventa=c.idventas inner join productos pd on pd.idproductos=cd.idproductos where c.estado=1 and cd.estado=1 and c.tipoventa=5 and c.idventas='".$datos[0]."' order by c.fecha desc";
+		$fecha=date('Y-m-d');
+		$cont=0;
+		$i=0;
+		$return="";
+		$encab="<div class=\"navbar-fixed\"><nav><div class=\"nav-wrapper grey darken-4\"><a  class=\"brand-logo\"><img class=\"logo\" src=\"../app/img/logoinsagro1.png\"/></a><div style=\"height: 18px; text-align:right;\">Insagro</div><div  style=\"height: 18px; text-align:right;\">\"Lo mejor para tus plantas\"</div><div  style=\"height: 18px; text-align:right;\">Direccion: Mazatenango</div><div  style=\"height: 18px; text-align:right;\">Tel. 77737775</div><div  style=\"height: 18px; text-align:right;\">Cel. 42207608</div></div></nav></div><br>";
+		$plazo = array('','day','month','year');
+				$plazo2 = array('','Dia','Mes','Año');
+		if($resultado = $mysql->query($sql))
+		{
+	
+			if(mysqli_num_rows($resultado)==0)
+			{
+				$respuesta = "<div class='error'>No hay usuarios BD vacia</div>";
+			}
+	
+			else
+			{
+	
+				while($fila = $resultado->fetch_row())
+				{
+
+					
+					$return.=$encab.'<div class="ingresos" style="margin-top:20px;">'.
+					'<center><h5 style="text-align: left;" class="CuentasTitulo">Producto: '.$fila['0'].'</h5></center>'.
+					'<center><div style="text-align: left;">Codigo: '.$fila['3'].'</div></center>'.
+					'<center><div style="text-align: left;">Presentacion: '.$fila['14'].' </div></center>'.
+					'<center><div style="text-align: left;">Cantidad: '.$fila['9'].' </div></center>'.
+					'<center><div style="text-align: left;">Precio General: '.$fila['6'].' </div></center>'.
+					'<center><div style="text-align: left;">Saldo: '.$fila['15'].' </div></center>'.
+					'</div>';
+
+					$return.='<div class="deposito">'.
+					'<center><h5>Abonos</h5>';
+					$return.='<table  class="depositos">';
+					$return.='<tr>'.
+								'<th>Descripcion</th>'.
+								'<th>Descripcion</th>'.
+								'<th>Abono</th>'.
+								'</tr>';
+					
+								$sqlDetalleCuentaC = "SELECT cc.fecha,cc.descripcion,cc.retirado,cc.consignado FROM consignacionInvEnt cc  WHERE cc.idInventario=".$datos['0'];
+								
+								if($resultado1 = $mysql->query($sqlDetalleCuentaC))
+								{
+									$total =0;
+							
+									if(mysqli_num_rows($resultado1)==0)
+									{
+										$respuesta = "<div class='error'>No hay usuarios BD vacia</div>";
+									}
+							
+									else
+									{
+							
+										while($fila1 = $resultado1->fetch_row())
+										{
+										$return.='<tr class="FilaDeposito">'.
+										'<td class="fechaFila">'.$fila1['0'].'</td>'.
+										'<td class="noCuentaFila">'.$fila1['1'].'</td>'.
+										'<td class="bancoFila">'.$fila1['2'].'</td>'.
+										'</tr>';
+											
+											$total+=$fila1['2'];
+										}
+									}
+								$return.='</table>';
+								
+					
+					
+								}		 
+				}
+	
+				$resultado->free();//librerar variable
+	
+	
+				
+			}
+		}
+		else
+		{
+			$respuesta = "<div class='error'>Error: no se ejecuto la consulta a BD</div>";
+	
+		}
+	
+		//cierro la conexion
+		$mysql->close();
+		echo ($return);
+	}
+
+
+function datosImpInvFragmentar($datos){
+	
+		$mysql = conexionMysql();
+		$sql = "SELECT p.nombre,i.preciocosto,p.idproductos,p.codigoproducto,p.descripcion,i.precioCosto,i.precioVenta,i.precioClienteEs,i.precioDistribuidor,p.marca2,p.tiporepuesto,i.cantidad FROM inventario i inner join productos p on p.idproductos=i.idproducto where  i.idpresentacion=(select ppp.idpresentacion from presentacion ppp where ppp.descripcion='Quintales' and ppp.estado=1) and i.idproducto='".$datos[0]."'  order by p.codigoproducto";
+		$fecha=date('Y-m-d');
+		$cont=0;
+		$i=0;
+		$return="";
+		$encab="<div class=\"navbar-fixed\"><nav><div class=\"nav-wrapper grey darken-4\"><a  class=\"brand-logo\"><img class=\"logo\" src=\"../app/img/logoinsagro1.png\"/></a><div style=\"height: 18px; text-align:right;\">Insagro</div><div  style=\"height: 18px; text-align:right;\">\"Lo mejor para tus plantas\"</div><div  style=\"height: 18px; text-align:right;\">Direccion: Mazatenango</div><div  style=\"height: 18px; text-align:right;\">Tel. 77737775</div><div  style=\"height: 18px; text-align:right;\">Cel. 42207608</div></div></nav></div><br>";
+		$plazo = array('','day','month','year');
+				$plazo2 = array('','Dia','Mes','Año');
+		if($resultado = $mysql->query($sql))
+		{
+	
+			if(mysqli_num_rows($resultado)==0)
+			{
+				$respuesta = "<div class='error'>No hay usuarios BD vacia</div>";
+			}
+	
+			else
+			{
+	
+				while($fila = $resultado->fetch_row())
+				{
+
+					
+					$return.=$encab.'<div class="ingresos" style="margin-top:20px;">'.
+					'<center><h5 style="text-align: left;" class="CuentasTitulo">Producto: '.$fila['0'].'</h5></center>'.
+					'<center><div style="text-align: left;">Codigo: '.$fila['3'].'</div></center>'.
+					'<center><div style="text-align: left;">Cantidad: '.$fila['9'].' </div></center>'.
+					'<center><div style="text-align: left;">Precio General: '.$fila['6'].' </div></center>'.
+					'</div>';
+					$return.='<div class="deposito">'.
+					'<center><h5>Creditos</h5>';
+					$return.='<table  class="depositos">';
+					$return.='<tr>'.
+								'<th>Descripcion</th>'.
+								'<th>Descripcion</th>'.
+								'<th>Qiintales Acreditados</th>'.
+								'</tr>';
+					
+								$sqlDetalleCuentaC = "SELECT fecha,descripcion,retirado FROM detalleFragmentar where  idinventario=(select i.idinventario from inventario i where i.idproducto='".$datos[0]."')";
+								
+								if($resultado1 = $mysql->query($sqlDetalleCuentaC))
+								{
+									$total =0;
+							
+									if(mysqli_num_rows($resultado1)==0)
+									{
+										$respuesta = "<div class='error'>No hay usuarios BD vacia</div>";
+									}
+							
+									else
+									{
+							
+										while($fila1 = $resultado1->fetch_row())
+										{
+										$return.='<tr class="FilaDeposito">'.
+										'<td class="fechaFila">'.$fila1['0'].'</td>'.
+										'<td class="noCuentaFila">'.$fila1['1'].'</td>'.
+										'<td class="bancoFila">'.$fila1['2'].'</td>'.
+										'</tr>';
+											
+											$total+=$fila1['2'];
+										}
+									}
+								$return.='</table>';
+								
+					
+					
+								}		 
+				}
+	
+				$resultado->free();//librerar variable
+	
+	
+				
+			}
+		}
+		else
+		{
+			$respuesta = "<div class='error'>Error: no se ejecuto la consulta a BD</div>";
+	
+		}
+	
+		//cierro la conexion
+		$mysql->close();
+		echo ($return);
+	}
+		
+function datosImpInvFragmentarxCob($datos){
+	
+	$mysql = conexionMysql();
+	$sql = "SELECT p.nombre,i.preciocosto,p.idproductos,p.codigoproducto,p.descripcion,i.precioCosto,i.precioVenta,i.precioClienteEs,i.precioDistribuidor,p.marca2,p.tiporepuesto,i.cantidad,i.medida FROM inventarioFrag i inner join productos p on p.idproductos=i.idproducto where  i.idproducto='".$datos[0]."'";
+	$fecha=date('Y-m-d');
+	$cont=0;
+	$i=0;
+	$return="";
+	$encab="<div class=\"navbar-fixed\"><nav><div class=\"nav-wrapper grey darken-4\"><a  class=\"brand-logo\"><img class=\"logo\" src=\"../app/img/logoinsagro1.png\"/></a><div style=\"height: 18px; text-align:right;\">Insagro</div><div  style=\"height: 18px; text-align:right;\">\"Lo mejor para tus plantas\"</div><div  style=\"height: 18px; text-align:right;\">Direccion: Mazatenango</div><div  style=\"height: 18px; text-align:right;\">Tel. 77737775</div><div  style=\"height: 18px; text-align:right;\">Cel. 42207608</div></div></nav></div><br>";
+	$plazo = array('','day','month','year');
+			$plazo2 = array('','Dia','Mes','Año');
+	if($resultado = $mysql->query($sql))
+	{
+
+		if(mysqli_num_rows($resultado)==0)
+		{
+			$respuesta = "<div class='error'>No hay usuarios BD vacia</div>";
+		}
+
+		else
+		{
+
+			while($fila = $resultado->fetch_row())
+			{
+
+				
+				$return.=$encab.'<div class="ingresos" style="margin-top:20px;">'.
+				'<center><h5 style="text-align: left;" class="CuentasTitulo">Producto: '.$fila['0'].'</h5></center>'.
+				'<center><div style="text-align: left;">Codigo: '.$fila['3'].'</div></center>'.
+				'<center><div style="text-align: left;">Cantidad: '.$fila['9'].' </div></center>'.
+				'<center><div style="text-align: left;">Precio General: '.$fila['6'].' </div></center>'.
+				'</div>';
+				$return.='<div class="deposito">'.
+				'<center><h5>Creditos</h5>';
+				$return.='<table  class="depositos">';
+				$return.='<tr>'.
+							'<th>Descripcion</th>'.
+							'<th>Descripcion</th>'.
+							'<th>Qiintales Acreditados</th>'.
+							'</tr>';
+				
+							$sqlDetalleCuentaC = "SELECT fecha,descripcion,retirado FROM detalleFragmentarEntr where  idinventario=(select i.idinventario from inventarioFrag i where i.idproducto='".$datos[0]."')";
+							
+							if($resultado1 = $mysql->query($sqlDetalleCuentaC))
+							{
+								$total =0;
+						
+								if(mysqli_num_rows($resultado1)==0)
+								{
+									$respuesta = "<div class='error'>No hay usuarios BD vacia</div>";
+								}
+						
+								else
+								{
+						
+									while($fila1 = $resultado1->fetch_row())
+									{
+									$return.='<tr class="FilaDeposito">'.
+									'<td class="fechaFila">'.$fila1['0'].'</td>'.
+									'<td class="noCuentaFila">'.$fila1['1'].'</td>'.
+									'<td class="bancoFila">'.$fila1['2'].'</td>'.
+									'</tr>';
+										
+										$total+=$fila1['2'];
+									}
+								}
+							$return.='</table>';
+							
+				
+				
+							}		 
+			}
+
+			$resultado->free();//librerar variable
+
+
+			
+		}
+	}
+	else
+	{
+		$respuesta = "<div class='error'>Error: no se ejecuto la consulta a BD</div>";
+
+	}
+
+	//cierro la conexion
+	$mysql->close();
+	echo ($return);
+}
 ?>

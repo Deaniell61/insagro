@@ -489,7 +489,7 @@ function mostrarMovimientosInventarioConsignacionEntrada($id)
         <tr>
             <th>Fecha</th>
             <th>Descripcion</th>
-            <th>Abono</th>
+            <th>Restado</th>
             <!--<th>Credito</th>-->
             
             
@@ -519,7 +519,7 @@ function mostrarMovimientosInventarioConsignacionEntrada($id)
 
                 $tabla .="<td>"     .$fila["0"].    "</td>";
                 $tabla .="<td>" .$fila["1"]."</td>";
-                $tabla .="<td>" .toMoney($fila["2"]).      "</td>";
+                $tabla .="<td>" .($fila["2"]).      "</td>";
 				//$tabla .="<td>" .toMoney($fila["3"]).      "</td>";
                
                 $tabla .= "</tr>";
@@ -560,7 +560,7 @@ function mostrarMovimientosInventarioConsignacion($id)
         <tr>
             <th>Fecha</th>
             <th>Descripcion</th>
-            <th>Abono</th>
+            <th>Restado</th>
             <!--<th>Credito</th>-->
             
             
@@ -590,7 +590,7 @@ function mostrarMovimientosInventarioConsignacion($id)
 
                 $tabla .="<td>"     .$fila["0"].    "</td>";
                 $tabla .="<td>" .$fila["1"]."</td>";
-                $tabla .="<td>" .toMoney($fila["2"]).      "</td>";
+                $tabla .="<td>" .($fila["2"]).      "</td>";
 				//$tabla .="<td>" .toMoney($fila["3"]).      "</td>";
                
                 $tabla .= "</tr>";

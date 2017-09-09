@@ -43,6 +43,7 @@
             </tr>
         </table>
         <div id="mensaje3"></div>
+        <div id="mensajeccV"></div>
 
 <div id="respuesta">
     
@@ -236,6 +237,8 @@
             </div>
             <div class="modal-footer col s12 right-align">
                 <a id="btnInsertarFrag" onClick="fragmentarProducto()" class=" modal-action waves-effect waves-light btn blue lighten-1" >Aceptar</a>
+                <a id="imprimePro" style="display:;" onClick="imprimirCuentaPagar11('codigo','mensajeccV');" class="waves-effect waves-light btn green lighten-1 modal-trigger botonG " ><i class="material-icons left"><img class="iconoaddcrud" src="../app/img/imprimir.png" /></i>Imprimir Recibo</a>
+
             </div>
   </div>
 
