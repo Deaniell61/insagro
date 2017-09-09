@@ -320,8 +320,14 @@ function editar(id)
                     
 					
                      $('#mensaje3').html(resp); 
+                     $('#codigo').focus();
                      document.getElementById('codigo').disabled = true;
+                     $('#cantidad').focus();
                      document.getElementById('cantidad').disabled = true;
+                     $('#producto').focus();
+                     document.getElementById('producto').disabled = true;
+                     $('#marca').focus();
+                     document.getElementById('marca').disabled = true;
                      mostrarConsignacionDetalle(id)
                 }
 

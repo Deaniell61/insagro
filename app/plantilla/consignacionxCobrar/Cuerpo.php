@@ -97,9 +97,7 @@
       
              
                     <div class="input-field col s5" hidden>
-                               <i  class="material-icons prefix"><img class="iconologin" src="../app/img/monto.png"/></i>
                                <input  id="codigo" disabled type="text" class="validate">
-                               <label class="active" for="fecha" >Total Credito</label>
                              </div>
                              <div class="input-field col s6">
 
@@ -172,7 +170,8 @@
    ?>
                          <a id="guardar" class="waves-effect waves-light btn blue lighten-1 modal-trigger" onClick="abonarConsignacion();" ><i class="material-icons left"><img class="iconoaddcrud" src="../app/img/guardar.png" /></i>Guardar</a>
                     
-                    
+                         <a id="imprimePro" style="display:;" onClick="imprimirCuentaPagar11('codigo','mensajeccV');" class="waves-effect waves-light btn green lighten-1 modal-trigger botonG " ><i class="material-icons left"><img class="iconoaddcrud" src="../app/img/imprimir.png" /></i>Imprimir Recibo</a>
+                         
                          
                      
                      

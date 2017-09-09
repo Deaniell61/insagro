@@ -127,7 +127,7 @@
                         </div>
                         <div class="input-field col s6">
                             <i class="material-icons prefix"><img class="iconologin" src="../app/img/producto.png" /></i>
-                            <input id="producto" type="text" disabled class="validate" >
+                            <input id="producto" type="text"  class="validate" >
                             <label for="icon_prefix" ><span class="etiquelogin">Productos</span></label>
                         </div>
                         

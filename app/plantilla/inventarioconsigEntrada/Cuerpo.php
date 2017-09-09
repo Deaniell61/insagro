@@ -94,188 +94,200 @@
         <!-- nuevo -->
 
         <div id="modal1" class="modal">
-            <div class="modal-content">
-                <div >
-                    <form id="formUser" class="col s8">
-                        <div id="mensajeINA"></div>
-                        <div class="row">
-                            <div class="nav-wrapper grey darken-4">
-                                <div>
-                                    <p class="encabezadotextomodal">Inventario</p>
-
-                                    <a id="modalcerrar" class=" modal-action modal-close waves-effect waves-light right  " ><i class="material-icons prefix"><img class="iconocerrarmodal" src="../app/img/desenfrenado.png"></i></a>
-                                </div>
-
-                            </div>
-                        </div>
-                        <div class="input-field col s10" style="display:none;">
-                        
-                            <input id="idproducto" disabled type="text" class="validate">
-                            <input id="idproducto2" disabled type="text" class="validate">
-                            
-                        </div>
+        <div class="modal-content">
+            <div >
+                <form id="formUser" class="col s8">
+                    <div id="mensajeINA"></div>
                     <div class="row">
-                        <div class="input-field col s6">
-                            <i  class="material-icons prefix"><img class="iconologin" src="../app/img/codigo.png"/></i>
-                            <input id="codigo" onKeyUp="" type="text" class="validate" >
-                            <label for="icon_telephone" ><span class="etiquelogin">Codigo</span></label>
+                        <div class="nav-wrapper grey darken-4">
+                            <div>
+                                <p class="encabezadotextomodal">Inventario</p>
+
+                                <a id="modalcerrar" class=" modal-action modal-close waves-effect waves-light right  " ><i class="material-icons prefix"><img class="iconocerrarmodal" src="../app/img/desenfrenado.png"></i></a>
+                            </div>
+
                         </div>
-                        <div class="input-field col s6" style="display:none;">
-                            <i  class="material-icons prefix"><img class="iconologin" src="../app/img/codigo.png"/></i>
-                            <input id="codigo2" onKeyUp="" type="text" class="validate" >
-                            <label for="icon_telephone" ><span class="etiquelogin">Codigo</span></label>
-                        </div>
-                        <div class="input-field col s6">
-                            <i class="material-icons prefix"><img class="iconologin" src="../app/img/producto.png" /></i>
-                            <input id="producto" type="text" class="validate" >
-                            <label for="icon_prefix" ><span class="etiquelogin">Productos</span></label>
-                        </div>
+                    </div>
+                    <div class="input-field col s10" style="display:none;">
+                    
+                        <input id="idproducto" disabled type="text" class="validate">
+                        <input id="idproducto2" disabled type="text" class="validate">
                         
-                        <div class="input-field col s6">
-                            <i class="material-icons prefix"><img class="iconologin" src="../app/img/marca.png" /></i>
-                            <input id="marca" type="text" class="validate" >
-                            <label for="icon_prefix" ><span class="etiquelogin">Marca</span></label>
-                        </div>
-                        <div class="input-field col s6">
-                            <i class="material-icons prefix"><img class="iconologin" src="../app/img/descripcion.png" /></i>
-                            <input id="descripcion" type="text" class="validate" >
-                            <label for="icon_prefix" ><span class="etiquelogin">Descripcion</span></label>
-                        </div>
-                        <div class="input-field col s6">
-                        <i  class="material-icons prefix"><img class="iconologin" src="../app/img/tipoR.png"/></i>
-                        <select id="tipoRepuesto" onChange="" >
-                            <option value="" disabled selected>Sector</option>
-                            <option value="1">Sector Fertilizantes</option>
-                            <option value="2">Sector Herbicidas</option>
-                            <option value="3">Sector Insecticidas</option>
-                            <option value="4">Sector Veterinarios</option>
-                            <option value="5">Sector Semillas</option>
-                            <option value="6">Sector Caceros</option>
-                            <option value="7">Sector Concentrados</option>
-                            <option value="8">Sector Equipo Agricola</option>
-                            <option value="9">Sector Foliares</option>
-                            <option value="10">Sector Fungicidas</option>
-                            <option value="11">Sector Adherentes</option>
-                            <option value="12">Sector Bolsas</option>
-                            <option value="13">Sector Plastico</option>
-                            <option value="14">Sector Pintura</option>
+                    </div>
+                <div class="row">
+                    <div class="input-field col s6">
+                        <i  class="material-icons prefix"><img class="iconologin" src="../app/img/codigo.png"/></i>
+                        <input id="codigo" onKeyUp="" type="text" class="validate" >
+                        <label for="icon_telephone" ><span class="etiquelogin">Codigo</span></label>
+                    </div>
+                    <div class="input-field col s6" style="display:none;">
+                        <i  class="material-icons prefix"><img class="iconologin" src="../app/img/codigo.png"/></i>
+                        <input id="codigo2" onKeyUp="" disabled type="text" class="validate" >
+                        <label for="icon_telephone" ><span class="etiquelogin">Codigo</span></label>
+                    </div>
+                    <div class="input-field col s6">
+                        <i class="material-icons prefix"><img class="iconologin" src="../app/img/producto.png" /></i>
+                        <input id="producto" type="text"  class="validate" >
+                        <label for="icon_prefix" ><span class="etiquelogin">Productos</span></label>
+                    </div>
+                    
+                    <div class="input-field col s6">
+                        <i class="material-icons prefix"><img class="iconologin" src="../app/img/marca.png" /></i>
+                        <input id="marca" type="text"  class="validate" >
+                        <label for="icon_prefix" ><span class="etiquelogin">Marca</span></label>
+                    </div>
+                    <div class="input-field col s6">
+                        <i class="material-icons prefix"><img class="iconologin" src="../app/img/descripcion.png" /></i>
+                        <input id="descripcion" type="text" disabled class="validate" >
+                        <label for="icon_prefix" ><span class="etiquelogin">Descripcion</span></label>
+                    </div>
+                    <div class="input-field col s6">
+                    <i  class="material-icons prefix"><img class="iconologin" src="../app/img/tipoR.png"/></i>
+                    <select id="tipoRepuesto" onChange="" disabled >
+                        <option value="" disabled selected>Sector</option>
+                        <option value="1">Sector Fertilizantes</option>
+                        <option value="2">Sector Herbicidas</option>
+                        <option value="3">Sector Insecticidas</option>
+                        <option value="4">Sector Veterinarios</option>
+                        <option value="5">Sector Semillas</option>
+                        <option value="6">Sector Caceros</option>
+                        <option value="7">Sector Concentrados</option>
+                        <option value="8">Sector Equipo Agricola</option>
+                        <option value="9">Sector Foliares</option>
+                        <option value="10">Sector Fungicidas</option>
+                        <option value="11">Sector Adherentes</option>
+                        <option value="12">Sector Bolsas</option>
+                        <option value="13">Sector Plastico</option>
+                        <option value="14">Sector Pintura</option>
 
-                        </select>
-                        <label>Sector de Producto</label>
-                        </div>
+                    </select>
+                    <label>Sector de Producto</label>
+                    </div>
 
-                        <div class="input-field col s6">
-                        <i  class="material-icons prefix"><img class="iconologin" src="../app/img/tipoR.png"/></i>
-                        <select id="idpresentacion" onChange="" >
-                            <?php
-                            include('../vista/compra2Vista.php');
-                            comboPresentacion();
-                            ?>
+                    <div class="input-field col s6">
+                    <i  class="material-icons prefix"><img class="iconologin" src="../app/img/tipoR.png"/></i>
+                    <select id="idpresentacion" onChange="" disabled >
+                        <?php
+                        include('../vista/compra2Vista.php');
+                        comboPresentacion();
+                        ?>
 
-                        </select>
-                        <label>Presentacion</label>
-                        </div><br>
+                    </select>
+                    <label>Presentacion</label>
+                    </div><br>
 
-                        <div class="input-field col s6">
-                            <i class="material-icons prefix"><img class="iconologin" src="../app/img/cantidad.png" /></i>
-                            <input id="cantidad"  type="number" class="validate" >
-                            <label for="icon_prefix" ><span class="etiquelogin">Cantidad</span></label>
-                        </div>
+                    <div class="input-field col s6">
+                        <i class="material-icons prefix"><img class="iconologin" src="../app/img/cantidad.png" /></i>
+                        <input id="cantidad"  type="number" class="validate" >
+                        <label for="icon_prefix" ><span class="etiquelogin">Cantidad</span></label>
+                    </div>
 
-                        <div class="input-field col s6">
-                            <i class="material-icons prefix"><img class="iconologin" src="../app/img/precioCosto.png" /></i>
-                            <input id="costo"  type="text" class="validate" onChange="calcula();" onKeyUp="calcula();" >
-                            <label for="icon_prefix" ><span class="etiquelogin">Costo</span></label>
-                        </div>
-                        <div class="input-field col s6" style="display:none">
+                    <div class="input-field col s6" >
+                        <i class="material-icons prefix"><img class="iconologin" src="../app/img/precioCosto.png" /></i>
+                        <input id="costo"  type="text" class="validate" onChange="calcula();" onKeyUp="calcula();" >
+                        <label for="icon_prefix" ><span class="etiquelogin">Costo</span></label>
+                    </div>
+                    <div class="input-field col s6" >
 
-                            <i class="material-icons prefix"><img class="iconologin" src="../app/img/plazo.png" /> </i>
-                            <input id="fechaVenta" type="date" class="validate" value="<?php echo date('Y-m-d')?>">
-                            <label class="active" for="fecha" >Fecha de Venta</label>       
-                        </div>
-                        
-            </div>
-                        
-                        <div class="input-field col s8 " style="display:none;">
-                            <i  class="material-icons prefix"><img class="iconologin" src="../app/img/descripcion.png"/></i>
-                            
-                            <input id="presentacion" onKeyUp="buscaPresentacion(this);document.getElementById('idpresentacion').value='';" type="text" class="validate" >
-                            <label for="presentacion" ><span class="etiquelogin">Presentacion</span></label>
-                            <center>
-                                    <div class="listaMarca" id="listaPresentacion">
-
-
-                                    </div>
-                                </center>
-                        </div>
-                        <!--
-                        <div class="input-field col s8 " style="display:none;">
-                            <i  class="material-icons prefix"><img class="iconologin" src="../app/img/descripcion.png"/></i>
-                            
-                            <input id="idpresentacion" type="text" class="validate" >
-                            <label for="idpresentacion" ><span class="etiquelogin">Presentacion</span></label>
-                            
-                        </div>-->
-                        
-
-                        <div class="input-field col s1" style="display:none">
-                            <input id="precioGP"  type="text" class="validate" value="15"  onChange="calcula();" onKeyUp="calcula();" disabled>
-                            <label for="icon_prefix" ><span class="etiquelogin"></span>% General</label>
-                        </div>
-
-                        <div class="input-field col s10" style="display:none;">
-                            <i class="material-icons prefix"><img class="iconologin" src="../app/img/precioGeneral.png" /></i>
-                            <input id="precioG"  type="number" class="validate" onChange="calcula();" onKeyUp="calcula();" disabled>
-                            <label for="icon_prefix" ><span class="etiquelogin">Precio General</span></label>
-                        </div>
-                        <div class="input-field col s1" style="display:none;">
-                            <input id="precioEP"  type="text" class="validate" value="10"  onChange="calcula();" onKeyUp="calcula();" disabled>
-                            <label for="icon_prefix" ><span class="etiquelogin"></span>% Especial</label>
-                        </div>
-
-
-
-                        <div class="input-field col s10" style="display:none;">
-                            <i class="material-icons prefix"><img class="iconologin" src="../app/img/precioEspecial.png" /></i>
-                            <input id="precioE"  disabled type="number" class="validate" disabled>
-                            <label for="icon_prefix" ><span class="etiquelogin">Precio Especial</span></label>
-                        </div>
-                        <div class="input-field col s1" style="display:none;">
-                            <input id="precioMP"    type="number" class="validate"  value="10"  onChange="calcula();" onKeyUp="calcula();" disabled>
-                            <label for="icon_prefix" ><span class="etiquelogin"></span>% Mayoreo</label>
-                        </div>
-
-
-
-
-                        <div class="input-field col s10" style="display:none;">
-                            <i class="material-icons prefix"><img class="iconologin" src="../app/img/precioMayoreo.png" /></i>
-                            <input id="precioM"  disabled type="number" class="validate" onChange="calcula();" onKeyUp="calcula();" disabled>
-                            <label for="icon_prefix" ><span class="etiquelogin">Precio Mayoreo</span></label>
-                        </div>
-                        
-                        <div class="input-field col s10" style="display:none;">
-                            <i class="material-icons prefix"><img class="iconologin" src="../app/img/precioMayoreo.png" /></i>
-                            <input id="MinimoCant"  type="number" class="validate" disabled>
-                            <label for="icon_prefix" ><span class="etiquelogin">Cantidad Minima</span></label>
-                        </div>
-
-                        <div class="col s12 right-align">
-                        <a id="guardar" class="waves-effect waves-light btn blue lighten-1 modal-trigger" onClick="guardarInventario();" ><i class="material-icons left"><img class="iconoaddcrud" src="../app/img/guardar.png" /></i>Guardar</a>
-
-                        </div>
-
-                        <p id="restante" class=" col s3 right">Restante</p>
-				 <div id="resumenPEdit" class="col s10"   >
-               
-                     
-					 </div>   
-
-            </div>
+                        <i class="material-icons prefix"><img class="iconologin" src="../app/img/plazo.png" /> </i>
+                        <input id="fechaVenta" type="date" class="validate" value="<?php echo date('Y-m-d')?>">
+                        <label class="active" for="fecha" >Fecha</label>       
+                    </div>
+                    <div class="input-field col s6" >
+                        <i class="material-icons prefix"><img class="iconologin" src="../app/img/precioCosto.png" /></i>
+                        <input id="cantidadDeb"  type="number" class="validate"  >
+                        <label for="icon_prefix" ><span class="etiquelogin">Cantidad a Debitar</span></label>
+                    </div>
+                    <div class="input-field col s12" >
+                        <i class="material-icons prefix"><img class="iconologin" src="../app/img/precioCosto.png" /></i>
+                        <input id="descripcionDeb"  type="text" class="validate"  >
+                        <label for="icon_prefix" ><span class="etiquelogin">Descripcion</span></label>
+                    </div>
+                    
+                    
         </div>
+                    
+                    <div class="input-field col s8 " style="display:none;">
+                        <i  class="material-icons prefix"><img class="iconologin" src="../app/img/descripcion.png"/></i>
+                        
+                        <input id="presentacion" onKeyUp="buscaPresentacion(this);document.getElementById('idpresentacion').value='';" type="text" class="validate" >
+                        <label for="presentacion" ><span class="etiquelogin">Presentacion</span></label>
+                        <center>
+                                <div class="listaMarca" id="listaPresentacion">
 
-        </form>
-            </div>
+
+                                </div>
+                            </center>
+                    </div>
+                    <!--
+                    <div class="input-field col s8 " style="display:none;">
+                        <i  class="material-icons prefix"><img class="iconologin" src="../app/img/descripcion.png"/></i>
+                        
+                        <input id="idpresentacion" type="text" class="validate" >
+                        <label for="idpresentacion" ><span class="etiquelogin">Presentacion</span></label>
+                        
+                    </div>-->
+                    
+
+                    <div class="input-field col s1" style="display:none">
+                        <input id="precioGP"  type="text" class="validate" value="15"  onChange="calcula();" onKeyUp="calcula();" disabled>
+                        <label for="icon_prefix" ><span class="etiquelogin"></span>% General</label>
+                    </div>
+
+                    <div class="input-field col s10" style="display:none;">
+                        <i class="material-icons prefix"><img class="iconologin" src="../app/img/precioGeneral.png" /></i>
+                        <input id="precioG"  type="number" class="validate" onChange="calcula();" onKeyUp="calcula();" disabled>
+                        <label for="icon_prefix" ><span class="etiquelogin">Precio General</span></label>
+                    </div>
+                    <div class="input-field col s1" style="display:none;">
+                        <input id="precioEP"  type="text" class="validate" value="10"  onChange="calcula();" onKeyUp="calcula();" disabled>
+                        <label for="icon_prefix" ><span class="etiquelogin"></span>% Especial</label>
+                    </div>
+
+
+
+                    <div class="input-field col s10" style="display:none;">
+                        <i class="material-icons prefix"><img class="iconologin" src="../app/img/precioEspecial.png" /></i>
+                        <input id="precioE"  disabled type="number" class="validate" disabled>
+                        <label for="icon_prefix" ><span class="etiquelogin">Precio Especial</span></label>
+                    </div>
+                    <div class="input-field col s1" style="display:none;">
+                        <input id="precioMP"    type="number" class="validate"  value="10"  onChange="calcula();" onKeyUp="calcula();" disabled>
+                        <label for="icon_prefix" ><span class="etiquelogin"></span>% Mayoreo</label>
+                    </div>
+
+
+
+
+                    <div class="input-field col s10" style="display:none;">
+                        <i class="material-icons prefix"><img class="iconologin" src="../app/img/precioMayoreo.png" /></i>
+                        <input id="precioM"  disabled type="number" class="validate" onChange="calcula();" onKeyUp="calcula();" disabled>
+                        <label for="icon_prefix" ><span class="etiquelogin">Precio Mayoreo</span></label>
+                    </div>
+                    
+                    <div class="input-field col s10" style="display:none;">
+                        <i class="material-icons prefix"><img class="iconologin" src="../app/img/precioMayoreo.png" /></i>
+                        <input id="MinimoCant"  type="number" class="validate" disabled>
+                        <label for="icon_prefix" ><span class="etiquelogin">Cantidad Minima</span></label>
+                    </div>
+
+                    <div class="col s12 right-align">
+                    <a id="guardar1" style="display:none" class="waves-effect waves-light btn blue lighten-1 modal-trigger" onClick="guardarInventario();" ><i class="material-icons left"><img class="iconoaddcrud" src="../app/img/guardar.png" /></i>Guardar</a>
+                    <a id="guardar" class="waves-effect waves-light btn blue lighten-1 modal-trigger" onClick="abonarConsignacion();" ><i class="material-icons left"><img class="iconoaddcrud" src="../app/img/guardar.png" /></i>Guardar</a>
+
+                    </div>
+
+                    <p id="restante" class=" col s3 right">Restante</p>
+             <div id="resumenPEdit" class="col s10"   >
+           
+                 
+                 </div>   
+
+        </div>
+    </div>
+
+    </form>
+        </div>
 
 </div>
 

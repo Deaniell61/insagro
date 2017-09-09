@@ -149,6 +149,30 @@ if($_POST)
         
         
     }
+    else if($transaccion == 12)
+    {
+        
+        $datos[0] = $_POST['id'];
+        $datos[1] = $_POST['tipo'];
+        
+
+        
+        datosImpCongnacion($datos);
+        
+        
+    }
+    else if($transaccion == 13)
+    {
+        
+        $datos[0] = $_POST['id'];
+        $datos[1] = $_POST['tipo'];
+        
+
+        
+        datosImpCongnacionxCob($datos);
+        
+        
+    }
     
 //----------- fin gestion ----------/    
     

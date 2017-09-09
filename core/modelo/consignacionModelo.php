@@ -275,7 +275,7 @@ function abonarConsignacionInvEntr($datos)
 	session_start();
 	$mysql->query("BEGIN");
 	
-	if($cont=$mysql->query("select cantidad from inventarioP where idinventarioC='".$datos[0]."'"))
+	if($cont=$mysql->query("select cantidad from inventarioCxCob where idinventarioC='".$datos[0]."'"))
 	{
 			 
 				 $fila = $cont->fetch_row();
@@ -293,30 +293,30 @@ function abonarConsignacionInvEntr($datos)
     if($mysql->query($sql))
     {
 			 
-				 	  if(!$mysql->query("update inventarioP set cantidad=cantidad-".$datos[1]." where idinventarioC='".$datos[0]."'"))
+				 	  if(!$mysql->query("update inventarioCxCob set cantidad=cantidad-".$datos[1]." where idinventarioC='".$datos[0]."'"))
 					 {
 						 $mysql->query("ROLLBACK");
 					 }
 					 else
 					 {
-						 if($cont=$mysql->query("select idinventario from inventario where idproducto='".$datos[6]."'"))
-						 {
-							if($cont->num_rows>0)
-							{
+						//  if($cont=$mysql->query("select idinventario from inventario where idproducto='".$datos[6]."'"))
+						//  {
+						// 	if($cont->num_rows>0)
+						// 	{
 							
-								$fila2 = $cont->fetch_row();
-								if(!$mysql->query("update inventario set cantidad=cantidad+".$datos[1]." where idinventario='".$fila2[0]."'"))
-								{
-									$mysql->query("ROLLBACK");
-								}
+						// 		$fila2 = $cont->fetch_row();
+						// 		if(!$mysql->query("update inventario set cantidad=cantidad+".$datos[1]." where idinventario='".$fila2[0]."'"))
+						// 		{
+						// 			$mysql->query("ROLLBACK");
+						// 		}
 
-							}else{
-								if(!$mysql->query("INSERT INTO inventario(cantidad,precioCosto,precioVenta,precioClienteEs,precioDistribuidor, idproducto,idpresentacion) VALUES ('".$datos[1]."',0,0,0,0,'".$datos[6]."','".$datos[7]."')"))
-								{
-									$mysql->query("ROLLBACK");
-								}
-							}
-						 }
+						// 	}else{
+						// 		if(!$mysql->query("INSERT INTO inventario(cantidad,precioCosto,precioVenta,precioClienteEs,precioDistribuidor, idproducto,idpresentacion) VALUES ('".$datos[1]."',0,0,0,0,'".$datos[6]."','".$datos[7]."')"))
+						// 		{
+						// 			$mysql->query("ROLLBACK");
+						// 		}
+						// 	}
+						//  }
 						
 						$mysql->query("COMMIT");
 						 
@@ -487,4 +487,187 @@ function abonarConsignacionxCob($datos)
     return printf($form);
   
 }
+
+
+function datosImpCongnacion($datos){
+	
+		$mysql = conexionMysql();
+		$sql = "SELECT c.fecha,c.nocomprobante,p.nit,p.nombreempresa,c.total,c.tipocompra,c.idcompras,p.direccion,(select cong.saldo from consignacion cong where cong.idcompras=c.idcompras order by cong.fecha desc limit 1) FROM compras c inner join proveedor p on p.idproveedor=c.iddistribuidor where (c.estado=1 or c.estado=0) and c.tipocompra=5 and c.idcompras='".$datos[0]."' ";
+		$fecha=date('Y-m-d');
+		$cont=0;
+		$i=0;
+		$return="";
+		$encab="<div class=\"navbar-fixed\"><nav><div class=\"nav-wrapper grey darken-4\"><a  class=\"brand-logo\"><img class=\"logo\" src=\"../app/img/logoinsagro1.png\"/></a><div style=\"height: 18px; text-align:right;\">Insagro</div><div  style=\"height: 18px; text-align:right;\">\"Lo mejor para tus plantas\"</div><div  style=\"height: 18px; text-align:right;\">Direccion: Mazatenango</div><div  style=\"height: 18px; text-align:right;\">Tel. 77737775</div><div  style=\"height: 18px; text-align:right;\">Cel. 42207608</div></div></nav></div><br>";
+		$plazo = array('','day','month','year');
+				$plazo2 = array('','Dia','Mes','Año');
+		if($resultado = $mysql->query($sql))
+		{
+	
+			if(mysqli_num_rows($resultado)==0)
+			{
+				$respuesta = "<div class='error'>No hay usuarios BD vacia</div>";
+			}
+	
+			else
+			{
+	
+				while($fila = $resultado->fetch_row())
+				{
+
+					
+					$return.=$encab.'<div class="ingresos" style="margin-top:20px;">'.
+					'<center><h5 style="text-align: left;" class="CuentasTitulo">Proveedor: '.$fila['3'].'</h5></center>'.
+					'<center><div style="text-align: left;">Direccion: '.$fila['7'].'</div></center>'.
+					'<center><div style="text-align: left;">Fecha: '.$fila['0'].' </div></center>'.
+					'</div>';
+
+					$return.='<div class="deposito">'.
+					'<center><h5>Abonos</h5>';
+					$return.='<table  class="depositos">';
+					$return.='<tr>'.
+							 '<th>Descripcion</th>'.
+							 '<th>Descripcion</th>'.
+							 '<th>Abono</th>'.
+							 '</tr>';
+				   
+							 $sqlDetalleCuentaC = "SELECT cc.fecha,cc.descripcion,cc.retirado,cc.consignado FROM consignacion cc  WHERE cc.idventa=".$datos[0];
+							 
+							 if($resultado1 = $mysql->query($sqlDetalleCuentaC))
+							 {
+								 $total =0;
+						 
+								 if(mysqli_num_rows($resultado1)==0)
+								 {
+									 $respuesta = "<div class='error'>No hay usuarios BD vacia</div>";
+								 }
+						 
+								 else
+								 {
+						 
+									 while($fila1 = $resultado1->fetch_row())
+									 {
+										$return.='<tr class="FilaDeposito">'.
+										'<td class="fechaFila">'.$fila1['0'].'</td>'.
+										'<td class="noCuentaFila">'.$fila1['1'].'</td>'.
+										'<td class="bancoFila">'.$fila1['2'].'</td>'.
+										'</tr>';
+										  
+										  $total+=$fila1['2'];
+									  }
+								 }
+								$return.='</table>';
+								
+				 
+				 
+							 }		 
+				}
+	
+				$resultado->free();//librerar variable
+	
+	
+			   
+			}
+		}
+		else
+		{
+			$respuesta = "<div class='error'>Error: no se ejecuto la consulta a BD</div>";
+	
+		}
+	
+		//cierro la conexion
+		$mysql->close();
+		echo ($return);
+	}
+
+	function datosImpCongnacionxCob($datos){
+		
+			$mysql = conexionMysql();
+			
+			$sql = "SELECT c.fecha,c.nocomprobante,p.nit,p.nombre,c.total,(select tv.Descripcion from tipoventa tv where tv.idtipo=c.tipoventa),c.idventas,(select u.user from usuarios u where u.idusuarios=c.idusuario),(select cong.saldo from consignacionxCob cong where cong.idventas=c.idventas order by cong.fecha desc limit 1) FROM ventas c inner join cliente p on p.idcliente=c.idcliente inner join ventasdetalle cd on cd.idventa=c.idventas inner join productos pd on pd.idproductos=cd.idproductos where c.estado=1 and cd.estado=1 and c.tipoventa=5 and c.idventas='".$datos[0]."' order by c.fecha desc";
+			//$sql = "SELECT c.fecha,c.nocomprobante,p.nit,p.nombre,c.total,c.tipoventa,c.idventas,p.direccion,(select cong.saldo from consignacionxCob cong where cong.idventas=c.idventas order by cong.fecha desc limit 1) FROM ventas c inner join cliente p on p.idcliente=c.idcliente where (c.estado=1 or c.estado=0) and c.tipoventa=5 and c.idventa='".$datos[0]."' ";
+			$fecha=date('Y-m-d');
+			$cont=0;
+			$i=0;
+			$return="";
+			$encab="<div class=\"navbar-fixed\"><nav><div class=\"nav-wrapper grey darken-4\"><a  class=\"brand-logo\"><img class=\"logo\" src=\"../app/img/logoinsagro1.png\"/></a><div style=\"height: 18px; text-align:right;\">Insagro</div><div  style=\"height: 18px; text-align:right;\">\"Lo mejor para tus plantas\"</div><div  style=\"height: 18px; text-align:right;\">Direccion: Mazatenango</div><div  style=\"height: 18px; text-align:right;\">Tel. 77737775</div><div  style=\"height: 18px; text-align:right;\">Cel. 42207608</div></div></nav></div><br>";
+			$plazo = array('','day','month','year');
+					$plazo2 = array('','Dia','Mes','Año');
+			if($resultado = $mysql->query($sql))
+			{
+		
+				if(mysqli_num_rows($resultado)==0)
+				{
+					$respuesta = "<div class='error'>No hay usuarios BD vacia</div>";
+				}
+		
+				else
+				{
+		
+					while($fila = $resultado->fetch_row())
+					{
+	
+						
+						$return.=$encab.'<div class="ingresos" style="margin-top:20px;">'.
+						'<center><h5 style="text-align: left;" class="CuentasTitulo">Proveedor: '.$fila['3'].'</h5></center>'.
+						'<center><div style="text-align: left;">Direccion: '.$fila['7'].'</div></center>'.
+						'<center><div style="text-align: left;">Fecha: '.$fila['0'].' </div></center>'.
+						'</div>';
+	
+						$return.='<div class="deposito">'.
+						'<center><h5>Abonos</h5>';
+						$return.='<table  class="depositos">';
+						$return.='<tr>'.
+								 '<th>Descripcion</th>'.
+								 '<th>Descripcion</th>'.
+								 '<th>Abono</th>'.
+								 '</tr>';
+					   
+								 $sqlDetalleCuentaC = "SELECT cc.fecha,cc.descripcion,cc.retirado,cc.consignado FROM consignacionxCob cc  WHERE cc.idVentas=".$datos['0'];
+								 
+								 if($resultado1 = $mysql->query($sqlDetalleCuentaC))
+								 {
+									 $total =0;
+							 
+									 if(mysqli_num_rows($resultado1)==0)
+									 {
+										 $respuesta = "<div class='error'>No hay usuarios BD vacia</div>";
+									 }
+							 
+									 else
+									 {
+							 
+										 while($fila1 = $resultado1->fetch_row())
+										 {
+											$return.='<tr class="FilaDeposito">'.
+											'<td class="fechaFila">'.$fila1['0'].'</td>'.
+											'<td class="noCuentaFila">'.$fila1['1'].'</td>'.
+											'<td class="bancoFila">'.$fila1['2'].'</td>'.
+											'</tr>';
+											  
+											  $total+=$fila1['2'];
+										  }
+									 }
+									$return.='</table>';
+									
+					 
+					 
+								 }		 
+					}
+		
+					$resultado->free();//librerar variable
+		
+		
+				   
+				}
+			}
+			else
+			{
+				$respuesta = "<div class='error'>Error: no se ejecuto la consulta a BD</div>";
+		
+			}
+		
+			//cierro la conexion
+			$mysql->close();
+			echo ($return);
+		}
 ?>

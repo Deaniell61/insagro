@@ -287,8 +287,12 @@ $fecha=date('Y-m-d');
 			  $segundos=strtotime($fecha) - strtotime($filaCuentaC["0"]); //para tu fecha de ejmplo
 				$diferencia_dias=intval($segundos/60/60/24);
 			$form['CuentaC'] = $filaCuentaC;
-		  	$form['CuentaC']['anio'] = substr($filaCuentaC[0],0,4);
-			$form['CuentaC'][7] = $plazo[$filaCuentaC[7]];
+			  $form['CuentaC']['anio'] = substr($filaCuentaC[0],0,4);
+			if($filaCuentaC[7]>0){
+				$form['CuentaC'][7] = $plazo[$filaCuentaC[7]];}
+			else{
+				$form['CuentaC'][7] = '';
+			}
 			$form['CuentaC']['diasTrans'] = $diferencia_dias;
 			$form['CuentaC']['mes'] = substr($filaCuentaC[0],5,2);
 			$form['CuentaC']['dia'] = substr($filaCuentaC[0],8,2);
@@ -345,7 +349,7 @@ $fecha=date('Y-m-d');
     
     //$mysql->close();
     
-    echo json_encode($form);
+    echo var_dump($form);
     
 }
 

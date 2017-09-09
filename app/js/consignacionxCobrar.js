@@ -406,80 +406,46 @@ function verificaImpresion(){
     monto=$('#MontoED').val();
 
     if(monto>0){
-        document.getElementById('SelectCheque').style.display='';
-        document.getElementById('BI').checked=true;
-        document.getElementById('imprimir1').style.display='';
-        document.getElementById('nombreChequeED111').style.display='';
+        document.getElementById('imprimePro').style.display=''; 
     }else{
-        document.getElementById('SelectCheque').style.display='none';
-        document.getElementById('imprimir1').style.display='none';
-        document.getElementById('imprimir').style.display='none';
-        document.getElementById('nombreChequeED111').style.display='none';
+        document.getElementById('imprimePro').style.display='none'; 
     }
 }
 
 function imprimirCuentaPagar11(id,div){
-var cuerpo="";
-if(document.getElementById(id))
-{
-    id=document.getElementById(id).value;
-}
-    $('#'+div).html('<div id="impresionDeProforma11"></div>');
-    var encab="<div class=\"navbar-fixed\"><nav><div class=\"nav-wrapper grey darken-4\"><a  class=\"brand-logo\"><img class=\"logo\" src=\"../app/img/logoinsagro1.png\"/></a><div style=\"height: 18px; text-align:right;\">Insagro</div><div  style=\"height: 18px; text-align:right;\">\"Lo mejor para tus plantas\"</div><div  style=\"height: 18px; text-align:right;\">Direccion: Mazatenango</div><div  style=\"height: 18px; text-align:right;\">Tel. 77737775</div><div  style=\"height: 18px; text-align:right;\">Cel. 42207608</div></div></nav></div><br><p>Cliente: </p>";
-    //$('#impresionDeProforma11').html(encab);
-     var trasDato;
-    trasDato = 15;
-    tipo=1;
-    $.ajax({
-        type: "POST",
-        dataType: "json",
-        url: "../core/controlador/cuentasPagarControlador.php",
-        data: ' tipo=' + tipo + '&id=' + id + '&trasDato=' + trasDato,
-        success: function(resp) {
-
-           //alert(resp['DetalleCuentaC'].length);
-           cuerpo="";
-           cuerpo+='<div class="logoProforma"><img class=\"logoProf\" src=\"../app/img/logoinsagro1.png\"/></div>'+
-           '<div class="diaProforma">'+resp['CuentaC']['dia']+'</div><div class="mesProforma">'+resp['CuentaC']['mes']+'</div><div class="anioProforma">'+resp['CuentaC']['anio']+'</div>'+
-           '<div class="nombreProforma">'+resp['CuentaC']['1']+'</div>'+
-           '<div class="direccionProforma">'+resp['CuentaC']['3']+'</div>'+
-           '<table class="detalleProforma espacioproforma">';
-          cuerpo+='<tr>'+
-                    '<td class="cantidadFilaProforma"></td>'+
-                    '<td class="descripcionFilaProforma">'+currency(resp['CuentaC']['9'])+' a plazo de '+resp['CuentaC']['6']+' '+resp['CuentaC']['7']+'</td>'+
-                    '<td class="unidadFilaProforma">-</td>'+
-                    '<td class="subtotalFilaProforma">'+resp['CuentaC']['9']+'</td>'+
-                    '</tr>';
-          if(resp['DetalleCuentaC'])
-          {if(resp['DetalleCuentaC'].length>0 && resp['DetalleCuentaC'][0]['descripcion'])
-           {
-                for(i=0;i<resp['DetalleCuentaC'].length;i++){
-                    cuerpo+='<tr>'+
-                    '<td class="cantidadFilaProforma"></td>'+
-                    '<td class="descripcionFilaProforma">'+resp['DetalleCuentaC'][i]['descripcion']+'</td>'+
-                    '<td class="unidadFilaProforma">'+resp['DetalleCuentaC'][i]['abono']+'</td>'+
-                    '<td class="subtotalFilaProforma">'+resp['DetalleCuentaC'][i]['saldo']+'</td>'+
-                    '</tr>';
-                }
-           }}
-          cuerpo+='</table>';
-          cuerpo+='<div class="totalProformaLET">'+NumeroALetras(resp['total'])+'</div>';
-          cuerpo+='<div class="totalProforma">'+parseFloat(resp['total'])+'</div>';
-          $('#impresionDeProforma11').html(cuerpo);
-           ImprimirVar('impresionDeProforma11');
-        }
-    });
-
-
+    var cuerpo="";
+    if(document.getElementById(id))
+    {
+        id=document.getElementById(id).value;
+    }
+        $('#'+div).html('<div id="impresionDeProforma11"></div>');
+        var encab="<div class=\"navbar-fixed\"><nav><div class=\"nav-wrapper grey darken-4\"><a  class=\"brand-logo\"><img class=\"logo\" src=\"../app/img/logoinsagro1.png\"/></a><div style=\"height: 18px; text-align:right;\">Insagro</div><div  style=\"height: 18px; text-align:right;\">\"Lo mejor para tus plantas\"</div><div  style=\"height: 18px; text-align:right;\">Direccion: Mazatenango</div><div  style=\"height: 18px; text-align:right;\">Tel. 77737775</div><div  style=\"height: 18px; text-align:right;\">Cel. 42207608</div></div></nav></div><br><p>Cliente: </p>";
+        //$('#impresionDeProforma11').html(encab);
+        var trasDato;
+        trasDato = 13;
+        tipo=1;
+        $.ajax({
+            type: "POST",
+            url: "../core/controlador/consignacionControlador.php",
+            data: ' tipo=' + tipo + '&id=' + id + '&trasDato=' + trasDato,
+            success: function(resp) {
+    
+              
+              $('#impresionDeProforma11').html(resp);
+               ImprimirVar('impresionDeProforma11');
+            }
+        });
+    
     
         
+            
+           
+        
        
+       //$('#'+div).html("");
     
-   
-   //$('#'+div).html("");
-
-
-}
+    
+    }
 
 function imprimirCuentaPagar(id,div){
 $('#'+div).html('<div id="impresionCuentaC"></div>');
