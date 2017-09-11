@@ -281,7 +281,6 @@ else
            <th>Sector</th>
             <th>Presentacion</th>
             
-             <th>Costo</th>
             <th>Cantidad</th>
             <th>Precio General</th>
             
@@ -334,7 +333,7 @@ else
 				 $tabla .="<td>" .$tipo[$fila["15"]].      "</td>";
                  $tabla .="<td>" .$fila["14"].      "</td>";
 				 //$tabla .="<td>" .$fila["4"].      "</td>";
-				 $tabla .="<td>" .toMoney($fila["5"]).      "</td>";
+				//  $tabla .="<td>" .toMoney($fila["5"]).      "</td>";
 				$tabla .="<td>" .$fila["9"].      "</td>";
 				$tabla .="<td>" .toMoney($fila["6"]).      "</td>";
 				//$tabla .="<td>" .toMoney($fila["7"]).      "</td>";

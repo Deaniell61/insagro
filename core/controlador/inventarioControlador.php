@@ -243,6 +243,7 @@ if($_POST)
         $datos[9]=$_POST['padre'];
         $datos[10]=$_POST['descripcionA'];
         $datos[11]=$_POST['cantidadQ'];
+        $datos[12]=$_POST['venta'];
 		
 		
 		

@@ -530,7 +530,7 @@ function datosImpCongnacion($datos){
 							 '<th>Abono</th>'.
 							 '</tr>';
 				   
-							 $sqlDetalleCuentaC = "SELECT cc.fecha,cc.descripcion,cc.retirado,cc.consignado FROM consignacion cc  WHERE cc.idventa=".$datos[0];
+							 $sqlDetalleCuentaC = "SELECT cc.fecha,cc.descripcion,cc.retirado,cc.consignado FROM consignacion cc  WHERE cc.idcompras=".$datos['0'];
 							 
 							 if($resultado1 = $mysql->query($sqlDetalleCuentaC))
 							 {
@@ -549,7 +549,7 @@ function datosImpCongnacion($datos){
 										$return.='<tr class="FilaDeposito">'.
 										'<td class="fechaFila">'.$fila1['0'].'</td>'.
 										'<td class="noCuentaFila">'.$fila1['1'].'</td>'.
-										'<td class="bancoFila">'.$fila1['2'].'</td>'.
+										'<td class="bancoFila">'.toMoney($fila1['2']).'</td>'.
 										'</tr>';
 										  
 										  $total+=$fila1['2'];

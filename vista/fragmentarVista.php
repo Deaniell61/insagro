@@ -106,7 +106,7 @@ function mostrarDetalleFragmentar($datos)
             <th>Fecha</th>
             <th>Descripcion</th>
             <th>Quintales Acreditado</th>
-
+            
 
         </tr>
     </thead>
@@ -115,7 +115,7 @@ function mostrarDetalleFragmentar($datos)
 	$extra="";
     $mysql = conexionMysql();
     $cont=0;
-    $sql = "SELECT fecha,descripcion,retirado FROM detalleFragmentar where  idinventario=(select i.idinventario from inventario i where i.idproducto='".$datos[0]."')";
+    $sql = "SELECT fecha,descripcion,retirado,precioventa FROM detalleFragmentar where  idinventario=(select i.idinventario from inventario i where i.idproducto='".$datos[0]."')";
     
     $medidas=array('','KG','LB','OZ','GR');
     $medida['']="";
@@ -140,7 +140,7 @@ function mostrarDetalleFragmentar($datos)
                 $tabla .="<td>" .$fila["0"]." </td>";
                 $tabla .="<td>" .$fila["1"].      "</td>";
 				$tabla .="<td>" .$fila["2"].      "</td>";
-      
+                
 
 
                 $tabla .= "</tr>";
@@ -183,7 +183,8 @@ function mostrarDetalleFragmentarEntrada($datos)
             <th>Fecha</th>
             <th>Descripcion</th>
             <th>Quintales Acreditado</th>
-
+            <th>Precio Venta</th>
+            
 
         </tr>
     </thead>
@@ -192,7 +193,7 @@ function mostrarDetalleFragmentarEntrada($datos)
 	$extra="";
     $mysql = conexionMysql();
     $cont=0;
-    $sql = "SELECT fecha,descripcion,retirado FROM detalleFragmentarEntr where  idinventario=(select i.idinventario from inventarioFrag i where i.idproducto='".$datos[0]."')";
+    $sql = "SELECT fecha,descripcion,retirado,precioventa FROM detalleFragmentarEntr where  idinventario=(select i.idinventario from inventarioFrag i where i.idproducto='".$datos[0]."')";
     
     $medidas=array('','KG','LB','OZ','GR');
     $medida['']="";
@@ -217,7 +218,8 @@ function mostrarDetalleFragmentarEntrada($datos)
                 $tabla .="<td>" .$fila["0"]." </td>";
                 $tabla .="<td>" .$fila["1"].      "</td>";
 				$tabla .="<td>" .$fila["2"].      "</td>";
-      
+				$tabla .="<td>" .toMoney($fila["3"]).      "</td>";
+                
 
 
                 $tabla .= "</tr>";

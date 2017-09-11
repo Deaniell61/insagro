@@ -203,7 +203,13 @@
                 <label for="icon_telephone" ><span class="etiquelogin">Cantidad de Libras a Inventario</span></label>
             </div>
 
-            <div class="input-field col s12 ">
+            <div class="input-field col s6 ">
+                <i  class="material-icons prefix"><img class="iconologin" src="../app/img/precioGeneral.png"/></i>
+                <input id="PrecioGeneralNew" type="text" value="0" class="validate" onKeyUp="CalculaCostoLibra();">
+                <label for="PrecioGeneralNew" ><span class="etiquelogin">Precio General</span></label>
+            </div>
+
+            <div class="input-field col s6 ">
                 <i  class="material-icons prefix"><img class="iconologin" src="../app/img/descripcion.png"/></i>
                 <input id="DescripcionAbono" type="text"  class="validate">
                 <label for="icon_telephone" ><span class="etiquelogin">Descripcion</span></label>

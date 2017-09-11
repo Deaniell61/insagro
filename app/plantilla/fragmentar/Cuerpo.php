@@ -203,6 +203,7 @@
                 <input id="cantidadL" type="text" value="0" class="validate" onKeyUp="CalculaCostoLibra();">
                 <label for="icon_telephone" ><span class="etiquelogin">Cantidad de Libras Acreditadas</span></label>
             </div>
+            
 
             <div class="input-field col s12 ">
                 <i  class="material-icons prefix"><img class="iconologin" src="../app/img/descripcion.png"/></i>

@@ -93,6 +93,8 @@ function fragmentarProducto(){
 	cantidad=document.getElementById('cantidadL').value;
     cantidadQ=document.getElementById('cantidadQ').value;
     codigo=document.getElementById('nombreC').value;
+	venta=document.getElementById('PrecioGeneralNew').value;
+
 	presentacion=3;
 	
 	
@@ -108,11 +110,12 @@ function fragmentarProducto(){
     }else{
         var trasDato = 20;
     }
+    if(cantidadQ>cantidad){
     $.ajax
         ({
             type:"POST",
             url:"../core/controlador/inventarioControlador.php",
-            data:' id=' +  id + '&descripcionA=' + descripcionA + '&precioG=' + precioG + '&codigo=' + codigo + '&presentacion=' + presentacion + '&costo=' + costo + '&cantidadQ=' + cantidadQ + '&cantidad=' + cantidad + '&precioE=' + precioE + '&precioM=' + precioM + '&nombre=' + nombre + '&padre=' + padre + '&trasDato=' + trasDato,            
+            data:' id=' +  id + '&venta=' + venta + '&descripcionA=' + descripcionA + '&precioG=' + precioG + '&codigo=' + codigo + '&presentacion=' + presentacion + '&costo=' + costo + '&cantidadQ=' + cantidadQ + '&cantidad=' + cantidad + '&precioE=' + precioE + '&precioM=' + precioM + '&nombre=' + nombre + '&padre=' + padre + '&trasDato=' + trasDato,            
             success: function(resp)
             {
                 
@@ -122,6 +125,11 @@ function fragmentarProducto(){
                 
             }
         });
+    }
+    else{
+        alert('No puede quitar mas de lo que se tiene')
+        document.getElementById('cantidadL').value=cantidadQ;
+    }
 }
 
 
