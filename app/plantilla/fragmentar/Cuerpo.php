@@ -81,13 +81,13 @@
               
           <div id="nuevoFrag"  class="fragmentarFor">
 
-        <div class="col s5" >
+        <div class="col s1" >
           <div id="productosCompra" class="alto">
 
                              </div>
         </div>
 
-        <div class="col s5">
+        <div class="col s12">
 
             <div class="input-field col s6" style="display:none">
             <i  class="material-icons prefix"><img class="iconologin" src="../app/img/codigo.png"/></i>
@@ -177,7 +177,7 @@
                     </div>-->
             
             <div class="input-field col s6 ">
-                <i  class="material-icons prefix"><img class="iconologin" src="../app/img/precioCosto.png"/></i>
+                <i  class="material-icons prefix"><img class="iconologin" src="../app/img/cantidad.png"/></i>
                 <input id="cantidadQ" type="text" value="0" class="validate" onKeyUp="siguiente(event,'precioG');">
                 <label for="icon_telephone" ><span class="etiquelogin">Cantidad de Quintales</span></label>
             </div>
@@ -199,13 +199,13 @@
             <label>Sector a Acreditar</label>
             </div>
             <div class="input-field col s6 ">
-                <i  class="material-icons prefix"><img class="iconologin" src="../app/img/precioCosto.png"/></i>
+                <i  class="material-icons prefix"><img class="iconologin" src="../app/img/cantidad.png"/></i>
                 <input id="cantidadL" type="text" value="0" class="validate" onKeyUp="CalculaCostoLibra();">
                 <label for="icon_telephone" ><span class="etiquelogin">Cantidad de Libras Acreditadas</span></label>
             </div>
 
             <div class="input-field col s12 ">
-                <i  class="material-icons prefix"><img class="iconologin" src="../app/img/precioCosto.png"/></i>
+                <i  class="material-icons prefix"><img class="iconologin" src="../app/img/descripcion.png"/></i>
                 <input id="DescripcionAbono" type="text" class="validate">
                 <label for="icon_telephone" ><span class="etiquelogin">Descripcion de Acreditacion</span></label>
             </div>
@@ -237,7 +237,7 @@
             </div>
             <div class="modal-footer col s12 right-align">
                 <a id="btnInsertarFrag" onClick="fragmentarProducto()" class=" modal-action waves-effect waves-light btn blue lighten-1" >Aceptar</a>
-                <a id="imprimePro" style="display:;" onClick="imprimirCuentaPagar11('codigo','mensajeccV');" class="waves-effect waves-light btn green lighten-1 modal-trigger botonG " ><i class="material-icons left"><img class="iconoaddcrud" src="../app/img/imprimir.png" /></i>Imprimir Recibo</a>
+                <!-- <a id="imprimePro" style="display:;" onClick="imprimirCuentaPagar11('codigo','mensajeccV');" class="waves-effect waves-light btn green lighten-1 modal-trigger botonG " ><i class="material-icons left"><img class="iconoaddcrud" src="../app/img/imprimir.png" /></i>Imprimir Recibo</a> -->
 
             </div>
   </div>

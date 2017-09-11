@@ -59,7 +59,7 @@ function mostrarFragmentar()
 				$tabla .="<td>" .$fila["11"].  "</td>";
 				$tabla .="<td>" .$fila["1"].      "</td>";
 
-                $tabla .="<td class='anchoC'>  <a id='modalnuevoP' onClick=\"abrirFragmentar('" .$fila["2"]."');\" class='waves-effect waves-light btn blue lighten-1 modal-trigger botonesm' ><i class='material-icons left'><img class='iconoaddcrud' src='../app/img/seleccion.png' /></i></a>";
+                $tabla .="<td class='anchoC'>  <a id='modalnuevoP' onClick=\"abrirFragmentar('" .$fila["2"]."');\" class='waves-effect waves-light btn blue lighten-1 modal-trigger botonesm' ><i class='material-icons left'><img class='iconoaddcrud' src='../app/img/editar.png' /></i></a>";
                 $tabla .="<a class='waves-effect waves-light btn green lighten-1 modal-trigger botonesm editar' onclick=\"imprimirCuentaPagar11('".$fila["2"]."','mensajeccV');\"><i class='material-icons left'><img class='iconoeditcrud' src='../app/img/imprimir.png' /></i></a></td>";
                 
       
@@ -305,7 +305,7 @@ function mostrarFragmentarEntrada()
 				$tabla .="<td>" .$fila["11"].     "</td>";
 				$tabla .="<td>" .$fila["1"].      "</td>";
 
-                $tabla .="<td class='anchoC'>  <a id='modalnuevoP' onClick=\"abrirFragmentar('" .$fila["2"]."');\" class='waves-effect waves-light btn blue lighten-1 modal-trigger botonesm' ><i class='material-icons left'><img class='iconoaddcrud' src='../app/img/seleccion.png' /></i></a>";
+                $tabla .="<td class='anchoC'>  <a id='modalnuevoP' onClick=\"abrirFragmentar('" .$fila["2"]."');\" class='waves-effect waves-light btn blue lighten-1 modal-trigger botonesm' ><i class='material-icons left'><img class='iconoaddcrud' src='../app/img/editar.png' /></i></a>";
                 $tabla .="<a class='waves-effect waves-light btn green lighten-1 modal-trigger botonesm editar' onclick=\"imprimirCuentaPagar11('".$fila["2"]."','mensajeccV');\"><i class='material-icons left'><img class='iconoeditcrud' src='../app/img/imprimir.png' /></i></a></td>";
                 
       

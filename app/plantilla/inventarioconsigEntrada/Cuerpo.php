@@ -275,7 +275,7 @@
                     <div class="col s12 right-align">
                     <a id="guardar1" style="display:none" class="waves-effect waves-light btn blue lighten-1 modal-trigger" onClick="guardarInventario();" ><i class="material-icons left"><img class="iconoaddcrud" src="../app/img/guardar.png" /></i>Guardar</a>
                     <a id="guardar" class="waves-effect waves-light btn blue lighten-1 modal-trigger" onClick="abonarConsignacion();" ><i class="material-icons left"><img class="iconoaddcrud" src="../app/img/guardar.png" /></i>Guardar</a>
-                    <a id="imprimePro" style="display:;" onClick="imprimirCuentaPagar11('codigo2','mensajeccV');" class="waves-effect waves-light btn green lighten-1 modal-trigger botonG " ><i class="material-icons left"><img class="iconoaddcrud" src="../app/img/imprimir.png" /></i>Imprimir Recibo</a>
+                    <!-- <a id="imprimePro" style="display:;" onClick="imprimirCuentaPagar11('codigo2','mensajeccV');" class="waves-effect waves-light btn green lighten-1 modal-trigger botonG " ><i class="material-icons left"><img class="iconoaddcrud" src="../app/img/imprimir.png" /></i>Imprimir Recibo</a> -->
 
                     </div>
 
