@@ -78,6 +78,8 @@ else
 				
 
                 $tabla .="<a class='waves-effect waves-light btn yellow dark-1 modal-trigger botonesm ver' onClick=\"ver('".$fila["6"]."');\"><i class='material-icons left'><img class='iconoeditcrud' src='../app/img/ojo.png' /></i></a>";
+                $tabla .="<a class='waves-effect waves-light btn green lighten-1 modal-trigger botonesm editar' onclick=\"imprimirCuentaPagar11('".$fila["6"]."','mensajeccV');\"><i class='material-icons left'><img class='iconoeditcrud' src='../app/img/imprimir.png' /></i></a>";
+                
                 $tabla .= "</td></tr>";
             }
 

@@ -222,7 +222,9 @@ else
         		if($_SESSION['SOFT_ACCESOElimina'.'inventario']=='1')
 				{
                     $tabla .="<a class='waves-effect waves-light btn red lighten-1 modal-trigger botonesm modaleliminar' onClick=\"eliminaInven('".$fila["2"]."','".$fila["12"]."');\"><i class='material-icons left'><img class='iconoaddcrud' src='../app/img/boton-borrar.png' /></i></a>";
-				}
+                    $tabla .="<a class='waves-effect waves-light btn green lighten-1 modal-trigger botonesm editar' onclick=\"imprimirCuentaPagar11('".$fila["12"]."','mensajeccV');\"><i class='material-icons left'><img class='iconoeditcrud' src='../app/img/imprimir.png' /></i></a>";
+                    
+                }
 		        $tabla .="</td></tr>";
             }
 
@@ -345,7 +347,9 @@ else
         		if($_SESSION['SOFT_ACCESOElimina'.'inventario']=='1')
 				{
                     $tabla .="<a class='waves-effect waves-light btn red lighten-1 modal-trigger botonesm modaleliminar' onClick=\"eliminaInven('".$fila["2"]."','".$fila["12"]."');\"><i class='material-icons left'><img class='iconoaddcrud' src='../app/img/boton-borrar.png' /></i></a>";
-				}
+                    $tabla .="<a class='waves-effect waves-light btn green lighten-1 modal-trigger botonesm editar' onclick=\"imprimirCuentaPagar11('".$fila["12"]."','mensajeccV');\"><i class='material-icons left'><img class='iconoeditcrud' src='../app/img/imprimir.png' /></i></a>";
+                    
+                }
 		        $tabla .="</td></tr>";
             }
 
