@@ -29,7 +29,7 @@ function mostrarFragmentar()
     $mysql = conexionMysql();
     $sql = "SELECT  FROM cliente ";
     $cont=0;
-    $sql = "SELECT p.nombre,i.preciocosto,p.idproductos,p.codigoproducto,p.descripcion,i.precioCosto,i.precioVenta,i.precioClienteEs,i.precioDistribuidor,p.marca2,p.tiporepuesto,i.cantidad FROM inventario i inner join productos p on p.idproductos=i.idproducto where  i.idpresentacion=(select ppp.idpresentacion from presentacion ppp where ppp.descripcion='Quintales' and ppp.estado=1)  order by p.codigoproducto";
+    $sql = "SELECT p.nombre,i.preciocosto,p.idproductos,p.codigoproducto,p.descripcion,i.precioCosto,i.precioVenta,i.precioClienteEs,i.precioDistribuidor,p.marca2,p.tiporepuesto,i.cantidad,i.idpresentacion,(select ppp.idpresentacion from presentacion ppp where ppp.descripcion='Quintales' and ppp.estado=1) FROM inventario i inner join productos p on p.idproductos=i.idproducto where i.cantidad>0  order by p.codigoproducto";
     
     $medidas=array('','KG','LB','OZ','GR');
     $medida['']="";
@@ -59,7 +59,7 @@ function mostrarFragmentar()
 				$tabla .="<td>" .$fila["11"].  "</td>";
 				$tabla .="<td>" .$fila["1"].      "</td>";
 
-                $tabla .="<td class='anchoC'>  <a id='modalnuevoP' onClick=\"abrirFragmentar('" .$fila["2"]."');\" class='waves-effect waves-light btn blue lighten-1 modal-trigger botonesm' ><i class='material-icons left'><img class='iconoaddcrud' src='../app/img/editar.png' /></i></a>";
+                $tabla .="<td class='anchoC'>  <a id='modalnuevoP' onClick=\"abrirFragmentar('" .$fila["2"]."','".(($fila["12"]==$fila["13"])?"1":$fila["2"])."');\" class='waves-effect waves-light btn blue lighten-1 modal-trigger botonesm' ><i class='material-icons left'><img class='iconoaddcrud' src='../app/img/editar.png' /></i></a>";
                 $tabla .="<a class='waves-effect waves-light btn green lighten-1 modal-trigger botonesm editar' onclick=\"imprimirCuentaPagar11('".$fila["2"]."','mensajeccV');\"><i class='material-icons left'><img class='iconoeditcrud' src='../app/img/imprimir.png' /></i></a></td>";
                 
       
@@ -341,11 +341,17 @@ function mostrarFragmentarEntrada()
 
 }
 
-function comboProductos2(){
+function comboProductos2($datos){
 	
     $mysql = conexionMysql();
-    $sql = "SELECT nombre,codigoProducto,idproductos FROM productos WHERE idpresentacion=3 and Estado=1 order by codigoproducto";
-	$tabla="";
+    $mas="";
+    if($datos[0]=='1')
+    {
+        $mas="idpresentacion=3 and ";
+    }
+
+    $sql = "SELECT nombre,codigoProducto,idproductos FROM productos WHERE $mas Estado=1 order by codigoproducto";
+    $tabla="";
     if($resultado = $mysql->query($sql))
     {
         $tabla .="<option value=\"\" selected>El producto en libras no existe</option>";
@@ -363,7 +369,7 @@ function comboProductos2(){
 
                
 
-                $tabla .="<option value=\"".$fila["2"]."\">".$fila["1"]." ".$fila["0"]."</option>";
+                $tabla .="<option value=\"".$fila["2"]."\">".$fila["1"]." --- ".$fila["0"]."</option>";
                 
 				
             }
@@ -384,7 +390,7 @@ function comboProductos2(){
     $mysql->close();
 
     //debuelvo la variable resultado
-    return printf($respuesta);
+    echo ($respuesta);
 	?>
    
     <?php

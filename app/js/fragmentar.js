@@ -37,7 +37,6 @@ $('#tablaPro').DataTable( {
          */
 } );
 $('#tipoRepuesto').material_select();
-$('#prodpadre').material_select();
 $('#idpresentacion').material_select();
 
 //$('select').material_select();
@@ -91,6 +90,7 @@ function fragmentarProducto(){
 	cantidadQ=document.getElementById('cantidadQ').value;
 	codigo=document.getElementById('nombreC').value;
 	presentacion=3;
+    presentada=$('#presentada').val();
 	
 	
 	nombre=document.getElementById('Producto').value;
@@ -109,7 +109,7 @@ function fragmentarProducto(){
         ({
             type:"POST",
             url:"../core/controlador/inventarioControlador.php",
-            data:' id=' +  id + '&descripcionA=' + descripcionA + '&precioG=' + precioG + '&codigo=' + codigo + '&presentacion=' + presentacion + '&costo=' + costo + '&cantidadQ=' + cantidadQ + '&cantidad=' + cantidad + '&precioE=' + precioE + '&precioM=' + precioM + '&nombre=' + nombre + '&padre=' + padre + '&trasDato=' + trasDato,
+            data:' id=' +  id + '&descripcionA=' + descripcionA + '&presentada=' + presentada + '&precioG=' + precioG + '&codigo=' + codigo + '&presentacion=' + presentacion + '&costo=' + costo + '&cantidadQ=' + cantidadQ + '&cantidad=' + cantidad + '&precioE=' + precioE + '&precioM=' + precioM + '&nombre=' + nombre + '&padre=' + padre + '&trasDato=' + trasDato,
             success: function(resp)
             {
                 
@@ -142,7 +142,7 @@ function limpiarFragmentar () {
 
 
 
-function abrirFragmentar(id){
+function abrirFragmentar(id,pres){
 
    
     $('#modal1P').openModal();
@@ -173,7 +173,20 @@ function abrirFragmentar(id){
                 $('#tipoRepuesto').material_select();
                 $('#idpresentacion').material_select();
                 $('#Cantidad').focus();
+                $('#presentada').val(pres);
                 mostratDetalle(id);
+                if(pres!='1')
+                {
+                    comboPadre('0',pres);
+                    $('#prodpadre').material_select('destroy');
+                    $('#prodpadre').val(pres);$('#prodpadre').focus();$('#prodpadre').prop('disabled',false); 
+                    $('#prodpadre').material_select();
+                }else{
+                    comboPadre('1','');
+                    $('#prodpadre').material_select('destroy');
+                    $('#prodpadre').focus();$('#prodpadre').prop('disabled',false); 
+                    $('#prodpadre').material_select();
+                }
             }
         });
         
@@ -249,6 +262,28 @@ function mostrarTablaFragmentar(id){
             }
         });
 }
+
+function comboPadre(prop,pres){
+    trasDato = 27;
+    $('#prodpadre').material_select('destroy');
+                    
+    $.ajax
+        ({
+            type:"POST",
+            url:"../core/controlador/inventarioControlador.php",
+            data:'trasDato=' + trasDato + '&prop=' + prop,
+            success: function(resp)
+            {
+                $('#prodpadre').html(resp);
+                
+            },
+            complete:function(){
+                $('#prodpadre').val(pres);$('#prodpadre').focus();$('#prodpadre').prop('disabled',(pres)); 
+                $('#prodpadre').material_select();
+            }
+        });
+}
+
 function seleccionar(id)
 {
 

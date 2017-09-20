@@ -118,6 +118,7 @@ if($_POST)
         $datos[9]=$_POST['padre'];
         $datos[10]=$_POST['descripcionA'];
         $datos[11]=$_POST['cantidadQ'];
+        $datos[12]=$_POST['presentada'];
 		
 		
         fragmentarInventario($datos);
@@ -314,6 +315,16 @@ if($_POST)
 		
 		        
         impFragmentarEntrada($datos);
+
+    }
+    else if($transaccion == 27)
+    {
+
+        $datos[0] = $_POST['prop'];
+        
+		
+		        
+        comboProductos2($datos);
 
     }
 //----------- fin gestion ----------/    

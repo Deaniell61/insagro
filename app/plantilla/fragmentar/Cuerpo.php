@@ -92,6 +92,7 @@
             <div class="input-field col s6" style="display:none">
             <i  class="material-icons prefix"><img class="iconologin" src="../app/img/codigo.png"/></i>
             <input id="codigo" type="text" class="validate">
+            <input id="presentada" type="text" class="validate">
             <label for="icon_telephone" ><span class="etiquelogin">Codigo</span></label>
         </div>
         <div class="input-field col s6">
@@ -190,10 +191,7 @@
             <div class="input-field col s6">
             <i  class="material-icons prefix"><img class="iconologin" src="../app/img/tipoR.png"/></i>
             <select id="prodpadre">
-                <?php
-                //include('../vista/fragmentarVista.php');
-                comboProductos2();
-                ?>
+                <script></script>
 
             </select>
             <label>Sector a Acreditar</label>
