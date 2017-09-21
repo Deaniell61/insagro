@@ -180,13 +180,13 @@
             <div class="input-field col s6 ">
                 <i  class="material-icons prefix"><img class="iconologin" src="../app/img/cantidad.png"/></i>
                 <input id="cantidadQ" type="text" value="0" class="validate" onKeyUp="siguiente(event,'precioG');">
-                <label for="icon_telephone" ><span class="etiquelogin">Cantidad de Quintales</span></label>
+                <label for="icon_telephone" ><span class="etiquelogin">Cantidad</span></label>
             </div>
 
             <div class="input-field col s6 ">
                 <i  class="material-icons prefix"><img class="iconologin" src="../app/img/precioCosto.png"/></i>
                 <input id="precioCQu" type="text" value="0" class="validate" onKeyUp="siguiente(event,'precioG');">
-                <label for="icon_telephone" ><span class="etiquelogin">Precio Costo de Quintales</span></label>
+                <label for="icon_telephone" ><span class="etiquelogin">Precio Costo</span></label>
             </div>
             <div class="input-field col s6">
             <i  class="material-icons prefix"><img class="iconologin" src="../app/img/tipoR.png"/></i>
@@ -199,7 +199,7 @@
             <div class="input-field col s6 ">
                 <i  class="material-icons prefix"><img class="iconologin" src="../app/img/cantidad.png"/></i>
                 <input id="cantidadL" type="text" value="0" class="validate" onKeyUp="CalculaCostoLibra();">
-                <label for="icon_telephone" ><span class="etiquelogin">Cantidad de Libras Acreditadas</span></label>
+                <label for="icon_telephone" ><span class="etiquelogin">Cantidad Acreditadas</span></label>
             </div>
             
 

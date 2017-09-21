@@ -14,6 +14,7 @@ function mostrarFragmentar()
             <th>Codigo</th>
             <th>Producto</th>
             <th>Laboratorio</th>
+            <th>Presentacion</th>
             <th>Descripcion</th>
             <th>Cantidad</th>
             <th>Precio</th>
@@ -29,7 +30,7 @@ function mostrarFragmentar()
     $mysql = conexionMysql();
     $sql = "SELECT  FROM cliente ";
     $cont=0;
-    $sql = "SELECT p.nombre,i.preciocosto,p.idproductos,p.codigoproducto,p.descripcion,i.precioCosto,i.precioVenta,i.precioClienteEs,i.precioDistribuidor,p.marca2,p.tiporepuesto,i.cantidad,i.idpresentacion,(select ppp.idpresentacion from presentacion ppp where ppp.descripcion='Quintales' and ppp.estado=1) FROM inventario i inner join productos p on p.idproductos=i.idproducto where i.cantidad>0  order by p.codigoproducto";
+    $sql = "SELECT p.nombre,i.preciocosto,p.idproductos,p.codigoproducto,p.descripcion,i.precioCosto,i.precioVenta,i.precioClienteEs,i.precioDistribuidor,p.marca2,p.tiporepuesto,i.cantidad,i.idpresentacion,(select ppp.idpresentacion from presentacion ppp where ppp.descripcion='Quintales' and ppp.estado=1),(select ppp.descripcion from presentacion ppp where ppp.idpresentacion=i.idpresentacion) FROM inventario i inner join productos p on p.idproductos=i.idproducto where i.cantidad>0  order by p.codigoproducto";
     
     $medidas=array('','KG','LB','OZ','GR');
     $medida['']="";
@@ -56,6 +57,7 @@ function mostrarFragmentar()
                 $tabla .="<td>" .$fila["0"].      "</td>";
 				$tabla .="<td>" .$fila["9"].      "</td>";
 				$tabla .="<td>" .$fila["4"].      "</td>";
+				$tabla .="<td>" .$fila["14"].      "</td>";
 				$tabla .="<td>" .$fila["11"].  "</td>";
 				$tabla .="<td>" .$fila["1"].      "</td>";
 
