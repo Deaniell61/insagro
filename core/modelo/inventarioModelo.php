@@ -448,7 +448,11 @@ function fragmentarInventario($datos)
     $form="";
 	$mysql->query("BEGIN");
 	$query="select cantidad,idinventario from inventarioFrag where idproducto='".$datos[9]."'";
-	
+	$divi='';
+	if($datos[12]=='1')
+	{
+		$divi='*100';
+	}
 	if($resultadoF = $mysql->query($query))
 	{
 		if($resultadoF->num_rows>0){
@@ -456,12 +460,8 @@ function fragmentarInventario($datos)
 			if($datos[0]!=""){
 				if($resultado = $mysql->query($sql))
 				{
-					$divi='';
-					if($datos[12]=='1')
-					{
-						$divi='*100';
-					}
-						$sql2 = "update inventario set cantidad=cantidad-(".$datos[5].") where idproducto='".$datos[0]."' ";
+					
+						$sql2 = "update inventario set cantidad=cantidad-".$datos[5]." where idproducto='".$datos[0]."' ";
 						if($resultado2 = $mysql->query($sql2))
 						{
 							$query="select idinventario from inventario where idproducto='".$datos[0]."'";
@@ -470,7 +470,7 @@ function fragmentarInventario($datos)
 							{
 									$fila = $resultadoF->fetch_row(); 
 									$saldo = $datos[11]-($datos[5]/100);
-									$squery = "INSERT INTO detalleFragmentar(consignado,retirado,saldo,fecha,descripcion,idinventario,idusuario) values('".$datos[11]."',(".$datos[5]."),'".$saldo."','".date('Y-m-d H:i:s')."','".$datos[10]."',".$fila[0].",'".$_SESSION['SOFT_USER_ID']."');";
+									$squery = "INSERT INTO detalleFragmentar(consignado,retirado,saldo,fecha,descripcion,idinventario,idusuario) values('".$datos[11]."',".$datos[5].",'".$saldo."','".date('Y-m-d H:i:s')."','".$datos[10]."',".$fila[0].",'".$_SESSION['SOFT_USER_ID']."');";
 									if(!$mysql->query($squery)){
 										$mysql->query("ROLLBACK");
 										$form='<script>

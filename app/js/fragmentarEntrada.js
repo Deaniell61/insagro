@@ -178,7 +178,7 @@ function abrirFragmentar(id){
                 $('#Producto').val(resp[1]);$('#Producto').focus();$('#Producto').prop('disabled',true);
                 $('#marca').val(resp[2]);$('#marca').focus();$('#marca').prop('disabled',true);
                 $('#descripcion').val(resp[3]);$('#descripcion').focus();$('#descripcion').prop('disabled',true);        
-                $('#prodpadre').val(resp['id']);$('#prodpadre').focus();$('#prodpadre').prop('disabled',true);     
+                $('#prodpadre').val(resp['id']);$('#prodpadre').focus();$('#prodpadre').prop('disabled',false);     
                 $('#tipoRepuesto').val(resp[4]);$('#tipoRepuesto').focus();$('#tipoRepuesto').prop('disabled',true);     
                 $('#idpresentacion').val(resp[7]);$('#idpresentacion').focus();$('#idpresentacion').prop('disabled',true); 
                 $('#cantidadQ').val(resp[5]);$('#cantidadQ').focus();$('#cantidadQ').prop('disabled',true); 

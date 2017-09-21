@@ -56,8 +56,8 @@ function mostrarFragmentar()
                 $tabla .="<td>" .$fila["3"]." </td>";
                 $tabla .="<td>" .$fila["0"].      "</td>";
 				$tabla .="<td>" .$fila["9"].      "</td>";
-				$tabla .="<td>" .$fila["4"].      "</td>";
 				$tabla .="<td>" .$fila["14"].      "</td>";
+				$tabla .="<td>" .$fila["4"].      "</td>";
 				$tabla .="<td>" .$fila["11"].  "</td>";
 				$tabla .="<td>" .$fila["1"].      "</td>";
 
@@ -266,6 +266,7 @@ function mostrarFragmentarEntrada()
             <th>Producto</th>
             <th>Laboratorio</th>
             <th>Descripcion</th>
+            <th>Presentacion</th>
             <th>Cantidad</th>
             <th>Precio</th>
 
@@ -280,7 +281,7 @@ function mostrarFragmentarEntrada()
     $mysql = conexionMysql();
     $sql = "SELECT  FROM cliente ";
     $cont=0;
-    $sql = "SELECT p.nombre,i.preciocosto,p.idproductos,p.codigoproducto,p.descripcion,i.precioCosto,i.precioVenta,i.precioClienteEs,i.precioDistribuidor,p.marca2,p.tiporepuesto,i.cantidad,i.medida FROM inventarioFrag i inner join productos p on p.idproductos=i.idproducto ";
+    $sql = "SELECT p.nombre,i.preciocosto,p.idproductos,p.codigoproducto,p.descripcion,i.precioCosto,i.precioVenta,i.precioClienteEs,i.precioDistribuidor,p.marca2,p.tiporepuesto,i.cantidad,i.medida,(select ppp.descripcion from presentacion ppp where ppp.idpresentacion=p.idpresentacion) FROM inventarioFrag i inner join productos p on p.idproductos=i.idproducto ";
     $medidas=array('','KG','LB','OZ','GR');
     $medida['']="";
     $tabla="";
@@ -306,6 +307,7 @@ function mostrarFragmentarEntrada()
                 $tabla .="<td>" .$fila["0"].      "</td>";
 				$tabla .="<td>" .$fila["9"].      "</td>";
 				$tabla .="<td>" .$fila["4"].      "</td>";
+				$tabla .="<td>" .$fila["13"].      "</td>";
 				$tabla .="<td>" .$fila["11"].     "</td>";
 				$tabla .="<td>" .$fila["1"].      "</td>";
 
