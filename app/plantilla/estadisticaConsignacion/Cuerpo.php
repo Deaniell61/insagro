@@ -12,7 +12,7 @@
 
            <li class="centrarli"><a id="estadisticaVentas" href="#" class="amber accent-4 btn white-text tamatabsa  ">Ventas</a></li>
            <li class="centrarli"><a id="estadisticaClientes" href="#" class=" amber accent-4 btn white-text tamatabsa ">Clientes</a></li>
-            <li class="centrarli"><a id="estadisticaConsignacion" href="#" class=" btn white-text  yellow darken-4 tamatabsa">Consignacion</a></li>
+            <li class="centrarli"><a id="estadisticaConsignacion" href="#" class=" btn white-text  yellow darken-4 tamatabsa">Productos</a></li>
 
 
 <!-- <div class="indicator blue" style="z-index:1"></div>  -->
@@ -69,9 +69,7 @@
             <div class="col s10 " id="best5">
                   Tabla 1
             </div>
-            <div class="col s10 " id="best5Q">
-                Tabla  2
-            </div>
+            
       </div>
     </div>
 
@@ -80,10 +78,9 @@
 
 <div id="comoGraficar">
 <script>
-cargarGrafico('6','');
-cargarGrafico('1','');
-cargarGrafico('2','');
-cargarGrafico('3','');
+cargarGrafico('12','');
+cargarGrafico('13','');
+cargarGrafico('14','');
 
 </script>
 </div>

@@ -10,7 +10,7 @@
 
            <li class="centrarli"><a id="estadisticaVentas" href="#" class="amber accent-4 btn white-text tamatabsa  ">Ventas</a></li>
            <li class="centrarli"><a id="estadisticaClientes" href="#" class=" amber accent-4 btn white-text tamatabsa  ">Clientes</a></li>
-           <li class="centrarli"><a id="estadisticaConsignacion" href="#" class=" amber accent-4 btn white-text tamatabsa ">Consignacion</a></li>
+           <li class="centrarli"><a id="estadisticaConsignacion" href="#" class=" amber accent-4 btn white-text tamatabsa ">Productos</a></li>
 
 
 

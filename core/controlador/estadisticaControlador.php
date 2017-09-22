@@ -176,6 +176,51 @@ if($_POST)
         
     
     }
+    else if($transaccion == 12)
+    {
+        
+          
+
+        
+         $datos[0] = $_POST['fechaini'];
+		 $datos[1] = $_POST['fechafin'];
+
+
+        
+        graficaProductosPie($datos);
+        
+    
+    }
+    else if($transaccion == 13)
+    {
+        
+          
+
+        
+         $datos[0] = $_POST['fechaini'];
+		 $datos[1] = $_POST['fechafin'];
+
+
+        
+         graficaProductosBarra($datos);
+        
+    
+    }
+    else if($transaccion == 14)
+    {
+        
+          
+
+        
+         $datos[0] = $_POST['fechaini'];
+		 $datos[1] = $_POST['fechafin'];
+
+         $datos[2] = $_POST['mas'];
+        
+         buscarVendedoresPorProductos($datos);
+        
+    
+    }
 	
 //----------- fin gestion ----------/    
     
