@@ -178,13 +178,13 @@
             <div class="input-field col s6 ">
                 <i  class="material-icons prefix"><img class="iconologin" src="../app/img/precioCosto.png"/></i>
                 <input id="cantidadQ" type="text" value="0" class="validate" onKeyUp="siguiente(event,'precioG');">
-                <label for="icon_telephone" ><span class="etiquelogin">Cantidad de Libras</span></label>
+                <label for="icon_telephone" ><span class="etiquelogin">Cantidad</span></label>
             </div>
 
             <div class="input-field col s6 ">
                 <i  class="material-icons prefix"><img class="iconologin" src="../app/img/precioCosto.png"/></i>
                 <input id="precioCQu" type="text" value="0" class="validate" onKeyUp="siguiente(event,'precioG');">
-                <label for="icon_telephone" ><span class="etiquelogin">Precio Costo de Libra</span></label>
+                <label for="icon_telephone" ><span class="etiquelogin">Precio Costo</span></label>
             </div>
             <div class="input-field col s6">
             <i  class="material-icons prefix"><img class="iconologin" src="../app/img/tipoR.png"/></i>
