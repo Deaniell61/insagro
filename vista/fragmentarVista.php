@@ -107,7 +107,7 @@ function mostrarDetalleFragmentar($datos)
         <tr>
             <th>Fecha</th>
             <th>Descripcion</th>
-            <th>Quintales Acreditado</th>
+            <th>Cantidad Acreditada</th>
             
 
         </tr>
@@ -184,7 +184,7 @@ function mostrarDetalleFragmentarEntrada($datos)
         <tr>
             <th>Fecha</th>
             <th>Descripcion</th>
-            <th>Quintales Acreditado</th>
+            <th>Cantidad Acreditada</th>
             <th>Precio Venta</th>
             
 

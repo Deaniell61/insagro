@@ -186,7 +186,7 @@
                 <input id="precioCQu" type="text" value="0" class="validate" onKeyUp="siguiente(event,'precioG');">
                 <label for="icon_telephone" ><span class="etiquelogin">Precio Costo</span></label>
             </div>
-            <div class="input-field col s6">
+            <div class="input-field col s6" style="display:none">
             <i  class="material-icons prefix"><img class="iconologin" src="../app/img/tipoR.png"/></i>
             <select id="prodpadre">
                 <?php
