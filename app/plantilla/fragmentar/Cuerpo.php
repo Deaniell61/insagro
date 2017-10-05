@@ -199,7 +199,7 @@
             <div class="input-field col s6 ">
                 <i  class="material-icons prefix"><img class="iconologin" src="../app/img/cantidad.png"/></i>
                 <input id="cantidadL" type="text" value="0" class="validate" onKeyUp="CalculaCostoLibra();">
-                <label for="icon_telephone" ><span class="etiquelogin">Cantidad Acreditadas</span></label>
+                <label for="icon_telephone" ><span class="etiquelogin">Cantidad De Salida</span></label>
             </div>
             
 
