@@ -206,7 +206,7 @@
             <div class="input-field col s12 ">
                 <i  class="material-icons prefix"><img class="iconologin" src="../app/img/descripcion.png"/></i>
                 <input id="DescripcionAbono" type="text" class="validate">
-                <label for="icon_telephone" ><span class="etiquelogin">Descripcion de Acreditacion</span></label>
+                <label for="icon_telephone" ><span class="etiquelogin">Descripcion de Salida</span></label>
             </div>
 
             <div class="input-field col s6 "  style="display:none">
