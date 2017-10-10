@@ -506,7 +506,7 @@ function impInvConsignacion(div){
 
     
     $('#'+div).html('<div id="impresionInvent"></div>');
-     var encab="<div class=\"\" style=\"margin-bottom: 0px ;\"><img class=\"logo\" src=\"../app/img/logoinsagro1.png\"/><div style=\"height: 18px; text-align:right;color:#ccc;margin-top: -75px;\"><strong>Insagro</strong></div><div  style=\"height: 18px; text-align:right;color:#ccc;\">\"Lo mejor para tus plantas\"</div><div  style=\"height: 18px; text-align:right;color:#ccc;\">Direccion: Mazatenango</div><div  style=\"height: 18px; text-align:right;color:#ccc;\">Tel. 77737775</div><div  style=\"height: 18px; text-align:right;color:#ccc;\">Cel. 42207608</div></div><br>";
+     var encab="<div class=\"\" style=\"margin-bottom: 0px ;\"><img class=\"logo\" src=\"../app/img/logoinsagro1.png\"/><div style=\"height: 18px; text-align:right;color:#ccc;margin-top: -75px;\"><strong>Insagro</strong></div><div  style=\"height: 18px; text-align:right;color:#ccc;\">\"Lo mejor para tus plantas\"</div><div  style=\"height: 18px; text-align:right;color:#ccc;\">Direccion: Mazatenango</div><div  style=\"height: 18px; text-align:right;color:#ccc;\">Tel. 77737775</div><div  style=\"height: 18px; text-align:right;color:#ccc;\">Cel. 42207608</div><div  style=\"text-align:center;color:#000;font-size: 25px;\"><strong>Movimientos Internos Salida</strong></div></div><br>";
    //$('#impresionDeFacturaC11').html(encab);
      var cuerpo=""+encab;
      var trasDato;
