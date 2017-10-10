@@ -525,7 +525,7 @@ function datosImpCongnacion($datos){
 					'<center><h5>Abonos</h5>';
 					$return.='<table  class="depositos">';
 					$return.='<tr>'.
-							 '<th>Descripcion</th>'.
+							 '<th>Fecha</th>'.
 							 '<th>Descripcion</th>'.
 							 '<th>Abono</th>'.
 							 '</tr>';
@@ -614,7 +614,7 @@ function datosImpCongnacionRecibo($datos){
 					'<center><h5>Abonos</h5>';
 					$return.='<table  class="depositos">';
 					$return.='<tr>'.
-								'<th>Descripcion</th>'.
+								'<th>Fecha</th>'.
 								'<th>Descripcion</th>'.
 								'<th>Abono</th>'.
 								'</tr>';
@@ -705,7 +705,7 @@ function datosImpCongnacionRecibo($datos){
 						'<center><h5>Abonos</h5>';
 						$return.='<table  class="depositos">';
 						$return.='<tr>'.
-								 '<th>Descripcion</th>'.
+								 '<th>Fecha</th>'.
 								 '<th>Descripcion</th>'.
 								 '<th>Abono</th>'.
 								 '</tr>';
@@ -798,7 +798,7 @@ function datosImpInvCongnacion($datos){
 					'<center><h5>Abonos</h5>';
 					$return.='<table  class="depositos">';
 					$return.='<tr>'.
-								'<th>Descripcion</th>'.
+								'<th>Fecha</th>'.
 								'<th>Descripcion</th>'.
 								'<th>Abono</th>'.
 								'</tr>';
@@ -892,7 +892,7 @@ function datosImpInvCongnacionxCob($datos){
 					'<center><h5>Abonos</h5>';
 					$return.='<table  class="depositos">';
 					$return.='<tr>'.
-								'<th>Descripcion</th>'.
+								'<th>Fecha</th>'.
 								'<th>Descripcion</th>'.
 								'<th>Abono</th>'.
 								'</tr>';
@@ -976,16 +976,16 @@ function datosImpInvFragmentar($datos){
 					$return.=$encab.'<div class="ingresos" style="margin-top:20px;">'.
 					'<center><h5 style="text-align: left;" class="CuentasTitulo">Producto: '.$fila['0'].'</h5></center>'.
 					'<center><div style="text-align: left;">Codigo: '.$fila['3'].'</div></center>'.
-					'<center><div style="text-align: left;">Cantidad: '.$fila['9'].' </div></center>'.
+					'<center><div style="text-align: left;">Cantidad: '.$fila['11'].' </div></center>'.
 					'<center><div style="text-align: left;">Precio General: '.$fila['6'].' </div></center>'.
 					'</div>';
 					$return.='<div class="deposito">'.
-					'<center><h5>Creditos</h5>';
+					'<center><h5>Salida</h5>';
 					$return.='<table  class="depositos">';
 					$return.='<tr>'.
+								'<th>Fecha</th>'.
 								'<th>Descripcion</th>'.
-								'<th>Descripcion</th>'.
-								'<th>Qiintales Acreditados</th>'.
+								'<th>Cantidad Salida</th>'.
 								'</tr>';
 					
 								$sqlDetalleCuentaC = "SELECT fecha,descripcion,retirado FROM detalleFragmentar where  idinventario=(select i.idinventario from inventario i where i.idproducto='".$datos[0]."')";
@@ -1066,16 +1066,16 @@ function datosImpInvFragmentarxCob($datos){
 				$return.=$encab.'<div class="ingresos" style="margin-top:20px;">'.
 				'<center><h5 style="text-align: left;" class="CuentasTitulo">Producto: '.$fila['0'].'</h5></center>'.
 				'<center><div style="text-align: left;">Codigo: '.$fila['3'].'</div></center>'.
-				'<center><div style="text-align: left;">Cantidad: '.$fila['9'].' </div></center>'.
+				'<center><div style="text-align: left;">Cantidad: '.$fila['11'].' </div></center>'.
 				'<center><div style="text-align: left;">Precio General: '.$fila['6'].' </div></center>'.
 				'</div>';
 				$return.='<div class="deposito">'.
-				'<center><h5>Creditos</h5>';
+				'<center><h5>Entrada</h5>';
 				$return.='<table  class="depositos">';
 				$return.='<tr>'.
+							'<th>Fecha</th>'.
 							'<th>Descripcion</th>'.
-							'<th>Descripcion</th>'.
-							'<th>Qiintales Acreditados</th>'.
+							'<th>Cantidad Entrada</th>'.
 							'</tr>';
 				
 							$sqlDetalleCuentaC = "SELECT fecha,descripcion,retirado FROM detalleFragmentarEntr where  idinventario=(select i.idinventario from inventarioFrag i where i.idproducto='".$datos[0]."')";

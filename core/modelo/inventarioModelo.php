@@ -1599,32 +1599,32 @@ $mysql = conexionMysql();
 				$i++;
 				$o++;
 			}
-			$return.='<div class="deposito">';
-				$return.='<table  class="depositosTabla">';
-				$return.='<tr class="FilaInventarioT">'.
-				'<th class="InventarioColumnaT"></th>'.
-				'<th class="InventarioColumnaT"></th>'.
-				'<th class="InventarioColumnaT"></th>'.
-				'<th class="InventarioColumnaT"></th>'.
-				'<th class="InventarioColumnaT"></th>'.
-				'<th class="InventarioColumnaT"></th>'.
-				'<th class="InventarioColumnaT"></th>'.
-				'<th class="InventarioColumnaT">Total</th>'.
-				'</tr>';
-				$return.='<tr class="FilaInventario">'.
+			$return.='<div style="float: right;margin-right: 7%;font-size: 10px;">';
+				// $return.='<table  class="depositosTabla">';
+				// $return.='<tr class="FilaInventarioT">'.
+				// '<th class="InventarioColumnaT"></th>'.
+				// '<th class="InventarioColumnaT"></th>'.
+				// '<th class="InventarioColumnaT"></th>'.
+				// '<th class="InventarioColumnaT"></th>'.
+				// '<th class="InventarioColumnaT"></th>'.
+				// '<th class="InventarioColumnaT"></th>'.
+				// '<th class="InventarioColumnaT"></th>'.
+				// '<th class="InventarioColumnaT">Total</th>'.
+				// '</tr>';
+				// $return.='<tr class="FilaInventario">'.
 				
-				'<td class="InventarioColumna"></td>'.
-				'<td class="InventarioColumna"></td>'.
-				'<td class="InventarioColumna"></td>'.
-				'<td class="InventarioColumna"></td>'.
-				'<td class="InventarioColumna"></td>'.
-				'<td class="InventarioColumna"></td>'.
-				'<td class="InventarioColumna"></td>'.
-				'<td class="InventarioColumna">'.toMoney(($subtotalgenG).'').'</td>'.
+				// '<td class="InventarioColumna"></td>'.
+				// '<td class="InventarioColumna"></td>'.
+				// '<td class="InventarioColumna"></td>'.
+				// '<td class="InventarioColumna"></td>'.
+				// '<td class="InventarioColumna"></td>'.
+				// '<td class="InventarioColumna"></td>'.
+				// '<td class="InventarioColumna"></td>'.
+				$return.='Total: <br>'.toMoney(($subtotalgenG).'').'';
 				
-				'</tr>';
+				// '</tr>';
 				
-				$return.='</table></center></div>';
+				$return.='</div>';
 			$resultadoSegmento->free();//librerar variable
 		}
 	}else
@@ -1786,32 +1786,33 @@ $mysql = conexionMysql();
 				$i++;
 				$o++;
 			}
-			$return.='<div class="deposito">';
-				$return.='<table  class="depositosTabla">';
-				$return.='<tr class="FilaInventarioT">'.
-				'<th class="InventarioColumnaT"></th>'.
-				'<th class="InventarioColumnaT"></th>'.
-				'<th class="InventarioColumnaT"></th>'.
-				'<th class="InventarioColumnaT"></th>'.
-				'<th class="InventarioColumnaT"></th>'.
-				'<th class="InventarioColumnaT"></th>'.
-				'<th class="InventarioColumnaT"></th>'.
-				'<th class="InventarioColumnaT">Total</th>'.
-				'</tr>';
-				$return.='<tr class="FilaInventario">'.
+			
+			$return.='<div style="float: right;margin-right: 7%;font-size: 10px;">';
+				// $return.='<table  class="depositosTabla">';
+				// $return.='<tr class="FilaInventarioT">'.
+				// '<th class="InventarioColumnaT"></th>'.
+				// '<th class="InventarioColumnaT"></th>'.
+				// '<th class="InventarioColumnaT"></th>'.
+				// '<th class="InventarioColumnaT"></th>'.
+				// '<th class="InventarioColumnaT"></th>'.
+				// '<th class="InventarioColumnaT"></th>'.
+				// '<th class="InventarioColumnaT"></th>'.
+				// '<th class="InventarioColumnaT">Total</th>'.
+				// '</tr>';
+				// $return.='<tr class="FilaInventario">'.
 				
-				'<td class="InventarioColumna"></td>'.
-				'<td class="InventarioColumna"></td>'.
-				'<td class="InventarioColumna"></td>'.
-				'<td class="InventarioColumna"></td>'.
-				'<td class="InventarioColumna"></td>'.
-				'<td class="InventarioColumna"></td>'.
-				'<td class="InventarioColumna"></td>'.
-				'<td class="InventarioColumna">'.toMoney(($subtotalgenG).'').'</td>'.
+				// '<td class="InventarioColumna"></td>'.
+				// '<td class="InventarioColumna"></td>'.
+				// '<td class="InventarioColumna"></td>'.
+				// '<td class="InventarioColumna"></td>'.
+				// '<td class="InventarioColumna"></td>'.
+				// '<td class="InventarioColumna"></td>'.
+				// '<td class="InventarioColumna"></td>'.
+				$return.='Total: <br>'.toMoney(($subtotalgenG).'').'';
 				
-				'</tr>';
+				// '</tr>';
 				
-				$return.='</table></center></div>';
+				$return.='</div>';
 			$resultadoSegmento->free();//librerar variable
 		}
 	}else
