@@ -362,10 +362,12 @@ function iniciarVenta(id) {
     trasDato = 2;
     usuario = document.getElementById('operador').value;
     tipo = document.getElementById('tipoVenta').value;
+    fecha=document.getElementById('fecha').value;
+    
     $.ajax({
         type: "POST",
         url: "../core/controlador/ventasControlador.php",
-        data: ' prov=' + id + '&tipo=' + tipo + '&usuario=' + usuario + '&trasDato=' + trasDato,
+        data: ' prov=' + id + '&tipo=' + tipo + '&usuario=' + usuario + '&fecha=' + fecha + '&trasDato=' + trasDato,
         success: function(resp) {
 
             if (resp == '1') {

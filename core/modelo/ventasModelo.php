@@ -70,7 +70,7 @@ function inicioVenta($idProv)
 		$mysql->query("BEGIN");
 		$mysql->query("delete from ventasdetalle where estado=2;");
 		$mysql->query("delete from ventas where estado=2;");
-   $sql = "INSERT INTO ventas(total,estado,tipoVenta,idCliente,nocomprobante,idusuario,fecha) values(0,2,'".$idProv[1]."','".$idProv[0]."',(select v.nocomprobante+1 from ventas v where v.estado=1 order by v.nocomprobante desc limit 1),'".$user."','".date('Y-m-d  H:i:s')."')";
+   $sql = "INSERT INTO ventas(total,estado,tipoVenta,idCliente,nocomprobante,idusuario,fecha) values(0,2,'".$idProv[1]."','".$idProv[0]."',(select v.nocomprobante+1 from ventas v where v.estado=1 order by v.nocomprobante desc limit 1),'".$user."','".$idProv[3]."')";
  
     if($mysql->query($sql))
     {
