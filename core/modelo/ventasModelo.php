@@ -54,7 +54,40 @@ function  buscarCliente($nit)
     return printf($form);
     
 }
-
+function cambiarFechaVenta($datos)
+{
+	$mysql = conexionMysql();
+    $form="";
+	
+		$mysql->query("BEGIN");
+    $sql = "update ventas set fecha='".$datos[0]."' where idventas='".$datos[1]."'";
+//echo $sql;
+    if($mysql->query($sql))
+    {
+		if(!$mysql->query("update cuentascobrar set fecha='".$datos[0]."' where idventas='".$datos[1]."'"))
+		{
+			$mysql->query("ROLLBACK");
+		}
+		else
+		{
+			$mysql->query("COMMIT");
+		}
+			    
+		
+    
+    }
+    else
+    {   
+    	$mysql->query("ROLLBACK");
+    $form = "<div><script>console.log('".$datos[0]."');</script></div>";
+    
+    }
+    
+    
+    $mysql->close();
+    
+    return printf($form);
+}
 function inicioVenta($idProv)
 {
 	$mysql = conexionMysql();
@@ -70,7 +103,7 @@ function inicioVenta($idProv)
 		$mysql->query("BEGIN");
 		$mysql->query("delete from ventasdetalle where estado=2;");
 		$mysql->query("delete from ventas where estado=2;");
-   $sql = "INSERT INTO ventas(total,estado,tipoVenta,idCliente,nocomprobante,idusuario,fecha) values(0,2,'".$idProv[1]."','".$idProv[0]."',(select v.nocomprobante+1 from ventas v where v.estado=1 order by v.nocomprobante desc limit 1),'".$user."','".$idProv[3]."')";
+        $sql = "INSERT INTO ventas(total,estado,tipoVenta,idCliente,nocomprobante,idusuario,fecha) values(0,2,'".$idProv[1]."','".$idProv[0]."',(select v.nocomprobante+1 from ventas v where v.estado=1 order by v.nocomprobante desc limit 1),'".$user."','".$idProv[3]."')";
  
     if($mysql->query($sql))
     {
@@ -122,7 +155,7 @@ function quitaInventario($datos)
 
 	$extra='';
 	$extra2='';
-	if($datos[8]=='5'){
+	if($datos[4]=='5'){
 		$extra='CxCob';
 		$extra2='C';
 	}

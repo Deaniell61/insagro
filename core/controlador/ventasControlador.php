@@ -253,6 +253,15 @@ if($_POST)
 		        
         datosReciboCuentasCobrar($datos);
 
+    }else if($transaccion == 23)
+    {
+
+        $datos[0]=$nombre = $_POST['fecha'];
+		$datos[1]=$puesto = $_POST['id'];
+		
+		        
+        cambiarFechaVenta($datos);
+
     }
 //----------- fin gestion ----------/    
     

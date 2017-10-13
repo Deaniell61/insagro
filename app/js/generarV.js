@@ -629,7 +629,41 @@ function seleccionaProductoVenta(codprod) {
         }
     });
 }
+function cambiarFecha(tipo,id)
+{
 
+	var  trasDato;
+	trasDato = 23;
+		//alert(2);
+        $.ajax
+        ({
+            type:"POST",
+            url:"../core/controlador/ventasControlador.php",
+            data:' fecha=' +  tipo + '&id=' + id + '&trasDato=' + trasDato,
+            success: function(resp)
+            {
+
+               if(resp == '1')
+                {
+
+
+                    //$('#mensaje').html('Datos Incorrectos.');
+                    //$('#precargar').hide();
+                }
+                else
+                {
+
+
+
+					 $('#mensajeVV').html(resp);
+
+
+                }
+
+
+            }
+        });
+}
 function cambiarTipo(tipo, id) {
 
     var trasDato;
