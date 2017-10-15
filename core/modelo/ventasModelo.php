@@ -155,7 +155,7 @@ function quitaInventario($datos)
 
 	$extra='';
 	$extra2='';
-	if($datos[4]=='5'){
+	if($datos[8]=='5'){
 		$extra='CxCob';
 		$extra2='C';
 	}

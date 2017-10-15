@@ -232,7 +232,7 @@ function agregaInvetario()
 		proveedor=$('#codigoProveedor').val();
 		var  cantidad,trasDato;
 		trasDato = 13;
-		alert(tipocompra)
+		// alert(tipocompra)
         $.ajax
         ({
             type:"POST",
